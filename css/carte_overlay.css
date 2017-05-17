@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 12 mai 2017, 19:05:33
+    Author     : rjacquiez
+*/
+
+.map {
+    overflow: hidden;
+    border-width: medium;
+    border-radius: 2%;
+    background-color: white;
+    margin: auto;
+    margin-top: 50px;
+    width: 33%;
+    height: 84%;
+}
+
+.map__image{
+    width: 97%;
+    height: 82%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.map__image path{
+    fill: #CCCCCC;
+    fill-opacity: 1;
+    stroke:white;
+    stroke-opacity: 1;
+    stroke-width:0.7;
+    transition: fill 0.3s;
+}
+
+.map__image path:hover{
+    fill: grey;
+}
+
+.map__select {
+    display: block;
+    text-align: center;
+    margin: auto;
+}

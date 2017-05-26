@@ -15,11 +15,12 @@
             
             /*inclusion du formulaire d'inscription*/
             include '../includes/i_inscription.php';
+            
+            
         ?>
         
         <span>Votre département : </span>
         <span id="mon_departement"></span></br>
-
         <a href="carte.php">carte</a>
         
         <!-- SCRIPTS POUR L'AJAX -->
@@ -29,7 +30,13 @@
         <!-- SCRIPTS POUR L'overlay -->
         <script src="../js/overlay.js" type="text/javascript"></script>
         <script src="../js/polyfill.js" type="text/javascript"></script>
+        
+        
 
     </body>
+    
+    <?php
+        include '../includes/i_footer.php'
+        ?>
 
 </html>

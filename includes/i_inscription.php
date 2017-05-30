@@ -5,7 +5,7 @@
 
 <fieldset id="formulaire_inscription">
     <form>
-        <p>Inscription<p>
+        <p>Inscription<p> 
             
         <p>Civilité : <input type="radio" name="civilite" value="M." checked="true">
         <label for="M.">M.</label>

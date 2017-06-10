@@ -17,5 +17,16 @@ abstract class RequeteProduit extends Hydratable
                 . "WHERE id_produit = $id");
         parent::hydrateInfos($resultat);
     }
+    
+    protected function selectAnimalProduit()
+    {
+        $id = intval($this->id_produit);
+        $resultat = $this->exeRequete("SELECT animal_produit.id_animal, "
+                . "animal.animal FROM animal_produit "
+                . "INNER JOIN animal "
+                . "ON animal_produit.id_animal = animal.id_animal "
+                . "WHERE animal_produit.id_produit = $id");
+        return $resultat;
+    }
 }
 

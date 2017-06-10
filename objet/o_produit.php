@@ -7,12 +7,13 @@ class Produit extends RequeteProduit
     public function __construct(BDD $BDD, $id_produit)
     {
         parent::__construct($BDD, $id_produit);
+        $this->hydrate();
     }
     
-    public function donneInfos()
+    public function getInfos() 
     {
         $this->hydrate();
-        return $this->_infos; 
+        return parent::getInfos();
     }
 }
 

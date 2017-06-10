@@ -1,6 +1,6 @@
 <?php
 
-class RequetePrixTransport extends Hydratable
+abstract class RequetePrixTransport extends Hydratable
 {
     private $nb_departement;
     
@@ -12,13 +12,10 @@ class RequetePrixTransport extends Hydratable
     
     public function hydrate()
     {
-        $nb = $this->nb_departement;
-        if(is_int($nb))
-        {
-            $resultat = $this->exeRequete("SELECT * FROM prix_transport "
-                    . "WHERE id_prix_transport = $nb");
-            parent::hydrateInfos($resultat);   
-        }
+        $nb = intval($this->nb_departement);
+        $resultat = $this->exeRequete("SELECT * FROM prix_transport "
+                . "WHERE id_prix_transport = $nb");
+        parent::hydrateInfos($resultat);   
     }
 }
 

@@ -27,6 +27,16 @@ abstract class Hydratable
         }
     }
     
+    public function getInfos()
+    {
+        return $this->_infos;
+    }
+    
+    protected function getBDD()
+    {
+        return $this->BDD;
+    }
+    
     protected function hydrateInfos($resultat)
     {   
         foreach($resultat as $ligne)

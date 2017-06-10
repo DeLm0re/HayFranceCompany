@@ -1,41 +1,64 @@
 <?php
 
-class Panier
+include 'r_panier.php';
+
+class Panier extends RequetePanier
 {
-    
-    public function __construct() 
+    public function __construct(BDD $BDD, $id_utilisateur) 
     {
-        
+        parent::__construct($BDD, $id_utilisateur);
+        $this->hydrate();
     }
     
-    public function hydrate()
+    public function getInfos() 
     {
-        
+        $this->hydrate();
+        return parent::getInfos();
     }
     
     public function donneContenu()
     {
-        
+        $tab_produits = NULL;
+        $index = 0;
+        $id_panier = $this->getInfos()['id_panier'];
+        $resultat = parent::selectPanierProduit($id_panier);
+        foreach ($resultat as $ligne) 
+        {
+            $produit = new Produit($this->getBDD(), $ligne['id_produit']);
+            $tab_produits[$index] = $produit;
+            $index += 1;
+        }
+        return $tab_produits;
     }
     
-    public function ajouteProduit()
+    public function ajouteProduit(Produit $produit)
     {
-        
+        $id_panier = $this->getInfos()['id_panier'];
+        $id_produit = $produit->getInfos()['id_produit'];
+        parent::insertPanierProduit($id_panier, $id_produit);
     }
     
-    public function retireProduit()
+    public function retireProduit(Produit $produit)
     {
-        
+        $id_panier = $this->getInfos()['id_panier'];
+        $id_produit = $produit->getInfos()['id_produit'];
+        parent::deletePanierProduit($id_panier, $id_produit);
     }
     
     public function seVide()
     {
-        
+        $id_panier = $this->getInfos()['id_panier'];
+        parent::videPanierProduit($id_panier);
     }
     
-    public function changeDepartement()
+    public function changeDepartement($nb_departement)
     {
-        
+        if(is_int($nb_departement))
+        {
+            $id_panier = $this->getInfos()['id_panier'];
+            parent::updateDepartement($id_panier, $nb_departement);
+            $this->hydrate();
+        }
     }
 }
 

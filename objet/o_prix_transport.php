@@ -7,12 +7,13 @@ class PrixTransport extends RequetePrixTransport
     public function __construct(BDD $BDD, $nb_departement) 
     {
         parent::__construct($BDD, $nb_departement);
+        $this->hydrate();
     }
     
-    public function donnePrix()
+    public function getInfos() 
     {
         $this->hydrate();
-        return $this->_infos;
+        return parent::getInfos();
     }
 }
 

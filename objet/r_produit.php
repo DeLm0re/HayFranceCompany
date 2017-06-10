@@ -1,6 +1,6 @@
 <?php
 
-class RequeteProduit extends Hydratable
+abstract class RequeteProduit extends Hydratable
 {  
     private $id_produit;
     
@@ -12,13 +12,10 @@ class RequeteProduit extends Hydratable
 
     public function hydrate()
     {
-        $id = $this->id_produit;
-        if(is_int($id))
-        {
-            $resultat = $this->exeRequete("SELECT * FROM produit "
-                    . "WHERE id_produit = $id");
-            parent::hydrateInfos($resultat);
-        }
+        $id = intval($this->id_produit);
+        $resultat = $this->exeRequete("SELECT * FROM produit "
+                . "WHERE id_produit = $id");
+        parent::hydrateInfos($resultat);
     }
 }
 

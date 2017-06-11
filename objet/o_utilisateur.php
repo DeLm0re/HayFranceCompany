@@ -25,7 +25,8 @@ class Utilisateur extends RequeteUtilisateur
     
     public function inscrit($nom, $prenom, $civilite, $email, $password, $ville, $adresse, $departement)
     {
-        
+        parent::inscription($nom, $prenom, $civilite, $email, $password, $ville, $adresse, $departement);
+        $this->hydrate();
     }
     
     public function connecte($email, $password)

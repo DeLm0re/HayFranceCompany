@@ -1,21 +1,5 @@
 <?php
 
-class PrixTransport extends RequetePrixTransport
-{
-    public function __construct(BDD $BDD, $nb_departement) 
-    {
-        parent::__construct($BDD, $nb_departement);
-        $this->hydrate();
-    }
-    
-    public function infos() 
-    {
-        $this->hydrate();
-        return parent::getInfos();
-    }
-}
-
-
 abstract class RequetePrixTransport extends Hydratable
 {
     private $nb_departement;
@@ -32,5 +16,22 @@ abstract class RequetePrixTransport extends Hydratable
         $resultat = $this->exeRequete("SELECT * FROM prix_transport "
                 . "WHERE id_prix_transport = $nb");
         parent::hydrateInfos($resultat);   
+    }
+}
+
+
+
+class PrixTransport extends RequetePrixTransport
+{
+    public function __construct(BDD $BDD, $nb_departement) 
+    {
+        parent::__construct($BDD, $nb_departement);
+        $this->hydrate();
+    }
+    
+    public function infos() 
+    {
+        $this->hydrate();
+        return parent::getInfos();
     }
 }

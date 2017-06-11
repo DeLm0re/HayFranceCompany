@@ -7,6 +7,7 @@ class BDD
     const ERR_NOT_FOUND = "Aucun résultat trouvé";
     private $_DBH;
     private $_ERR_MESSAGE;
+    private $_LAST_ID;
 
     //Constructeur
     public function __construct() 
@@ -76,6 +77,7 @@ class BDD
             
             $prepare->execute();
             $resultat = $prepare->fetchAll(PDO::FETCH_ASSOC);
+            $this->_LAST_ID = $this->_DBH->lastInsertId();
             if($resultat === NULL)
             {
                 return self::ERR_NOT_FOUND;
@@ -86,6 +88,11 @@ class BDD
             $this->_ERR_MESSAGE = $e->getMessage();
             return self::ERR_CONNECTION;
         }
+    }
+    
+    public function getLastInsertId()
+    {
+        return $this->_LAST_ID;
     }
 }
 

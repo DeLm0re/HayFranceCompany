@@ -10,7 +10,7 @@ class Produit extends RequeteProduit
         $this->hydrate();
     }
     
-    public function getInfos() 
+    public function infos() 
     {
         $this->hydrate();
         return parent::getInfos();

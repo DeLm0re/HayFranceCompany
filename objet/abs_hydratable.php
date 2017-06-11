@@ -27,7 +27,7 @@ abstract class Hydratable
         }
     }
     
-    public function getInfos()
+    protected function getInfos()
     {
         return $this->_infos;
     }

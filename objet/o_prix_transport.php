@@ -10,7 +10,7 @@ class PrixTransport extends RequetePrixTransport
         $this->hydrate();
     }
     
-    public function getInfos() 
+    public function infos() 
     {
         $this->hydrate();
         return parent::getInfos();

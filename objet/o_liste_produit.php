@@ -11,6 +11,7 @@ class ListeProduit extends RequeteListeProduit
     
     public function donneListeProduits($categorie = NULL)
     {
+        $this->hydrate();
         $index = 0;
         $produits = $this->getInfos();
         foreach ($produits as $produit)

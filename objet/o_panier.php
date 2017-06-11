@@ -10,7 +10,7 @@ class Panier extends RequetePanier
         $this->hydrate();
     }
     
-    public function getInfos() 
+    public function infos() 
     {
         $this->hydrate();
         return parent::getInfos();
@@ -18,6 +18,7 @@ class Panier extends RequetePanier
     
     public function donneContenu()
     {
+        $this->hydrate();
         $tab_produits = NULL;
         $index = 0;
         $id_panier = $this->getInfos()['id_panier'];
@@ -33,6 +34,7 @@ class Panier extends RequetePanier
     
     public function ajouteProduit(Produit $produit)
     {
+        $this->hydrate();
         $id_panier = $this->getInfos()['id_panier'];
         $id_produit = $produit->getInfos()['id_produit'];
         parent::insertPanierProduit($id_panier, $id_produit);
@@ -40,6 +42,7 @@ class Panier extends RequetePanier
     
     public function retireProduit(Produit $produit)
     {
+        $this->hydrate();
         $id_panier = $this->getInfos()['id_panier'];
         $id_produit = $produit->getInfos()['id_produit'];
         parent::deletePanierProduit($id_panier, $id_produit);
@@ -47,18 +50,18 @@ class Panier extends RequetePanier
     
     public function seVide()
     {
+        $this->hydrate();
         $id_panier = $this->getInfos()['id_panier'];
         parent::videPanierProduit($id_panier);
     }
     
     public function changeDepartement($nb_departement)
     {
-        if(is_int($nb_departement))
-        {
-            $id_panier = $this->getInfos()['id_panier'];
-            parent::updateDepartement($id_panier, $nb_departement);
-            $this->hydrate();
-        }
+        $this->hydrate();
+        $nb = intval($nb_departement);
+        $id_panier = $this->getInfos()['id_panier'];
+        parent::updateDepartement($id_panier, $nb);
+        $this->hydrate();
     }
 }
 

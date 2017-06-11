@@ -55,22 +55,22 @@ class Utilisateur extends RequeteUtilisateur
 
     public function ajouteProduitPanier(Produit $produit)
     {
-        
+        $this->getPanier()->ajouteProduit($produit);
     }
     
-    public function retireProduitPanier()
+    public function retireProduitPanier(Produit $produit)
     {
-        
+        $this->getPanier()->retireProduit($produit);
     }
     
     public function videPanier()
     {
-        
+        $this->getPanier()->seVide();
     }
     
     public function donneContenuPanier()
     {
-        
+        return $this->getPanier()->donneContenu();
     }
     
     private function getPanier()

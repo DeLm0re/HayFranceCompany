@@ -10,13 +10,6 @@ class Utilisateur extends RequeteUtilisateur
     {
         parent::__construct($BDD, self::HORS_CONNEXION);
     }
-    
-    public function infos() 
-    {
-        $this->hydrate();
-        return parent::getInfos();
-    }
-
 
     public function donneInfos()
     {
@@ -71,6 +64,12 @@ class Utilisateur extends RequeteUtilisateur
     public function donneContenuPanier()
     {
         return $this->getPanier()->donneContenu();
+    }
+    
+    public function consulteListeProduit($categorie = NULL)
+    {
+        $liste = new ListeProduit($this->getBDD());
+        return $liste->donneListeProduits($categorie);
     }
     
     private function getPanier()

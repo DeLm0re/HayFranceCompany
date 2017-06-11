@@ -1,51 +1,37 @@
 <?php
 
-class Utilisateur
+include 'r_utilisateur.php';
+
+class Utilisateur extends RequeteUtilisateur
 {
-    private $id_utilisateur;
-    private $panier;
-    private $infos_utilisateur;
+    const HORS_CONNEXION = -1;
     
-    public function __construct()
+    public function __construct(BDD $BDD)
     {
-        
+        parent::__construct($BDD, self::HORS_CONNEXION);
     }
     
-    private function hydrate()
+    public function getInfos() 
     {
-        
-    }
-    
-    public function __set($nom, $valeur)
-    {
-        $this->infos_utilisateur[$nom] = $valeur;
+        $this->hydrate();
+        return parent::getInfos();
     }
 
-    public function __get($nom)
-    {
-        if (isset($this->infos_utilisateur[$nom]))
-        {
-            return $this->infos_utilisateur[$nom];
-        }
-        else 
-        {    
-            return NULL;
-        }
-    }
-    
+
     public function donneInfos()
     {
         
     }
     
-    public function inscrit()
+    public function inscrit($nom, $prenom, $civilite, $email, $password, $ville, $adresse, $departement)
     {
         
     }
     
-    public function connecte()
+    public function connecte($email, $password)
     {
-        
+        parent::connexion($email, $password);
+        $this->hydrate();
     }
     
     public function changeDepartement()

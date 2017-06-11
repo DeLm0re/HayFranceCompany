@@ -54,6 +54,11 @@ abstract class Hydratable
         return $this->BDD->exe_requete($requete);
     }
     
+    protected function bindRequete($requete, $param)
+    {
+        return $this->BDD->bind_requete($requete, $param);
+    }
+
     abstract public function hydrate();
 
 }

@@ -61,5 +61,31 @@ class BDD
             return self::ERR_CONNECTION;
         }
     }
+    
+    public function bind_requete($requete, $param)
+    {
+        try
+        {
+            $index = 1;
+            $prepare = $this->_DBH->prepare($requete);
+            
+            for($index = 1; $index <= count($param); $index++)
+            {
+                $prepare->bindParam($index, $param[$index]);
+            }
+            
+            $prepare->execute();
+            $resultat = $prepare->fetchAll(PDO::FETCH_ASSOC);
+            if($resultat === NULL)
+            {
+                return self::ERR_NOT_FOUND;
+            }
+            return $resultat;    
+        } catch (PDOExeption $e) 
+        {
+            $this->_ERR_MESSAGE = $e->getMessage();
+            return self::ERR_CONNECTION;
+        }
+    }
 }
 

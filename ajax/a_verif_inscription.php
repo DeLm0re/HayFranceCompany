@@ -29,7 +29,7 @@ if (($_GET['champ'] == 'email')) {
 
 /* Si on effectue l'ajax sur un champ(input) d'id 'mdp'/'cmdp' on rentre dans le if */
 if (($_GET['champ'] == 'mdp') || ($_GET['champ'] == 'cmdp')) {
-    if ((preg_match('`^[a-zA-Z0-9]*$`', trim($_GET['contenu'])) == 0) || (strlen($_GET['contenu'])) > 20) {
+    if ((preg_match('`^[a-zA-Z0-9]*$`', trim($_GET['contenu'])) == 0) || (strlen($_GET['contenu'])) > 50) {
         echo "KO";
     } else {
         echo "OK";
@@ -42,10 +42,10 @@ if (($_GET['champ'] == 'button')) {
     /* varaible erreur pour savoir si on fait la requete */
     $erreur = false;
 
-    if (( isset($_GET['prenom']) AND empty($_GET['prenom']) ) || ((strlen($_GET['prenom'])) > 20)) {
+    if (( isset($_GET['prenom']) AND empty($_GET['prenom']) ) || ((strlen($_GET['prenom'])) > 50)) {
         echo "erreur_prenom";
         $erreur = true;
-    } else if (( isset($_GET['nom']) AND empty($_GET['nom']) ) || ((strlen($_GET['nom'])) > 100)) {
+    } else if (( isset($_GET['nom']) AND empty($_GET['nom']) ) || ((strlen($_GET['nom'])) > 50)) {
         echo "erreur_nom";
         $erreur = true;
     } else if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {

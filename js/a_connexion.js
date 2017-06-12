@@ -5,7 +5,7 @@
  */
 
 
-function request(callback,champ) {
+function request_connexion(callback,champ) {
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function () {
@@ -21,7 +21,7 @@ function request(callback,champ) {
     xhr.send(null);
 }
 
-function request2(callback) {
+function request2_connexion(callback) {
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function () {
@@ -46,7 +46,7 @@ function request2(callback) {
     xhr.send(null);
 }
 
-function readData(data,champ)
+function readData_connexion(data,champ)
 {
     if (data === "OK")
     {
@@ -75,6 +75,6 @@ function readData(data,champ)
 }
 
 
-function vide_span_erreur(idspan){
+function vide_span_erreur_connexion(idspan){
     document.getElementById("erreur_"+idspan).innerHTML = "";
 }

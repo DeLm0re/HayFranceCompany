@@ -42,14 +42,17 @@ function request2(callback) {
     var email = encodeURIComponent(document.getElementById("email").value);
     var mdp = encodeURIComponent(document.getElementById("mdp").value);
     var cmdp = encodeURIComponent(document.getElementById("cmdp").value);
+    var ville = encodeURIComponent(document.getElementById("ville").value);
+    var adresse = encodeURIComponent(document.getElementById("adresse").value);
+    var dpt = encodeURIComponent(document.getElementById("dpt").value);
     if (document.getElementById("civMr").checked === true){
         civ = encodeURIComponent(document.getElementById("civMr").value);
     }
     else{
         civ = encodeURIComponent(document.getElementById("civMm").value);
     }
-    alert(civ);
-    xhr.open("GET", "../ajax/a_verif_inscription.php?champ="+champ+"&civ="+civ+"&prenom="+prenom+"&nom="+nom+"&email="+email+"&mdp="+mdp+"&cmdp="+cmdp+"", true);
+    xhr.open("GET", "../ajax/a_verif_inscription.php?champ="+champ+"&civ="+civ+"&prenom="+prenom+"&nom="+nom+"&email="+email+"&mdp="+mdp+"&cmdp="+cmdp+
+                "&ville="+ville+"&adresse="+adresse+"&dpt="+dpt+"", true);
     xhr.send(null);
 }
 
@@ -86,6 +89,12 @@ function readData(data,champ)
             document.getElementById("erreur_mdp").innerHTML = "Votre mot de passe ne peut contenir que des lettres et des chiffres\n et ne doit pas dépasser 50 caractères";
         if (data === "erreur_cmdp")
             document.getElementById("erreur_cmdp").innerHTML = "Votre mot de passe et sa confirmation ne sont pas identiques";
+        if (data === "erreur_ville")
+            document.getElementById("erreur_ville").innerHTML = "Votre ville n'existe pas";
+        if (data === "erreur_adresse")
+            document.getElementById("erreur_adresse").innerHTML = "Votre adresse est invalide";
+        if (data === "erreur_dpt")
+            document.getElementById("erreur_adresse").innerHTML = "Numéro de département incorrect ou non désservi";
     }
 }
 

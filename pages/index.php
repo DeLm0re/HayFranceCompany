@@ -27,7 +27,7 @@
         <a href="carte.php">carte</a>
         
         <!-- SCRIPTS POUR L'AJAX -->
-        <script src="../js/ajax.js" type="text/javascript"></script>
+        <script src="../js/a_inscription.js" type="text/javascript"></script>
         <script src="../js/oXHR.js" type="text/javascript"></script>
 
         <!-- SCRIPTS POUR L'overlay -->
@@ -38,7 +38,7 @@
 
     </body>
     <?php
-        include '../includes/i_footer.php'
+        //include '../includes/i_footer.php'
     ?>
     
 <html>

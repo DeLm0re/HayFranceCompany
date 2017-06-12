@@ -1,3 +1,8 @@
+<?php
+    //inclusion de la session et des objets
+    include_once '../objet/session_objet.php';
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -9,7 +14,7 @@
  
     <body>
         
-        <?php
+        <?php       
             /*inclusion de l'overlay*/
             include '../includes/i_overlay.php';
             

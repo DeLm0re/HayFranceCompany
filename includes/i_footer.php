@@ -5,7 +5,7 @@
   Nom de l'include : i_footer
   Rôle : include du footer général
  */
-?>
+?> 
     <link href="../css/i_footer.css" rel="stylesheet" type="text/css"/>
     
 <footer>

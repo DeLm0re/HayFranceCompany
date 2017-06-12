@@ -1,6 +1,6 @@
 /**
  * Created by rjacquiez on 12/05/2017.
- */
+ */ 
 
 var map = document.querySelector('#map');
 

@@ -132,6 +132,8 @@ class Utilisateur extends RequeteUtilisateur
     
     public function deconnecte()
     {
+        $_SESSION['email'] = NULL;
+        $_SESSION['password'] = NULL;
         parent::deconnexion(self::HORS_CONNEXION);
         $this->hydrate();
     }

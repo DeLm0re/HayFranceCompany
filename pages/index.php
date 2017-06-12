@@ -26,6 +26,16 @@
         <span id="mon_departement"></span></br>
         <a href="carte.php">carte</a>
         
+        <?php           
+            /*inclusion de la fonction creer_section_article*/
+            include '../includes/i_fonctions_produits.php';
+        
+            /*je recupére tous les articles */
+            //$listeProduits = $user -> consulteListeProduit();
+            /*j'affiche*/
+            //creer_section_article($listeProduits);
+        ?>
+        
         <!-- SCRIPTS POUR L'AJAX -->
         <script src="../js/a_inscription.js" type="text/javascript"></script>
         <script src="../js/oXHR.js" type="text/javascript"></script>
@@ -33,9 +43,7 @@
         <!-- SCRIPTS POUR L'overlay -->
         <script src="../js/overlay.js" type="text/javascript"></script>
         <script src="../js/polyfill.js" type="text/javascript"></script>
-        
-        
-
+              
     </body>
     <?php
         //include '../includes/i_footer.php'

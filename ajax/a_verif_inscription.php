@@ -49,5 +49,6 @@ if (($_GET['champ'] == 'button')) {
     } else if ($_GET['mdp'] != $_GET['cmdp']) {                                                             
         echo "erreur_cmdp";
     }else{
+        $user->inscrit($_GET['nom'],$_GET['prenom'],$_GET['civ'],$_GET['email'],$_GET['mdp'],"Toulon","Rue du rekt",83);
     }
 }

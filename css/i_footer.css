@@ -61,8 +61,8 @@ a:hover{
 }
 
 #pages_redirection{
-    padding-top: 45px;
-    text-align:center; /* centrage horizontal */
+    text-align: center;
+    margin-right: 20px;
 }
 
 .down_footer{

@@ -15,8 +15,6 @@
             
             /*inclusion du formulaire d'inscription*/
             include '../includes/i_inscription.php';
-            
-             
         ?>
         
         <span>Votre département : </span>
@@ -36,6 +34,4 @@
     </body>
     <?php
         //include '../includes/i_footer.php'
-        ?>
-
 </html>

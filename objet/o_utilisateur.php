@@ -41,7 +41,7 @@ abstract class RequeteUtilisateur extends Hydratable
                 . "email, password, ville, adresse, departement, id_panier) "
                 . "VALUES (?,?,?,?,?,?,?,?,?)", $param);
         
-        $id_panier = $this->initialisePanier($this->getBDD()->getLastInsertId());
+        $id_panier = $this->initialisePanier($this->getBDD()->getLastInsertId(), $dep);
         $this->connexion($ema, $pas);               
         $this->bindRequete("UPDATE utilisateur SET id_panier = ? "
                 . "WHERE id_utilisateur = ?", 
@@ -49,7 +49,6 @@ abstract class RequeteUtilisateur extends Hydratable
         $this->deconnexion(-1);
         return self::INSCRIPTION_SUCCESSFUL;
     }
-
 
     protected function connexion($email, $password)
     {
@@ -71,9 +70,10 @@ abstract class RequeteUtilisateur extends Hydratable
         $this->id_utilisateur = $statut;
     }
     
-    private function initialisePanier($id_utilisateur)
+    private function initialisePanier($id_utilisateur, $nb_departement)
     {
-        $param = array( 1 => 0, 2 => 0, 3 => 0, 4 => $id_utilisateur, 5 => 1);
+        $param = array( 1 => 0, 2 => 0, 3 => 0, 4 => $id_utilisateur, 
+            5 => $nb_departement);
         $this->bindRequete("INSERT INTO panier (prix_panier, format_produit, "
                 . "nb_palette, id_utilisateur, id_prix_transport) "
                 . "VALUES (?,?,?,?,?)", $param);
@@ -125,12 +125,16 @@ class Utilisateur extends RequeteUtilisateur
     
     public function connecte($email, $password)
     {
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
         parent::connexion($email, $password);
         $this->hydrate();
     }
     
     public function deconnecte()
     {
+        $_SESSION['email'] = NULL;
+        $_SESSION['password'] = NULL;
         parent::deconnexion(self::HORS_CONNEXION);
         $this->hydrate();
     }
@@ -177,5 +181,4 @@ class Utilisateur extends RequeteUtilisateur
 
 
 
-
-
+ 

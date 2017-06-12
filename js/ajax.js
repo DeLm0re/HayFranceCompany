@@ -35,14 +35,21 @@ function request2(callback) {
         }
     };
 
+    var civ = null;
     var champ = 'button';
     var prenom = encodeURIComponent(document.getElementById("prenom").value);
     var nom = encodeURIComponent(document.getElementById("nom").value);
     var email = encodeURIComponent(document.getElementById("email").value);
     var mdp = encodeURIComponent(document.getElementById("mdp").value);
     var cmdp = encodeURIComponent(document.getElementById("cmdp").value);
-
-    xhr.open("GET", "../ajax/a_verif_inscription.php?champ="+champ+"&prenom="+prenom+"&nom="+nom+"&email="+email+"&mdp="+mdp+"&cmdp="+cmdp+"", true);
+    if (document.getElementById("civMr").checked === true){
+        civ = encodeURIComponent(document.getElementById("civMr").value);
+    }
+    else{
+        civ = encodeURIComponent(document.getElementById("civMm").value);
+    }
+    alert(civ);
+    xhr.open("GET", "../ajax/a_verif_inscription.php?champ="+champ+"&civ="+civ+"&prenom="+prenom+"&nom="+nom+"&email="+email+"&mdp="+mdp+"&cmdp="+cmdp+"", true);
     xhr.send(null);
 }
 

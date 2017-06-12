@@ -17,19 +17,16 @@
             /*inclusion du formulaire de connexion*/
             include '../includes/i_connexion.php';
             var_dump($user->donneInfos());
+            include '../includes/i_inscription.php';
             
             ?>
-        
-        
-    
-        
-     
           
           <!-- SCRIPTS POUR L'AJAX -->
           <script src="../js/a_connexion.js" type="text/javascript"></script>
+          <script src="../js/a_inscription.js" type="text/javascript"></script>
         <script src="../js/oXHR.js" type="text/javascript"></script>
     </body>
     <?php
-        include '../includes/i_footer.php'
+        //include '../includes/i_footer.php'
     ?>
 </html>

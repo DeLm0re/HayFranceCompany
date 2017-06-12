@@ -55,6 +55,6 @@
             
         <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
-    <button id="button" value="?" onclick="request2(readData);">Se connecter</button>
+    <input id="button" type="button" value="S'inscrire" onclick="request2(readData);">
 </fieldset>
 

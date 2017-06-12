@@ -34,4 +34,5 @@
     </body>
     <?php
         //include '../includes/i_footer.php'
+    ?>
 </html>

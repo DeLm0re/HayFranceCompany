@@ -4,14 +4,12 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 24 avr. 2017, 15:21:29
+    Created on : 30 mai 2017, 17:04:49
     Author     : rjacquiez
 */
- 
-html, body{
-  min-height: 100%;
-}
 
-body{
-  position: relative;
+.erreur{
+    font-family: 'Arial';
+    font-weight: bold;
+    color: red;
 }

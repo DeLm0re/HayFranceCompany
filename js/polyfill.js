@@ -8,7 +8,7 @@
  * License: Dedicated to the public domain.
  *   See https://github.com/eligrey/classList.js/blob/master/LICENSE.md
  */
-
+ 
 /*global self, document, DOMException */
 
 /*! @source http://purl.eligrey.com/github/classList.js/blob/master/classList.js */

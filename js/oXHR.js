@@ -2,7 +2,7 @@
 /* Script complet de gestion d'une requête de type XMLHttpRequest                     */
 /* Par Sébastien de la Marck (aka Thunderseb)                                         */
 /* ********************************************************************************** */
-
+ 
 function getXMLHttpRequest() {
 	var xhr = null;
 	

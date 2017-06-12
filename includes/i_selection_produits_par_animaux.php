@@ -6,13 +6,15 @@
  * and open the template in the editor.
  */
 
+
+
 for ($i = 0; $i < sizeof($id_tag); $i += 1)
 {
     if (!est_dans($description_tag[$i], $descriptions_deja_comparees) )
     {
         $nom = $description_tag[$i];
         //echo "<div class=\"input-field #212121 grey darken-4 orange-text col s12\" >";
-        echo "<select multiple name=\"valeur_tags[]\" onchange=\"recupereValeur();\">";
+        // echo "<select multiple name=\"valeur_tags[]\" onchange=\"recupereValeur();\">";
         //echo "<option value=\"\" disabled selected> $nom </option>";
     }
     for ($j = $i; $j < sizeof($id_tag); $j += 1)
@@ -25,14 +27,14 @@ for ($i = 0; $i < sizeof($id_tag); $i += 1)
         {
             $valeurId = $id_tag[$j];
             $valeurNom = $nom_tag[$j];
-            echo "<option value=$valeurId>$valeurNom</option>";
+           // echo "<option value=$valeurId>$valeurNom</option>";
         }
     }
     
     if (!est_dans($description_tag[$i], $descriptions_deja_comparees) )
     {
-        echo "</select>";
-        echo "</div>";
+      //  echo "</select>";
+      //  echo "</div>";
     }
     $descriptions_deja_comparees[$i + 1] = $description_tag[$i];
 }

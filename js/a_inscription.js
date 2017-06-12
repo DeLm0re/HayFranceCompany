@@ -51,7 +51,8 @@ function request2(callback) {
     else{
         civ = encodeURIComponent(document.getElementById("civMm").value);
     }
-    xhr.open("GET", "../ajax/a_verif_inscription.php?champ="+champ+"&civ="+civ+"&prenom="+prenom+"&nom="+nom+"&email="+email+"&mdp="+mdp+"&cmdp="+cmdp+
+    xhr.open("GET", "../ajax/a_verif_inscription.php?champ="+champ+"&civ="+civ+"&prenom="+prenom+
+                "&nom="+nom+"&email="+email+"&mdp="+mdp+"&cmdp="+cmdp+
                 "&ville="+ville+"&adresse="+adresse+"&dpt="+dpt+"", true);
     xhr.send(null);
 }

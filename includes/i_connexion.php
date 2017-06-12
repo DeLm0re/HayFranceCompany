@@ -20,5 +20,5 @@
         
         <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
-    <button id="button" value="?" onclick="request2_connexion(readData_connexion);">Se connecter</button>
+    <input id="button" type="button" value="Se connecter" onclick="request2_connexion(readData_connexion);">
 </fieldset>

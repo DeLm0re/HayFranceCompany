@@ -50,7 +50,6 @@ abstract class RequeteUtilisateur extends Hydratable
         return self::INSCRIPTION_SUCCESSFUL;
     }
 
-
     protected function connexion($email, $password)
     {
         $param[1] = $email;
@@ -125,12 +124,16 @@ class Utilisateur extends RequeteUtilisateur
     
     public function connecte($email, $password)
     {
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
         parent::connexion($email, $password);
         $this->hydrate();
     }
     
     public function deconnecte()
     {
+        $_SESSION['email'] = NULL;
+        $_SESSION['password'] = NULL;
         parent::deconnexion(self::HORS_CONNEXION);
         $this->hydrate();
     }
@@ -177,5 +180,4 @@ class Utilisateur extends RequeteUtilisateur
 
 
 
-
-
+ 

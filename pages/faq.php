@@ -1,3 +1,8 @@
+<?php
+    //inclusion de la session et des objets
+    include_once '../objet/session_objet.php';
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.

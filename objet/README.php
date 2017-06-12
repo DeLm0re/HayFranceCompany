@@ -60,3 +60,18 @@ $user->videPanier();
 $produitsPanier = $user->donneContenuPanier();
 $infos_produit3 = $produits[2]->infos();
 $infos_produit4 = $produits[3]->infos();
+
+/* Lorsqu'on récupère un tableau de produit*/
+$liste = $user->consulteListeProduit();
+//OU
+$liste = $user->donneContenuPanier();
+
+$unProduit = $liste[0];
+$unAutreProduit = $liste[1];
+// etc...
+
+$infos = $unProduit->infos();
+//Pour séléctionner les données
+echo $infos['id_produit'];
+echo $infos['description'];
+        

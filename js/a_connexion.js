@@ -1,8 +1,4 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 
 function request_connexion(callback,champ) {
@@ -41,7 +37,7 @@ function request2_connexion(callback) {
     var email = encodeURIComponent(document.getElementById("email").value);
     var mdp = encodeURIComponent(document.getElementById("mdp").value);
   
-
+      alert("on est passé par là") ;
     xhr.open("GET", "../ajax/a_verif_connexion.php?champ="+champ+"&email="+email+"&mdp="+mdp+"", true);
     xhr.send(null);
 }
@@ -50,11 +46,13 @@ function readData_connexion(data,champ)
 {
     if (data === "OK")
     {
+        alert("on est passé par Ok") ;
         document.getElementById("ok_"+champ).style.display = "inherit";
         document.getElementById("ko_"+champ).style.display = "none";
     }
     if (data === "KO")
     {
+        alert("on est passé par KO") ;
         document.getElementById("ok_"+champ).style.display = "none";
         document.getElementById("ko_"+champ).style.display = "inherit";
     }
@@ -62,8 +60,9 @@ function readData_connexion(data,champ)
     if (champ === 'button')
     {
         //On vide les spans d'erreur qui se sont remplis pour l'erreur précedente
-            vide_span_erreur('email');
-            vide_span_erreur('mdp');
+            alert("on est passé par button") ;
+            vide_span_erreur_connexion('email');
+            vide_span_erreur_connexion('mdp');
        
         
         //On affiche l'erreur au dessus du champ la contenant

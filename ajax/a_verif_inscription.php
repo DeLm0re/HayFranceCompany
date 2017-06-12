@@ -1,10 +1,7 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//inclusion de la session et des objets
+include_once '../objet/session_objet.php';
 
 /* Si on effectue l'ajax sur un champ(input) d'id 'nom'/'prenom' on rentre dans le if */
 if (($_GET['champ'] == 'nom') || ($_GET['champ'] == 'prenom')) {
@@ -39,28 +36,18 @@ if (($_GET['champ'] == 'mdp') || ($_GET['champ'] == 'cmdp')) {
 
 /* Si on valide le formulaire une série de test est effectuée */
 if (($_GET['champ'] == 'button')) {
-    /* varaible erreur pour savoir si on fait la requete */
-    $erreur = false;
-
+    
     if (( isset($_GET['prenom']) AND empty($_GET['prenom']) ) || ((strlen($_GET['prenom'])) > 50)) {
         echo "erreur_prenom";
-        $erreur = true;
     } else if (( isset($_GET['nom']) AND empty($_GET['nom']) ) || ((strlen($_GET['nom'])) > 50)) {
         echo "erreur_nom";
-        $erreur = true;
     } else if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
         /**ENVOIE MAIL*/
         echo "erreur_email";
-        $erreur = true;
     } else if (( isset($_GET['mdp']) AND empty($_GET['mdp']) ) || ((strlen($_GET['mdp'])) > 50)) {
         echo "erreur_mdp";
-        $erreur = true;
     } else if ($_GET['mdp'] != $_GET['cmdp']) {                                                             
         echo "erreur_cmdp";
-        $erreur = true;
-    }
-    
-    if ($erreur != true){
-        echo"np";/*faire requete*/
+    }else{
     }
 }

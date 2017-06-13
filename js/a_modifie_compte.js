@@ -71,18 +71,19 @@ function readData(data,champ)
         
         //On affiche l'erreur au dessus du champ la contenant
         alert(data); 
-        if (data === "modificationT")
+        if (data === "modifT")
         {
             document.getElementById("erreur_modification").innerHTML = "connexion reussite";
-             document.getElementById("loader_connexion").style.display = "none";
+             document.getElementById("loader").style.display = "none";
            document.location.href = "http://localhost/Hayfrance/pages/inscription_connexion.php";
             //alert("modification faite ! "); 
         } 
-        if (data === "modificationF")
+        if (data === "modifF")
         {
-           document.getElementById("loader_connexion").style.display = "none";
-           document.getElementById("erreur_modification").innerHTML = "Erreur lors de la modification de l'un ou des champs remplis ne sont pas valide";
-           alert("erreur modification ! "); 
+            alert("erreur modification ! "); 
+           document.getElementById("loader").style.display = "none";
+           document.getElementById("erreur_modification").innerHTML = "Erreur lors de la modification de l'un ou des champs remplis sont déja pris";
+          
         }
         if (data === "erreur_email")
             document.getElementById("erreur_email").innerHTML = "Veuillez saisir un email valide";

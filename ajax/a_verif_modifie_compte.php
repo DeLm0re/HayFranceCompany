@@ -68,9 +68,9 @@ if (($_GET['champ'] == 'button')) {
      $result = $user->modifie($_GET['email'],$_GET['mdp'],$_GET['ville'],$_GET['adresse'],$_GET['dpt']);
         if($result === TRUE)
        {
-           echo "modificationT";
+           echo "modifT";
        }else{
-           echo "modificationF";
+           echo "modifF";
        }
     }
 }

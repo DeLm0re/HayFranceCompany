@@ -17,10 +17,14 @@
 
 <fieldset id="formulaire_modification_compte">
     <form>
+        
+        <span id="erreur_modification" class="erreur"></span>
         <p>Compte modification<p> 
+            
             
           
         <span id="erreur_email" class="erreur"></span>
+
         <p>nouvelle Adresse mail : <input id="email" type="text" value="<?php  echo $email?>" spellcheck="false" onchange="request(readData,'email');"></p>
             <span id="ok_email" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_email" style="display: none;"><img src="../images/ko.png"/></span>
@@ -53,4 +57,6 @@
         <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
     <input id="button" type="button" value="Modifier" onclick="request2(readData);">
+   
+
 </fieldset>

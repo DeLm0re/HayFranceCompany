@@ -70,7 +70,7 @@ if (($_GET['champ'] == 'button')) {
        {
            echo "modificationT";
        }else{
-            echo "modificationF";
+           echo "modificationF";
        }
     }
 }

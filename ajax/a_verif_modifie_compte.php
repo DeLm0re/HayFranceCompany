@@ -66,7 +66,7 @@ if (($_GET['champ'] == 'button')) {
     }else{
         // a ajouter le compte Utilisateur 
      $result = $user->modifie($_GET['email'],$_GET['mdp'],$_GET['ville'],$_GET['adresse'],$_GET['dpt']);
-        if($return === TRUE)
+        if($result === TRUE)
        {
            echo "modificationT";
        }else{

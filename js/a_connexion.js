@@ -2,9 +2,10 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */ 
+ */
 
-function request(callback,champ) {
+
+function request_connexion(callback,champ) {
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function () {
@@ -16,11 +17,11 @@ function request(callback,champ) {
 
     var contenu = encodeURIComponent(document.getElementById(champ).value);
 
-    xhr.open("GET", "../ajax/a_verif_inscription.php?contenu="+contenu+"&champ="+champ, true);
+    xhr.open("GET", "../ajax/a_verif_connexion.php?contenu="+contenu+"&champ="+champ, true);
     xhr.send(null);
 }
 
-function request2(callback) {
+function request2_connexion(callback) {
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function () {
@@ -35,25 +36,17 @@ function request2(callback) {
         }
     };
 
-    var civ = null;
     var champ = 'button';
-    var prenom = encodeURIComponent(document.getElementById("prenom").value);
-    var nom = encodeURIComponent(document.getElementById("nom").value);
+    
     var email = encodeURIComponent(document.getElementById("email").value);
     var mdp = encodeURIComponent(document.getElementById("mdp").value);
-    var cmdp = encodeURIComponent(document.getElementById("cmdp").value);
-    if (document.getElementById("civMr").checked === true){
-        civ = encodeURIComponent(document.getElementById("civMr").value);
-    }
-    else{
-        civ = encodeURIComponent(document.getElementById("civMm").value);
-    }
-    alert(civ);
-    xhr.open("GET", "../ajax/a_verif_inscription.php?champ="+champ+"&civ="+civ+"&prenom="+prenom+"&nom="+nom+"&email="+email+"&mdp="+mdp+"&cmdp="+cmdp+"", true);
+  
+
+    xhr.open("GET", "../ajax/a_verif_connexion.php?champ="+champ+"&email="+email+"&mdp="+mdp+"", true);
     xhr.send(null);
 }
 
-function readData(data,champ)
+function readData_connexion(data,champ)
 {
     if (data === "OK")
     {
@@ -69,26 +62,19 @@ function readData(data,champ)
     if (champ === 'button')
     {
         //On vide les spans d'erreur qui se sont remplis pour l'erreur précedente
-            vide_span_erreur('prenom');
-            vide_span_erreur('nom');
             vide_span_erreur('email');
             vide_span_erreur('mdp');
-            vide_span_erreur('cmdp');
+       
         
         //On affiche l'erreur au dessus du champ la contenant
-        if (data === "erreur_prenom")
-            document.getElementById("erreur_prenom").innerHTML = "Veuillez saisir votre prénom";
-        if (data === "erreur_nom")
-            document.getElementById("erreur_nom").innerHTML = "Veuillez saisir votre nom";
         if (data === "erreur_email")
             document.getElementById("erreur_email").innerHTML = "Veuillez saisir un email valide";
         if (data === "erreur_mdp")
             document.getElementById("erreur_mdp").innerHTML = "Votre mot de passe ne peut contenir que des lettres et des chiffres\n et ne doit pas dépasser 50 caractères";
-        if (data === "erreur_cmdp")
-            document.getElementById("erreur_cmdp").innerHTML = "Votre mot de passe et sa confirmation ne sont pas identiques";
     }
 }
 
-function vide_span_erreur(idspan){
+
+function vide_span_erreur_connexion(idspan){
     document.getElementById("erreur_"+idspan).innerHTML = "";
 }

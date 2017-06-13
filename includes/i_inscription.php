@@ -8,9 +8,9 @@
     <form>
         <p>Inscription<p> 
             
-        <p>Civilité : <input type="radio" name="civilite" value="M." checked="true">
+        <p>Civilité : <input id="civMr" type="radio" name="civilite" value="M." checked="true">
         <label for="M.">M.</label>
-        <input type="radio" name="civilite" value="Mme."><label for="Mme.">Mme.</label>
+        <input id="civMm" type="radio" name="civilite" value="Mme."><label for="Mme.">Mme.</label>
         </p>
         
         <span id="erreur_prenom" class="erreur"></span>

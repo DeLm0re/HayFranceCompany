@@ -1,0 +1,93 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13 juin 2017, 14:48:01
+    Author     : rjacquiez
+*/
+
+html, body{
+  min-height: 100%;
+}
+
+body{
+  position: relative;
+}
+
+/* Définition des fonts non-standard */
+@font-face {
+	font-family: "Roboto";
+	src: url('../polices/Roboto-Regular.ttf');
+}
+
+/* LA DIV QUI ENGLOBE L'ENSEMBLE DE LA PAGE HORS NAVBAR */
+.ensemble_produit{
+    padding-bottom: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EAEAEA;
+    width: 75%;
+    margin: auto;
+}
+
+/* Le titre de l'esemble des produits BALISE <p> */
+.titre_ensemble_produit{
+    margin-left: 30px;
+    margin-bottom: 0px;
+    color: #77778D;
+    font-family: "Roboto";
+    font-size: 35px;
+}
+
+/* La div qui regroupe tous les produits */
+.tous_les_produits{
+    text-align: center;
+    margin: 0;
+}
+
+/* La div qui englobe le produit */
+.div_produit{
+    display: inline-block;
+    margin: 0px 30px 0px 30px;
+    margin-top: 40px;
+    color: #77778D;
+    font-family: "Roboto";
+    width: 26%;
+}
+
+/* Survol d'un produit */
+.div_produit:hover {
+    cursor: pointer;
+}
+
+/* La div qui englobe le nom du produit */
+.div_nom_produit{
+    
+}
+
+/* Le nom du produit BALISE <p>*/
+.nom_produit{
+    font-size: 150%;
+}
+
+/* La div qui englobe l'image du produit */
+.div_img_produit{
+    
+}
+
+/* L'img du produit */
+.image_produit{
+    max-width: 250px;
+    max-height: 200px;
+}
+
+/* La div qui englobe la description (rapide) du produit */
+.div_description_produit{
+}
+
+/* La description du produit BALISE <p> */
+.description_produit{
+    text-align: justify;
+}

@@ -21,7 +21,7 @@ function creer_division_article($produit) {
 
     echo "<div class=\"div_produit\" onclick=\"alert('clic');\">
              <div class=\"div_nom_produit\">
-                <p class=\"nom_produit\">" + $infos['nom_produit'] + "</p>
+                <p class=\"nom_produit\">" . $infos['nom_produit'] . "</p>
              </div>
             
              <div class=\"div_image_produit\">
@@ -30,7 +30,7 @@ function creer_division_article($produit) {
             
              <div class=\"div_description_produit\">
                 <p class=\"description_produit\">
-                    " + $infos['description_rapide'] + "
+                    " . $infos['description_rapide'] . "
                 </p>
              </div>
           </div>";

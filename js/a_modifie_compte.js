@@ -82,7 +82,7 @@ function readData(data,champ)
         {
            // alert("erreur modification ! "); 
            document.getElementById("loader").style.display = "none";
-           document.getElementById("erreur_modification").innerHTML = "Erreur lors de la modification de l'un ou des champs remplis sont déja pris";
+           document.getElementById("erreur_modification").innerHTML = "Erreur lors de la modification ";
           
         } if (data === "NonCo")
         {

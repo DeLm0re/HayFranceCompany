@@ -64,8 +64,13 @@ if (($_GET['champ'] == 'button')) {
     } else if (( isset($_GET['dpt']) AND empty($_GET['dpt']) ) || ((strlen($_GET['dpt'])) > 2) || $_GET['dpt'] == 20)  {
         echo "erreur_dpt";
     }else{
-       
         // a ajouter le compte Utilisateur 
-        
+     $result = $user->modifie($_GET['email'],$_GET['mdp'],$_GET['ville'],$_GET['adresse'],$_GET['dpt']);
+        if($result === TRUE)
+       {
+           echo "modifT";
+       }else{
+           echo "modifF";
+       }
     }
 }

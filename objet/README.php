@@ -14,6 +14,7 @@ $user->inscrit($nom, $prenom, $civilite, $email, $password, $ville, $adresse, $d
 $user->inscrit('Hipault', 'Théo', 'M', 'theo@gmail.com', 'mdp', 'Toulon', '12 rue du Rekt', 83);
 
 /* Connecte l'utilisateur et modifie les variables de session
+ * Renvoie true si la connexion s'est bien passée, false sinon
  * NOTE : $password ne doit pas être en md5
  */
 $user->connecte($email, $password);

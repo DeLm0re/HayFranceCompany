@@ -70,7 +70,7 @@ function readData(data,champ)
             vide_span_erreur('cmdp');
         
         //On affiche l'erreur au dessus du champ la contenant
-        alert(data); 
+       // alert(data); 
         if (data === "modifT")
         {
             document.getElementById("erreur_modification").innerHTML = "connexion reussite";

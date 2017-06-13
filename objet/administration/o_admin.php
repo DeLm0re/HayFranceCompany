@@ -10,7 +10,7 @@ class Admin extends Utilisateur
     
     public function ajouteProduit($nom, $description, $description_rapide, $prix_tonne)
     {
-        $this->insertProduit($nom, $description, $description_rapide, $prix_tonne, $id_image);
+        $this->insertProduit($nom, $description, $description_rapide, $prix_tonne);
         return $this->getBDD()->getLastInsertId();
     }
     

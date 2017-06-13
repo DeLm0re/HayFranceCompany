@@ -2,7 +2,6 @@
     //inclusion de la session et des objets
     include_once '../objet/session_objet.php';
 
- 
 /* ---------------------------------------------------------------------------------- */
 // verification du champ de mail
 if (($_GET['champ_connexion'] == 'email_connexion')) {
@@ -24,7 +23,6 @@ if ($_GET['champ_connexion'] == 'mdp_connexion')  {
 }
 
 /* ---------------------------------------------------------------------------------- */
-
 /* Si on valide le formulaire une série de test est effectuée */
 
 if (($_GET['champ_connexion'] == 'button_connexion')) {
@@ -35,8 +33,12 @@ if (($_GET['champ_connexion'] == 'button_connexion')) {
     }    
     else{
        
-        $user->connecte($_GET['email_connexion'], $_GET['mdp_connexion']);
-        
-        
+       $return =  $user->connecte($_GET['email_connexion'], $_GET['mdp_connexion']);
+       if($return === TRUE)
+       {
+           echo "connexionR";
+       }else{
+            echo "connexionF";
+       }
     }
 }

@@ -78,6 +78,7 @@ if( !isset($_POST['titre'])) {?>
 
     if ((isset($_POST['texte']) == TRUE)) {
         $texte = $_POST['texte'];
+        //$textBDD = htmlentities($texte) ; 
     }
 
     if ((isset($_POST['courteDesc']) == TRUE)) {
@@ -225,4 +226,11 @@ function checkedCheckBox( $tabAnimalChecked, $valueAnimal){
                 echo"<input type=\"checkbox\" name=\"$valueAnimal\" id=\"$valueAnimal\" /> <label for=\"$valueAnimal\">$valueAnimal</label><br />" ;
             }
         }
-      }
+}
+
+
+//ajoute produit
+//ajoute image-produit
+//ajoute animal-produit
+//modifie produit (sans image ni animal)
+//supprime produit (supprime aussi les relation animal-produit et image-produit

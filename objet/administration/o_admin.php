@@ -8,9 +8,9 @@ class Admin extends Utilisateur
         parent::__construct($BDD);
     }
     
-    public function ajouteProduit($nom, $description, $description_rapide, $prix_tonne, $id_image)
+    public function ajouteProduit($nom, $description, $description_rapide, $prix_tonne)
     {
-        $this->insertProduit($nom, $description, $description_rapide, $prix_tonne, $id_image);
+        $this->insertProduit($nom, $description, $description_rapide, $prix_tonne);
         return $this->getBDD()->getLastInsertId();
     }
     
@@ -41,7 +41,7 @@ class Admin extends Utilisateur
         
     }
     
-    private function insertProduit($nom, $desc, $dera, $prix, $idim)
+    private function insertProduit($nom, $desc, $dera, $prix)
     {
         $this->bindRequete('INSERT INTO produit (nom_produit, description, '
                 . 'description_rapide, prix_tonne) '

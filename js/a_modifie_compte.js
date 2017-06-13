@@ -75,7 +75,7 @@ function readData(data,champ)
         {
             document.getElementById("erreur_modification").innerHTML = "connexion reussite";
              document.getElementById("loader").style.display = "none";
-           document.location.href = "http://localhost/Hayfrance/pages/inscription_connexion.php";
+           document.location.href = "http://localhost/HayFranceCompany/pages/inscription_connexion.php";
             //alert("modification faite ! "); 
         } 
         if (data === "modifF")

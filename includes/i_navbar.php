@@ -10,16 +10,18 @@ function creer_navbar_options_produits($liste_nom) {
         $info = $un_produit->infos();
             
         echo "<li class=\"li_contenu_dropdown\"><i class=\"fleche_contenu_dropdown\">&#9658;</i>"
-            . "<a class=\"a_contenu_dropdown\" href=\"../pages/un_produit\">" . strtoupper($info['nom_produit']) 
+            . "<a class=\"a_contenu_dropdown\" href=\"../pages/un_produit.php?id_produit=".$info['id_produit']."\">" . strtoupper($info['nom_produit']) 
             . "</a></li>";
     }
 }
     
-function creer_navbar_options_elevages($liste_animaux){
-    foreach ($liste_animaux as $un_animal)
+function creer_navbar_options_elevages($liste1,$liste2){
+    $max = count($liste1);
+    
+    for($i = 0;$i < $max; $i++)
     {
         echo "<li class=\"li_contenu_dropdown\"><i class=\"fleche_contenu_dropdown\">&#9658;</i>"
-            . "<a class=\"a_contenu_dropdown\" href=\"../pages/tout_produit_filtre\">" . strtoupper($un_animal) 
+            . "<a class=\"a_contenu_dropdown\" href=\"../pages/tout_produit.php?id_animal=".$liste2[$i]."\">" . strtoupper($liste1[$i]) 
             . "</a></li>";
     }
 }
@@ -31,7 +33,7 @@ function creer_navbar_options_elevages($liste_animaux){
     <div class="div_navbar">
         <ul class="ul_navbar">
             <div class="div_dropdown">
-                <button class="button_dropdown">TOUS LES PRODUITS<i class="fleche_dropdown_produits">&#9660;</i></button>
+                <button class="button_dropdown" onclick="window.location.href='http://localhost/HayFranceCompany/pages/tout_produit.php'">TOUS LES PRODUITS<i class="fleche_dropdown_produits">&#9660;</i></button>
                 <div class="contenu_dropdown">
                     <?php
                         $liste = $user->consulteListeProduit();
@@ -43,13 +45,14 @@ function creer_navbar_options_elevages($liste_animaux){
                 <button class="button_dropdown">TYPES D'ELEVAGES<i class="fleche_dropdown_produits">&#9660;</i></button>
                 <div class="contenu_dropdown">
                     <?php
-                        $liste2 = $user->donneListeAnimal();
-                        creer_navbar_options_elevages($liste2);
+                        $liste_nom_animal = $user->donneListeAnimal();
+                        $liste_id_animal = $user->donneListeIdAnimal();
+                        creer_navbar_options_elevages($liste_nom_animal,$liste_id_animal);
                     ?>
                 </div>
             </div>
             <div class="div_dropdown">
-                <button class="button_dropdown">MON COMPTE</button>
+                <button class="button_dropdown" onclick="window.location.href='http://localhost/HayFranceCompany/pages/MonCompte.php'">MON COMPTE</button>
             </div>
             <div class="div_dropdown">
                 <button class="button_dropdown">MON PANIER</button>

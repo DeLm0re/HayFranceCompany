@@ -75,11 +75,9 @@ function readData_connexion(data,champ)
            // alert("connecter!!"); 
             document.getElementById("loader_connexion").style.display = "none";
             document.getElementById("formulaire_connexion").style.display = "none";
-            document.getElementById("erreur_connexion").innerHTML = "connexion reussite";
-            
+            document.getElementById("erreur_connexion").innerHTML = "connexion reussite";            
              document.location.href = "http://localhost/Hayfrance/pages/index.php";
-              
-              
+
         } if (data === "connexionF")
         {
             //alert("erreur de connection"); 

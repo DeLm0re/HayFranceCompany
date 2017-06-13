@@ -101,12 +101,15 @@ class Produit extends RequeteProduit
     {
         $appartient = false;
         $categories = $this->getCategories();
-        foreach ($categories as $ligne)
+        if ($categories !== NULL)
         {
-            if($categorie === intval($ligne['id_categorie'])
-                    || $categorie === $ligne['nom_categorie'])
+            foreach ($categories as $ligne)
             {
-                $appartient = true;
+                if(intval($categorie) === intval($ligne['id_categorie'])
+                        || $categorie === $ligne['nom_categorie'])
+                {
+                    $appartient = true;
+                }
             }
         }
         return $appartient;

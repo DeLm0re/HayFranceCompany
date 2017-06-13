@@ -86,3 +86,28 @@ echo $infos['description'];
 //Pour récupérer les images
 echo $unProduit->getNomImage();
 echo $unProduit->getUrlImage();
+
+
+
+
+// PARTIE ADMIN
+// Possède les mêmes fonctions que l'utilisateur classique
+
+/* Ajoute un produit à la base de données
+ * Renvoie l'id du produit qui vient d'être inséré
+ */
+ajouteProduit($nom, $description, $description_rapide, $prix_tonne, $id_image);
+
+/* Ajoute la catégorie à un produit
+ */
+ajouteAnimalProduit($id_produit, $id_animal);
+
+/* Modifie les valeurs d'un produit passé en paramètre
+ * NOTE $produit doit être une instance de Produit
+ */
+modifieProduit($produit, $nom, $description, $description_rapide, $prix_tonne);
+
+/* Supprime un produit passé en paramètre
+ * NOTE $produit doit être une instance de Produit
+ */
+supprimeProduit($produit);

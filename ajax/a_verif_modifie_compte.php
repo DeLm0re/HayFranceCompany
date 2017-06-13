@@ -4,6 +4,11 @@ include_once '../objet/session_objet.php';
 $user = new Utilisateur($bdd);
 demarreSession($user);
 
+if ((isset($user) || empty($user) ) ) {
+   
+    echo "NonCo";
+}
+
 /* ---------------------------------------------------------------------------------- */
 
 /* Si on effectue l'ajax sur un champ(input) d'id 'email' on rentre dans le if */

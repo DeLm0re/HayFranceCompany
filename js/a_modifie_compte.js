@@ -80,10 +80,18 @@ function readData(data,champ)
         } 
         if (data === "modifF")
         {
-            alert("erreur modification ! "); 
+           // alert("erreur modification ! "); 
            document.getElementById("loader").style.display = "none";
            document.getElementById("erreur_modification").innerHTML = "Erreur lors de la modification de l'un ou des champs remplis sont déja pris";
           
+        } if (data === "NonCo")
+        {
+           // alert("erreur modification ! "); 
+           document.getElementById("loader").style.display = "none";
+           document.getElementById("erreur_modification").innerHTML = "vous n'etes pas connecter , nous vous redirigeons";
+           document.getElementById("formulaire_modification_compte").style.display = "none";
+           document.getElementById(" affichage du compte").style.display = "none";
+           document.location.href = "http://localhost/Hayfrance/pages/tout_produit.php";
         }
         if (data === "erreur_email")
             document.getElementById("erreur_email").innerHTML = "Veuillez saisir un email valide";

@@ -14,7 +14,7 @@
  $departement = $user->donneInfos()['departement'];
  
 ?>
-
+  <span id="erreur_modification" class="erreur"></span>
 <fieldset id="formulaire_modification_compte">
     <form>   
         <p>Compte modification<p>   

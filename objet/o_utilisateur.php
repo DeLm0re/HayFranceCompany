@@ -5,14 +5,13 @@ include_once 'o_produit.php';
 include_once 'o_prix_transport.php';
 include_once 'o_panier.php';
 include_once 'o_liste_produit.php';
+include_once 'o_liste_animal.php';
 
 
 
 abstract class RequeteUtilisateur extends Hydratable
 {
     private $id_utilisateur;
-    const USER_ALREADY_EXISTS = "Cet utilisateur existe déjà";
-    const INSCRIPTION_SUCCESSFUL = "Inscription réussie";
     
     public function __construct(BDD $BDD, $id_utilisateur) 
     {
@@ -29,11 +28,20 @@ abstract class RequeteUtilisateur extends Hydratable
         parent::hydrateInfos($resultat);
     }
     
+    protected function estConnecte()
+    {
+        if($this->id_utilisateur === -1)
+        {
+            return false;
+        }
+        return true;
+    }
+    
     protected function inscription($nom, $pre, $civ, $ema, $pas, $vil, $adr, $dep)
     {
         if($this->existeDeja($nom, $pre, $ema))
         {
-            return self::USER_ALREADY_EXISTS;
+            return false;
         }
         $param = array( 1 => $nom, 2 => $pre, 3 => $civ, 4 => $ema, 
             5 => md5($pas), 6 => $vil, 7 => $adr, 8 => $dep, 9 => NULL);
@@ -47,7 +55,21 @@ abstract class RequeteUtilisateur extends Hydratable
                 . "WHERE id_utilisateur = ?", 
                 array(1 => $id_panier, 2 => $this->id_utilisateur));
         $this->deconnexion(-1);
-        return self::INSCRIPTION_SUCCESSFUL;
+        return true;
+    }
+    
+    protected function modification($ema, $pas, $vil, $adr, $dep)
+    {
+        if($this->existeDeja(NULL, NULL, $ema))
+        {
+            return false;
+        }
+        $param = array( 1 => $ema, 2 => md5($pas), 3 => $vil, 4 => $adr, 
+            5 => $dep, 6 => $this->id_utilisateur);
+        $this->bindRequete("UPDATE utilisateur  SET email = ?, password = ?, "
+                . "ville = ?, adresse = ?, departement = ? "
+                . "WHERE id_utilisateur = ?", $param);
+        return true;
     }
 
     protected function connexion($email, $password)
@@ -83,7 +105,8 @@ abstract class RequeteUtilisateur extends Hydratable
     private function existeDeja($nom, $prenom, $email)
     {
         $existe = false;
-        $resultat = $this->exeRequete("SELECT nom, prenom, email FROM utilisateur");
+        $resultat = $this->bindRequete("SELECT nom, prenom, email FROM utilisateur "
+                . "WHERE id_utilisateur != ?", array( 1 => $this->id_utilisateur));
         foreach ($resultat as $ligne)
         {
             if(($nom === $ligne['nom'] && $prenom === $ligne['prenom'])
@@ -119,16 +142,29 @@ class Utilisateur extends RequeteUtilisateur
     
     public function inscrit($nom, $prenom, $civilite, $email, $password, $ville, $adresse, $departement)
     {
-        parent::inscription($nom, $prenom, $civilite, $email, $password, $ville, $adresse, $departement);
+        $is_ok = parent::inscription($nom, $prenom, $civilite, $email, $password, $ville, $adresse, $departement);
         $this->hydrate();
+        return $is_ok;
+    }
+    
+    public function modifie($email, $password, $ville, $adresse, $departement)
+    {
+        $is_ok = parent::modification($email, $password, $ville, $adresse, $departement);
+        $this->hydrate();
+        return $is_ok;
     }
     
     public function connecte($email, $password)
     {
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
         parent::connexion($email, $password);
-        $this->hydrate();
+        $this->changeDepartement($this->donneInfos()['departement']);
+        if($this->estConnecte() === true)
+        {
+            $_SESSION['email'] = $email;
+            $_SESSION['password'] = $password;
+            return true;
+        }
+        return false;
     }
     
     public function deconnecte()
@@ -171,6 +207,18 @@ class Utilisateur extends RequeteUtilisateur
     {
         $liste = new ListeProduit($this->getBDD());
         return $liste->donneListeProduits($categorie);
+    }
+    
+    public function donneListeAnimal()
+    {
+        $liste = new ListeAnimal($this->getBDD());
+        return $liste->donneListeAnimal();
+    }
+    
+    public function donneListeIdAnimal()
+    {
+        $liste = new ListeAnimal($this->getBDD());
+        return $liste->donneListeIdAnimal();
     }
     
     private function getPanier()

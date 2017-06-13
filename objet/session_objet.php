@@ -13,5 +13,8 @@ if(!isset($_SESSION['password']))
 }
 
 $bdd = new BDD();
-$user = new Utilisateur($bdd);
-$user->connecte($_SESSION['email'], $_SESSION['password']);
+
+function demarreSession(&$user)
+{
+    $user->connecte($_SESSION['email'], $_SESSION['password']);
+}

@@ -8,23 +8,19 @@
     <head>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
-            <link href="../css/index.css" rel="stylesheet" type="text/css"/>
-           
+            <link href="../css/i_inscription.css" rel="stylesheet" type="text/css"/>
     </head>
  
       <body>
            
           <?php       
             /*inclusion du formulaire de connexion*/
-            include '../includes/i_connexion.php';
-            var_dump($user->donneInfos());
-           include '../includes/i_inscription.php';
-            
+            include '../includes/i_modifie_compte.php';
+             
             ?>
           
           <!-- SCRIPTS POUR L'AJAX -->
-          <script src="../js/a_connexion.js" type="text/javascript"></script>
-          <script src="../js/a_inscription.js" type="text/javascript"></script> 
+        <script src="../js/a_modifie_compte.js" type="text/javascript"></script>
         <script src="../js/oXHR.js" type="text/javascript"></script>
     </body>
     <?php

@@ -14,6 +14,7 @@ $user->inscrit($nom, $prenom, $civilite, $email, $password, $ville, $adresse, $d
 $user->inscrit('Hipault', 'Théo', 'M', 'theo@gmail.com', 'mdp', 'Toulon', '12 rue du Rekt', 83);
 
 /* Connecte l'utilisateur et modifie les variables de session
+ * Renvoie true si la connexion s'est bien passée, false sinon
  * NOTE : $password ne doit pas être en md5
  */
 $user->connecte($email, $password);
@@ -22,6 +23,13 @@ $user->connecte('theo@gmail.com', 'mdp');
 /* Deconnecte l'utilisateur et détruit les variables de session
  */
 $user->deconnecte();
+
+/* Modifie les informations de l'utilisateur
+ * Vérifie que l'adresse mail ne soit pas déjà prise
+ * Renvoie true si la modification a été effectuée, false sinon
+ */
+$user->modifie($email, $password, $ville, $adresse, $departement);
+$user->modifie('theo@gmail.com', 'mdp', 'Toulon', '12 rue du Rekt', 83);
 
 /* Renvoie un tableau contenant la liste des produits disponibles
  * NOTE : Cette méthode peut être appelée lorsque l'utilisateur n'est pas connecté
@@ -74,4 +82,7 @@ $infos = $unProduit->infos();
 //Pour séléctionner les données
 echo $infos['id_produit'];
 echo $infos['description'];
-        
+
+//Pour récupérer les images
+echo $unProduit->getNomImage();
+echo $unProduit->getUrlImage();

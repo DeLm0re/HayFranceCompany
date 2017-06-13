@@ -1,7 +1,8 @@
 <?php
-
 //inclusion de la session et des objets
 include_once '../objet/session_objet.php';
+$user = new Utilisateur($bdd);
+demarreSession($user);
 
 /* Si on effectue l'ajax sur un champ(input) d'id 'nom'/'prenom' on rentre dans le if */
 if (($_GET['champ'] == 'nom') || ($_GET['champ'] == 'prenom')) {

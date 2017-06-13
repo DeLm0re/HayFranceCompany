@@ -24,6 +24,13 @@ $user->connecte('theo@gmail.com', 'mdp');
  */
 $user->deconnecte();
 
+/* Modifie les informations de l'utilisateur
+ * Vérifie que l'adresse mail ne soit pas déjà prise
+ * Renvoie true si la modification a été effectuée, false sinon
+ */
+$user->modifie($email, $password, $ville, $adresse, $departement);
+$user->modifie('theo@gmail.com', 'mdp', 'Toulon', '12 rue du Rekt', 83);
+
 /* Renvoie un tableau contenant la liste des produits disponibles
  * NOTE : Cette méthode peut être appelée lorsque l'utilisateur n'est pas connecté
  */

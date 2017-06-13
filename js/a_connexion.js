@@ -40,9 +40,6 @@ function request2_connexion(callback) {
     var mdp = encodeURIComponent(document.getElementById("mdp_connexion").value);
   
     // alert("on est passé par verif_connexion.php") ;
-    alert(champ);
-    alert(email);
-    alert(mdp); 
     xhr.open("GET", "../ajax/a_verif_connexion.php?champ_connexion="+champ+"&email_connexion="+email+"&mdp_connexion="+mdp+"", true);
     xhr.send(null);
 }
@@ -71,18 +68,34 @@ function readData_connexion(data,champ)
             vide_span_erreur_connexion('mdp_connexion');
        
         //On affiche l'erreur au dessus du champ la contenant
+        
+        alert(data);
+        if (data === "connexionR")
+        {
+            alert("connecter!!"); 
+            document.getElementById("loader_connexion").style.display = "none";
+              
+            
+        } if (data === "connexionF")
+        {
+            alert("erreur de connection"); 
+            document.getElementById("loader_connexion").style.display = "none";
+            document.getElementById("erreur_email_connexion").innerHTML = "Erreur lors de la connexion";
+            
+        }
+        
         if (data === "erreur_email_connexion")
         {
-              alert("on est passé par erreur mail") ;
+   //           alert("on est passé par erreur mail") ;
             document.getElementById("erreur_email_connexion").innerHTML = "Veuillez saisir un email valide";
         }
         if (data === "erreur_mdp_connexion")
         { 
-        alert("on est passé par erreur mail") ;
+       // alert("on est passé par erreur mail") ;
             document.getElementById("erreur_mdp_connexion").innerHTML = "Votre mot de passe ne peut contenir que des lettres et des chiffres\n et ne doit pas dépasser 50 caractères";
         }
     }
-    s
+   
 }
 
 

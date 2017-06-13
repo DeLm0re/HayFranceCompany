@@ -14,15 +14,6 @@
 
 
     <body>
-<<<<<<< HEAD
-
-        <?php
-        /* inclusion de l'overlay */
-        include '../includes/i_overlay.php';
-
-        /* inclusion du formulaire d'inscription */
-        include '../includes/i_inscription.php';
-=======
         
         <?php       
             /*inclusion de l'overlay*/
@@ -30,15 +21,11 @@
             
             /*inclusion du formulaire d'inscription*/
             include '../includes/i_inscription.php';
->>>>>>> refs/remotes/origin/master
         ?>
 
         <span>Votre département : </span>
         <span id="mon_departement"></span></br>
         <a href="carte.php">carte</a>
-<<<<<<< HEAD
-
-=======
         
         <?php           
             /*inclusion de la fonction creer_section_article*/
@@ -50,7 +37,6 @@
             //creer_section_article($listeProduits);
         ?>
         
->>>>>>> refs/remotes/origin/master
         <!-- SCRIPTS POUR L'AJAX -->
         <script src="../js/a_inscription.js" type="text/javascript"></script>
         <script src="../js/oXHR.js" type="text/javascript"></script>
@@ -58,7 +44,6 @@
         <!-- SCRIPTS POUR L'overlay -->
         <script src="../js/overlay.js" type="text/javascript"></script>
         <script src="../js/polyfill.js" type="text/javascript"></script>
-<<<<<<< HEAD
 
 
 
@@ -67,12 +52,4 @@
     include '../includes/i_footer.php'
     ?>
 
-<html>
-=======
-              
-    </body>
-    <?php
-        //include '../includes/i_footer.php'
-    ?>
 </html>
->>>>>>> refs/remotes/origin/master

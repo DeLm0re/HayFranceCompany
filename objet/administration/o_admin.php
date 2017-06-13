@@ -1,5 +1,7 @@
 <?php
 
+include_once 'o_bdd.php';
+include_once '../o_utilisateur';
 
 class Admin extends Utilisateur
 {
@@ -11,24 +13,13 @@ class Admin extends Utilisateur
     public function ajouteProduit($nom, $description, $description_rapide, $prix_tonne, $id_image)
     {
         $this->insertProduit($nom, $description, $description_rapide, $prix_tonne, $id_image);
-        return $this->getBDD()->getLastInsertId();
-    }
-    
-    public function ajouteImageProduit($id_produit, $id_image)
-    {
-        $this->insertImageProduit($id_produit, $id_image);
-    }
-    
-    public function ajouteAnimalProduit($id_produit, $id_animal)
-    {
-        $this->insertAnimalProduit($id_produit, $id_animal);
     }
     
     public function modifieProduit(Produit $produit, $nom, $description, 
-            $description_rapide, $prix_tonne)
+            $description_rapide, $prix_tonne, $nom_image, $url_image)
     {
         $this->updateProduit($produit->getInfos()['id_produit'], $nom, $description,
-                $description_rapide, $prix_tonne);
+                $description_rapide, $prix_tonne, $nom_image, $url_image);
     }
     
     public function supprimeProduit(Produit $produit)
@@ -47,30 +38,19 @@ class Admin extends Utilisateur
                 . 'description_rapide, prix_tonne) '
                 . 'VALUES (?, ?, ?, ?)',
                 array(1 => $nom, 2 => $desc, 3 => $dera, 4 => $prix));
-    }
-    
-    private function insertImageProduit($idp, $idi)
-    {
         $this->bindRequete('INSERT INTO produit_image '
                 . '(id_produit, id_image) '
                 . 'VALUES (?, ?)',
-                array(1 => $idp, 2 => $idi));
-    }
-    
-    private function insertAnimalProduit($idp, $ida)
-    {
-        $this->bindRequete('INSERT INTO animal_produit '
-                . '(id_produit, id_animal) '
-                . 'VALUES (?, ?)',
-                array(1 => $idp, 2 => $ida));
+                array(1 => $this->getBDD()->lastInsertId(), 2 => $idim));
     }
 
     private function updateProduit($id, $nom, $desc, $dera, $prix)
     {
         $this->bindRequete('UPDATE produit '
-                . 'SET nom_produit = ?, description = ?, '
-                . 'description_rapide = ? ,prix_tonne = ?, '
-                . 'WHERE id_produit = ?',
+                . 'INNER JOIN produit_image ON produit.id_produit = produit_image.id_produit '
+                . 'SET produit.nom_produit = ?, produit.description = ?, '
+                . 'produit.description_rapide = ? ,produit.prix_tonne = ?, '
+                . 'WHERE produit.id_produit = ?',
                 array( 1 => $nom, 2 => $desc, 3 => $dera, 4 => $prix, 
                     5 => $id));
     }
@@ -78,8 +58,6 @@ class Admin extends Utilisateur
     private function deleteProduit($id_produit)
     {
         $this->bindRequete('DELETE FROM produit_image WHERE id_produit = ?',
-                array( 1 => $id_produit));
-        $this->bindRequete('DELETE FROM animal_produit WHERE id_produit = ?',
                 array( 1 => $id_produit));
         $this->bindRequete('DELETE FROM produit WHERE id_produit = ?',
                 array( 1 => $id_produit));

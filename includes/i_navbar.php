@@ -19,7 +19,7 @@ function creer_navbar_options_elevages($liste_animaux){
     foreach ($liste_animaux as $un_animal)
     {
         echo "<li class=\"li_contenu_dropdown\"><i class=\"fleche_contenu_dropdown\">&#9658;</i>"
-            . "<a class=\"a_contenu_dropdown\" href=\"../pages/un_produit\">" . strtoupper($un_animal) 
+            . "<a class=\"a_contenu_dropdown\" href=\"../pages/tout_produit_filtre\">" . strtoupper($un_animal) 
             . "</a></li>";
     }
 }

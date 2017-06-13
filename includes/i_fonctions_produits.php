@@ -15,21 +15,14 @@ function creer_section_article($une_liste) {
     }
 
 function creer_division_article($produit,$indice) {
-
     $infos = $produit->infos();
     if ($indice%2 == 1)
     {
     echo "<div class=\"div_produit\" onclick=\"alert('clic');\">
-        
             <div class=\"div_image_produit\">
                 <img class=\"image_produit\" src=\"../images/loader.gif\" alt=\"Image représentant l'article\">
-             </div>
-             
-             <div class=\"div_nom_produit\">
-                <p class=\"nom_produit\">" . $infos['nom_produit'] . "</p>
-             </div>
-            
-             <div class=\"div_description_produit\">
+             </div><div class=\"div_nom_produit\"><p class=\"nom_produit\">" . $infos['nom_produit'] . "</p>
+             </div><div class=\"div_description_produit\">
                 <p class=\"description_produit\">
                     " . $infos['description_rapide'] . "
                 </p>
@@ -37,21 +30,10 @@ function creer_division_article($produit,$indice) {
           </div>";
     }else {
         echo "<div class=\"div_produit\" onclick=\"alert('clic');\">
-        
-            <div class=\"div_image_produit\">
-                <img class=\"image_produit\" src=\"../images/loader2.gif\" alt=\"Image représentant l'article\">
-             </div>
-             
-             <div class=\"div_nom_produit\">
-                <p class=\"nom_produit\">" . $infos['nom_produit'] . "</p>
-             </div>
-            
-             <div class=\"div_description_produit\">
-                <p class=\"description_produit\">
-                    " . $infos['description_rapide'] . "
-                </p>
-             </div>
-          </div>";
+            <div class=\"div_image_produit\"><img class=\"image_produit\" src=\"../images/loader2.gif\" alt=\"Image représentant l'article\"></div>
+            <div class=\"div_nom_produit\"><p class=\"nom_produit\">" . $infos['nom_produit'] . "</p></div>
+            <div class=\"div_description_produit\"><p class=\"description_produit\">" . $infos['description_rapide'] . "</p></div>
+            </div>";
     }
 }
 

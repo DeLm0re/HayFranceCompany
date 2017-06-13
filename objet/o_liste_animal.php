@@ -28,7 +28,7 @@ class ListeAnimal extends RequeteListeAnimal
     {
         $this->hydrate();
         $animaux = NULL;
-        $index = 0;;
+        $index = 0;
         foreach ($this->_infos as $animal) 
         {
             $animaux[$index] = $animal['animal'];

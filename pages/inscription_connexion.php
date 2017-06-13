@@ -17,7 +17,7 @@
           <?php       
             /*inclusion du formulaire de connexion*/
             include '../includes/i_connexion.php';
-            var_dump($user->donneInfos());
+            
            include '../includes/i_inscription.php';
             
             ?>

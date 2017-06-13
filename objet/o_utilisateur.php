@@ -5,6 +5,7 @@ include_once 'o_produit.php';
 include_once 'o_prix_transport.php';
 include_once 'o_panier.php';
 include_once 'o_liste_produit.php';
+include_once 'o_liste_animal.php';
 
 
 
@@ -206,6 +207,18 @@ class Utilisateur extends RequeteUtilisateur
     {
         $liste = new ListeProduit($this->getBDD());
         return $liste->donneListeProduits($categorie);
+    }
+    
+    public function donneListeAnimal()
+    {
+        $liste = new ListeAnimal($this->getBDD());
+        return $liste->donneListeAnimal();
+    }
+    
+    public function donneListeIdAnimal()
+    {
+        $liste = new ListeAnimal($this->getBDD());
+        return $liste->donneListeIdAnimal();
     }
     
     private function getPanier()

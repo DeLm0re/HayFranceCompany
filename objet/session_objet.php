@@ -1,10 +1,17 @@
 <?php
+session_start();
     
 include_once 'o_bdd.php';
 include_once 'o_utilisateur.php';
-
-function nouvelUtilisateur()
+if(!isset($_SESSION['email']))
 {
-    $bdd = new BDD();
-    return new Utilisateur($bdd);
+    $_SESSION['email'] = NULL;
 }
+if(!isset($_SESSION['password']))
+{
+    $_SESSION['password'] = NULL;
+}
+
+$bdd = new BDD();
+$user = new Utilisateur($bdd);
+$user->connecte($_SESSION['email'], $_SESSION['password']);

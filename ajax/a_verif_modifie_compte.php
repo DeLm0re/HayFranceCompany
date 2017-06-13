@@ -3,15 +3,7 @@
 //inclusion de la session et des objets
 include_once '../objet/session_objet.php';
 
-/* Si on effectue l'ajax sur un champ(input) d'id 'nom'/'prenom' on rentre dans le if */
-if (($_GET['champ'] == 'nom') || ($_GET['champ'] == 'prenom')) {
-    if ((preg_match('`^[a-zA-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+'
-                    . '(?:[\ \-\'][a-zA-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+)*$`', trim($_GET['contenu'])) == 0) || ((strlen($_GET['contenu'])) > 50)) {
-        echo "KO";
-    } else {
-        echo "OK";
-    }
-}
+
 /* ---------------------------------------------------------------------------------- */
 
 /* Si on effectue l'ajax sur un champ(input) d'id 'email' on rentre dans le if */
@@ -57,11 +49,8 @@ if ($_GET['champ'] == 'dpt') {
 /* Si on valide le formulaire une série de test est effectuée */
 if (($_GET['champ'] == 'button')) {
     
-    if (( isset($_GET['prenom']) AND empty($_GET['prenom']) ) || ((strlen($_GET['prenom'])) > 50)) {
-        echo "erreur_prenom";
-    } else if (( isset($_GET['nom']) AND empty($_GET['nom']) ) || ((strlen($_GET['nom'])) > 50)) {
-        echo "erreur_nom";
-    } else if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
+   
+    if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
         /**ENVOIE MAIL*/
         echo "erreur_email";
     } else if (( isset($_GET['mdp']) AND empty($_GET['mdp']) ) || ((strlen($_GET['mdp'])) > 50)) {
@@ -75,7 +64,8 @@ if (($_GET['champ'] == 'button')) {
     } else if (( isset($_GET['dpt']) AND empty($_GET['dpt']) ) || ((strlen($_GET['dpt'])) > 2) || $_GET['dpt'] == 20)  {
         echo "erreur_dpt";
     }else{
-        $user->inscrit($_GET['nom'],$_GET['prenom'],$_GET['civ'],$_GET['email'],
-                $_GET['mdp'],$_GET['ville'],$_GET['adresse'],$_GET['dpt']);
+       
+        // a ajouter le compte Utilisateur 
+        
     }
 }

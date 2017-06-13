@@ -1,3 +1,7 @@
+<?php
+    //inclusion de la session et des objets
+    include_once '../objet/session_objet.php';
+?>
 <html>
     <head>
         <meta charset="UTF-8">

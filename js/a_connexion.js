@@ -74,13 +74,14 @@ function readData_connexion(data,champ)
         {
             alert("connecter!!"); 
             document.getElementById("loader_connexion").style.display = "none";
+            document.getElementById("erreur_connexion").innerHTML = "connexion reussite";
+             document.location.href = "http://localhost/Hayfrance/pages/MonCompte.php";
               
-            
         } if (data === "connexionF")
         {
             alert("erreur de connection"); 
             document.getElementById("loader_connexion").style.display = "none";
-            document.getElementById("erreur_email_connexion").innerHTML = "Erreur lors de la connexion";
+            document.getElementById("erreur_connexion").innerHTML = "Erreur lors de la connexion l'un ou les champs rempli ne sont pas valide";
             
         }
         

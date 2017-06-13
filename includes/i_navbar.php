@@ -49,7 +49,7 @@ function creer_navbar_options_elevages($liste_animaux){
                 </div>
             </div>
             <div class="div_dropdown">
-                <button class="button_dropdown">MON COMPTE</button>
+                <button class="button_dropdown" onclick="window.location.href='http://localhost/HayFranceCompany/pages/MonCompte.php'">MON COMPTE</button>
             </div>
             <div class="div_dropdown">
                 <button class="button_dropdown">MON PANIER</button>

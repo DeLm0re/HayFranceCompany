@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php include_once '../objet/session_objet.php'; 
+      include_once '../objet/administration/o_admin.php';
+      $admin = new Admin($bdd) ; 
+      demarreSession($admin);
+?>
 
 <?php 
 

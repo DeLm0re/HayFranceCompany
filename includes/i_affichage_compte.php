@@ -1,13 +1,17 @@
 <?php
-
+  //inclusion de la session et des objets
+    include_once '../objet/session_objet.php';
+    $user = new Utilisateur($bdd);
+    demarreSession($user);
+    $info = $user->donneInfos();
 //    var_dump($user->donneInfos());
-    $nom = $user->donneInfos()['nom'];
-    $prenom = $user->donneInfos()['prenom'];
-    $civ = $user->donneInfos()['civilite'];
-    $email = $user->donneInfos()['email'];
-    $ville =  $user->donneInfos()['ville'];
-    $adresse  = $user->donneInfos()['adresse'];
-    $departement = $user->donneInfos()['departement'];
+    $nom = $info['nom'];
+    $prenom = $info['prenom'];
+    $civ = $info['civilite'];
+    $email = $info['email'];
+    $ville = $info['ville'];
+    $adresse  = $info['adresse'];
+    $departement =$info['departement'];
     
 ?> 
 
@@ -49,5 +53,6 @@
           
     
 </fieldset>
+
 
 

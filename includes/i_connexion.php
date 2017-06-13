@@ -5,7 +5,7 @@
         <p>Connexion<p> 
             
         
-            
+        <span id="erreur_connexion" class="erreur"></span>
         <span id="erreur_email_connexion" class="erreur"></span>
         <p>Adresse mail : <input id="email_connexion" type="text" spellcheck="false" onchange="request_connexion(readData_connexion,'email_connexion');"></p>
             <span id="ok_email_connexion" style="display: none;"><img src="../images/ok.png"/></span>

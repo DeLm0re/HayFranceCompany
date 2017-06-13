@@ -63,8 +63,7 @@ if( !isset($_POST['titre'])) {?>
             </fieldset>
             <input type="submit" value="Valider" />
             </form>
-            
-            <?php echo"$id_produit"; ?>
+           
             
 	</body>
         
@@ -174,12 +173,21 @@ if( !isset($_POST['titre'])) {?>
 
 function creerCheckBoxAnimal(){
  $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
+  
     foreach ($dbh->query('SELECT animal FROM animal') as $row) {
         $valueAnimal = $row['animal'];
-        echo"<input type=\"checkbox\" name=\"$valueAnimal\" id=\"$valueAnimal\" /> <label for=\"$valueAnimal\">$valueAnimal</label><br />" ;
+        
+     if(isset($_GET['ID'])){
+      $id_produit = $_GET['ID'];
+      $animalChecked = getAnimal($id_produit);
+      checkedCheckBox($animalChecked, $valueAnimal);  
+      }
+     else {
+         echo"<input type=\"checkbox\" name=\"$valueAnimal\" id=\"$valueAnimal\" /> <label for=\"$valueAnimal\">$valueAnimal</label><br />" ;
+     }   
     }  
     return($row) ; 
-    }
+}
     
 function recupListeAnimaux(){
     $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
@@ -199,3 +207,22 @@ function getIdAnimal($animal){
     return($id_animal) ; 
 }
 
+function getAnimal($id_produit){
+    $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
+    
+    foreach ($dbh->query("SELECT animal FROM animal INNER JOIN animal_produit ON animal_produit.id_animal = animal_produit.id_animal WHERE id_produit ='$id_produit' ") as $row) {
+        $animal['animal'] = $row['animal'] ; 
+    }  
+    return($animal) ; 
+}
+
+function checkedCheckBox( $tabAnimalChecked, $valueAnimal){
+          foreach($tabAnimalChecked as $valueAnimalChecked){
+            if($valueAnimal == $valueAnimalChecked){
+                echo"<input type=\"checkbox\" name=\"$valueAnimal\" id=\"$valueAnimal\" checked=\"checked\"/> <label for=\"$valueAnimal\">$valueAnimal</label><br />" ;
+            }
+            else{
+                echo"<input type=\"checkbox\" name=\"$valueAnimal\" id=\"$valueAnimal\" /> <label for=\"$valueAnimal\">$valueAnimal</label><br />" ;
+            }
+        }
+      }

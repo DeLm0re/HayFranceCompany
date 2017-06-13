@@ -29,6 +29,15 @@ abstract class RequeteUtilisateur extends Hydratable
         parent::hydrateInfos($resultat);
     }
     
+    protected function estConnecte()
+    {
+        if($this->id_utilisateur === -1)
+        {
+            return false;
+        }
+        return true;
+    }
+    
     protected function inscription($nom, $pre, $civ, $ema, $pas, $vil, $adr, $dep)
     {
         if($this->existeDeja($nom, $pre, $ema))
@@ -125,10 +134,15 @@ class Utilisateur extends RequeteUtilisateur
     
     public function connecte($email, $password)
     {
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
         parent::connexion($email, $password);
         $this->hydrate();
+        if($this->estConnecte() === true)
+        {
+            $_SESSION['email'] = $email;
+            $_SESSION['password'] = $password;
+            return true;
+        }
+        return false;
     }
     
     public function deconnecte()

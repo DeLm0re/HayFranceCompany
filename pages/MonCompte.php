@@ -14,7 +14,8 @@
       <body>
            
           <?php       
-            /*inclusion du formulaire de connexion*/
+             include '../includes/i_affichage_compte.php';
+            /*inclusion du formulaire de modification du compte*/
             include '../includes/i_modifie_compte.php';
              
             ?>

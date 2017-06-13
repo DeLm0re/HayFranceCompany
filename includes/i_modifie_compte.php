@@ -4,8 +4,15 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ *
+ * 
  */
 
+ $email = $user->donneInfos()['email'];
+ $ville =  $user->donneInfos()['ville'];
+ $adresse  = $user->donneInfos()['adresse'];
+ $departement = $user->donneInfos()['departement'];
+ 
 ?>
 
 <fieldset id="formulaire_modification_compte">
@@ -14,7 +21,7 @@
             
           
         <span id="erreur_email" class="erreur"></span>
-        <p>nouvelle Adresse mail : <input id="email" type="text" spellcheck="false" onchange="request(readData,'email');"></p>
+        <p>nouvelle Adresse mail : <input id="email" type="text" value="<?php  echo $email?>" spellcheck="false" onchange="request(readData,'email');"></p>
             <span id="ok_email" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_email" style="display: none;"><img src="../images/ko.png"/></span>
         
@@ -29,17 +36,17 @@
             <span id="ko_cmdp" style="display: none;"><img src="../images/ko.png"/></span>
         
         <span id="erreur_ville" class="erreur"></span>
-        <p>nouvelle ville : <input id="ville" type="text" onchange="request(readData,'ville');"></p>
+        <p>nouvelle ville : <input id="ville" type="text" value="<?php  echo $ville?>" onchange="request(readData,'ville');"></p>
             <span id="ok_ville" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_ville" style="display: none;"><img src="../images/ko.png"/></span>
             
         <span id="erreur_adresse" class="erreur"></span>
-        <p>nouvelle adresse : <textarea id="adresse" rows=3 cols=40 onchange="request(readData,'adresse');"></textarea></p>
+        <p>nouvelle adresse : <textarea id="adresse" rows=3 cols=40  onchange="request(readData,'adresse');"><?php  echo $adresse ?></textarea></p>
             <span id="ok_adresse" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_adresse" style="display: none;"><img src="../images/ko.png"/></span>
             
         <span id="erreur_dpt" class="erreur"></span>
-        <p>nouveau numéro de département <input id="dpt" type="number"  min="1" max="95" onchange="request(readData,'dpt');"></p>
+        <p>nouveau numéro de département <input id="dpt" type="number" value="<?php  echo $departement ?>"  min="1" max="95" onchange="request(readData,'dpt');"></p>
             <span id="ok_dpt" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_dpt" style="display: none;"><img src="../images/ko.png"/></span>
             

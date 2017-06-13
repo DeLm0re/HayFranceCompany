@@ -25,7 +25,7 @@
             include '../includes/i_navbar.php';
             
             /*inclusion du formulaire d'inscription*/
-            //include '../includes/i_inscription.php';
+            include '../includes/i_connexion.php';
         ?>
 
         <span>Votre département : </span>
@@ -51,15 +51,15 @@
         
         <!-- SCRIPTS POUR L'AJAX -->
         <script src="../js/a_inscription.js" type="text/javascript"></script>
+        <script src="../js/a_connexion.js" type="text/javascript"></script>
         <script src="../js/oXHR.js" type="text/javascript"></script>
 
         <!-- SCRIPTS POUR L'overlay -->
         <script src="../js/overlay.js" type="text/javascript"></script>
         <script src="../js/polyfill.js" type="text/javascript"></script>
-
-
-
+        
     </body>
+    
     <?php
         include '../includes/i_footer.php'
     ?>

@@ -1,30 +1,25 @@
 <?php
+    //inclusion de la session et des objets
+    include_once '../objet/session_objet.php';
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
+ 
 /* ---------------------------------------------------------------------------------- */
-
-if (($_GET['champ'] == 'email')) {
+// verification du champ de mail
+if (($_GET['champ_connexion'] == 'email_connexion')) {
     if ((preg_match("/^[-+.\w]{1,64}@[-.\w]{1,15}\.[-.\w]{2,6}$/i", trim($_GET['contenu'])) == 0) || ((strlen($_GET['contenu'])) > 100)) {
-        echo "KO";
+        echo "KO_connexion";
     } else {
-        echo "OK";
+        echo "OK_connexion";
     }
 }
 
 /* ---------------------------------------------------------------------------------- */
-
-if ($_GET['champ'] == 'mdp')  {
+// verification du champ de mot de passe 
+if ($_GET['champ_connexion'] == 'mdp_connexion')  {
     if ((preg_match('`^[a-zA-Z0-9]*$`', trim($_GET['contenu'])) == 0) || (strlen($_GET['contenu'])) > 20) {
-        echo "KO";
+        echo "KO_connexion";
     } else {
-        echo "OK";
+        echo "OK_connexion";
     }
 }
 
@@ -32,19 +27,16 @@ if ($_GET['champ'] == 'mdp')  {
 
 /* Si on valide le formulaire une série de test est effectuée */
 
-if (($_GET['champ'] == 'button')) {
-    /* varaible erreur pour savoir si on fait la requete */
-    $erreur = false;
-
-    if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
-        /**ENVOIE MAIL*/
-        echo "erreur_email";
-        $erreur = true;
-    }else if (( isset($_GET['mdp']) AND empty($_GET['mdp']) ) || ((strlen($_GET['mdp'])) > 50)) {
-        echo "erreur_mdp";
-        $erreur = true;
+if (($_GET['champ_connexion'] == 'button_connexion')) {
+    if ((isset($_GET['email_connexion']) AND empty($_GET['email_connexion']) ) || ((strlen($_GET['email_connexion'])) > 100)) {
+        echo "erreur_email_connexion";
+    }else if (( isset($_GET['mdp_connexion']) AND empty($_GET['mdp_connexion']) ) || ((strlen($_GET['mdp_connexion'])) > 50)) {
+        echo "erreur_mdp_connexion";
     }    
-    if ($erreur != true){
-        echo"np";/*faire requete*/
+    else{
+       
+        $user->connecte($_GET['email_connexion'], $_GET['mdp_connexion']);
+        
+        
     }
 }

@@ -46,12 +46,8 @@
         
                  <div class="div_contenu">
                     <p class="p_contenu"> votre département : <?php echo$departement; ?>  </p>
-                </div>
-		
-        
-            
-          
-    
+                </div>    
+
 </fieldset>
 
 

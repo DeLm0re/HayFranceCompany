@@ -5,16 +5,24 @@ $user = new Utilisateur($bdd);
 demarreSession($user);
     
 function creer_navbar_options_produits($liste_nom) {
-
-        foreach($liste_nom as $un_produit){
+    foreach($liste_nom as $un_produit){
             
-            $info = $un_produit->infos();
+        $info = $un_produit->infos();
             
-            echo "<li class=\"li_contenu_dropdown\"><i class=\"fleche_contenu_dropdown\">&#9658;</i>"
+        echo "<li class=\"li_contenu_dropdown\"><i class=\"fleche_contenu_dropdown\">&#9658;</i>"
             . "<a class=\"a_contenu_dropdown\" href=\"../pages/un_produit\">" . strtoupper($info['nom_produit']) 
             . "</a></li>";
-        }
     }
+}
+    
+function creer_navbar_options_elevages($liste_animaux){
+    foreach ($liste_animaux as $un_animal)
+    {
+        echo "<li class=\"li_contenu_dropdown\"><i class=\"fleche_contenu_dropdown\">&#9658;</i>"
+            . "<a class=\"a_contenu_dropdown\" href=\"../pages/un_produit\">" . strtoupper($un_animal) 
+            . "</a></li>";
+    }
+}
 ?>
 
 <link href="../css/i_navbar.css" rel="stylesheet" type="text/css"/>
@@ -35,6 +43,8 @@ function creer_navbar_options_produits($liste_nom) {
                 <button class="button_dropdown">TYPES D'ELEVAGES<i class="fleche_dropdown_produits">&#9660;</i></button>
                 <div class="contenu_dropdown">
                     <?php
+                        $liste2 = $user->donneListeAnimal();
+                        creer_navbar_options_elevages($liste2);
                     ?>
                 </div>
             </div>

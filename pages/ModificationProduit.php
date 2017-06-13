@@ -22,12 +22,14 @@ if( !isset($_POST['titre'])) {?>
             <?php 
                     if( isset($_GET['ID']) ){
                         $id_produit = $_GET['ID'];
-                        echo"<form method=\"post\" action=\"ModificationProduit.php?ID=$id_produit \">" ; 
+                        echo"<form method=\"post\" action=\"ModificationProduit.php?ID=$id_produit \">" ;
+                        echo"<h1>Modifier l'article </h1>" ; 
                     }else if(!isset ($_GET['ID'])){
-                        echo"<form method=\"post\" action=\"ModificationProduit.php \">" ; 
+                        echo"<form method=\"post\" action=\"ModificationProduit.php \">" ;
+                        echo"<h1>Créer l'article </h1>" ; 
                     }
                    ?>
-            <legend>Modifier l'article </legend>
+            
             <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
             <label for="titre"></label>
             <input type="text" name="titre" id="titre" placeholder="Nom article" size="30" /><br>
@@ -91,20 +93,34 @@ if( !isset($_POST['titre'])) {?>
     $animal = [];
     //Recupère la liste de tous les animaux
     $tabAnimaux = recupListeAnimaux() ;
+    var_dump($tabAnimaux) ;
+    $chevre =  $_POST["chevre"] ;
+    echo" <br>  chèvre : $chevre <br>" ; 
     //Pour chaque animal on test si sa valeur en _POST existe càd qu'il a été coché 
+    
     foreach($tabAnimaux as $valueAnimal){
-        if ( (isset($_POST["$valueAnimal"] ) == TRUE))
+        echo"value animal : $valueAnimal <br>" ; 
+        if ( isset($_POST[$valueAnimal] ))
         {
+            $laValeur = $_POST[$valueAnimal] ; 
+        echo"entrer dans if du  foreach tableau animal, $laValeur <br>" ; 
         //$animal est le tableau des animaux cochés 
-        $animal["$valueAnimal"] = $_POST["$valueAnimal"];
-        vardump($animal);
+        $animal["$valueAnimal"] = $valueAnimal;
         }
     }
+    
+    echo"<br> vardump animal";
+    var_dump($animal) ; 
+    
+    echo"<br> getIdAnimal : "; 
+    echo getIdAnimal($animal['chevre']) ; 
+    echo"<br>" ; 
 
      $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
 
      if( !isset($_GET['ID'])){
           echo"if ID est PAS set";
+          var_dump($animal);
         $stmt = $dbh->prepare('INSERT INTO produit(id_produit,nom_produit,description,description_rapide,prix_tonne) VALUES(?,?,?,?,?)');
                $stmt->bindValue(1, null);
                settype($titre, "string");
@@ -114,11 +130,12 @@ if( !isset($_POST['titre'])) {?>
                $stmt->bindParam(5, $prix, PDO::PARAM_INT); 
           $stmt->execute();
 
-          for($i=0 ; $i<count($animal) ; $i+=1 )
+          foreach($animal as $valueAnimal )
           {
+           $id_produit = getIdAnimal($valueAnimal) ; 
            $stmt = $dbh->prepare('INSERT INTO animal_produit(id_produit,id_animal) VALUES(?,?)');
            $stmt->bindValue(1, null);
-           $stmt->bindParam(2, $animal[$i], PDO::PARAM_STR);
+           $stmt->bindParam(2, $id_animal, PDO::PARAM_STR);
            $stmt->execute();
           }
 
@@ -132,18 +149,22 @@ if( !isset($_POST['titre'])) {?>
         $stmt->bindParam(':descRap', $courteDesc);
         $stmt->bindParam(':prix', $prix); 
         $stmt->execute();
-        
+    
         //On supprime tous les id pour les refaires après
-        $stmt2 = $dbh->prepare("DELETE FROM `animal_produit`WHERE `id` = $id_produit ");
+        $stmt2 = $dbh->prepare("DELETE FROM `animal_produit`WHERE `id_produit` = $id_produit ");
         $stmt2 ->execute() ; 
         
-         for($i=0 ; $i<count($animal) ; $i+=1 )
+         foreach( $animal as $valueAnimal) 
           {
+             echo"<br> for isset valeur animal $valueAnimal <br>";
+             $id_animal = getIdAnimal($valueAnimal) ; 
+             echo"<br> for isset idAnimal $id_animal " ; 
            $stmt = $dbh->prepare('INSERT INTO animal_produit(id_produit,id_animal) VALUES(?,?)');
-           $stmt->bindValue(1, $id_produit);
-           $stmt->bindParam(2, $animal[$i], PDO::PARAM_STR);
+           $stmt->bindValue(1, $id_produit);          
+           $stmt->bindParam(2, $id_animal, PDO::PARAM_STR);
            $stmt->execute();
           }
+     
      }
    
 
@@ -155,15 +176,26 @@ function creerCheckBoxAnimal(){
  $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
     foreach ($dbh->query('SELECT animal FROM animal') as $row) {
         $valueAnimal = $row['animal'];
-        echo"<input type=\"checkbox\" name=\" $valueAnimal \" id=\"$valueAnimal\" /> <label for=\"$valueAnimal\">$valueAnimal</label><br />" ;
+        echo"<input type=\"checkbox\" name=\"$valueAnimal\" id=\"$valueAnimal\" /> <label for=\"$valueAnimal\">$valueAnimal</label><br />" ;
     }  
     return($row) ; 
     }
     
 function recupListeAnimaux(){
     $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
+    $tableauAnimal = [] ; 
     foreach ($dbh->query('SELECT animal FROM animal') as $row) {
+        $valueAnimal = $row['animal'] ; 
+        $tableauAnimal["$valueAnimal"]  = $valueAnimal; 
     }  
-    return($row) ; 
+    return($tableauAnimal) ; 
+}
+
+function getIdAnimal($animal){
+    $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
+    foreach ($dbh->query("SELECT id_animal FROM animal WHERE animal = '$animal' ") as $row) {
+        $id_animal = $row['id_animal'] ; 
+    }  
+    return($id_animal) ; 
 }
 

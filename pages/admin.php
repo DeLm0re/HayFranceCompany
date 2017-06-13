@@ -1,7 +1,10 @@
 
 
 <table>
-
+    <h1>Produits</h1>
+    <form action="ModificationProduit.php">
+    <input type="submit" value="Créer Produit" />
+    </form
    <tr>
        <th>ID</th>
        <th>Nom Produit</th>
@@ -10,7 +13,7 @@
        <th>Nombre Image</th>
        <th>Prix</th>
    </tr>
-   <a href="https://www.w3schools.com">
+   
    <?php
      $tableauDonnees = recupDonneProduit();
      $nombreLignes = count($tableauDonnees);

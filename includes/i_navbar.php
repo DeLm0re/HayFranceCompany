@@ -1,7 +1,9 @@
 <?php
 //inclusion de la session et des objets
 include_once '../objet/session_objet.php';
-
+$user = new Utilisateur($bdd);
+demarreSession($user);
+    
 function creer_navbar_options_produits($liste_nom) {
 
         foreach($liste_nom as $un_produit){

@@ -75,7 +75,6 @@ function readData_connexion(data,champ)
            // alert("connecter!!"); 
             document.getElementById("loader_connexion").style.display = "none";
             document.getElementById("erreur_connexion").innerHTML = "connexion reussite";
-             document.location.href = "http://localhost/Hayfrance/pages/MonCompte.php";
               
         } if (data === "connexionF")
         {

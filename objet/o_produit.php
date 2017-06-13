@@ -28,6 +28,17 @@ abstract class RequeteProduit extends Hydratable
                 . "WHERE animal_produit.id_produit = $id");
         return $resultat;
     }
+    
+    protected function selectNomUrlImage()
+    {
+        $id = intval($this->id_produit);
+        $resultat = $this->exeRequete("SELECT image.nom_image, image.url "
+                . "FROM produit_image "
+                . "INNER JOIN image "
+                . "ON produit_image.id_image = image.id_image "
+                . "WHERE produit_image.id_produit = $id");
+        return $resultat;
+    }
 }
 
 
@@ -44,6 +55,28 @@ class Produit extends RequeteProduit
     {
         $this->hydrate();
         return parent::getInfos();
+    }
+    
+    public function getNomImage()
+    {
+        $nom = NULL;
+        $resultat = parent::selectNomUrlImage();
+        foreach ($resultat as $ligne)
+        {
+            $nom = $ligne['nom_image'];
+        }
+        return $nom;
+    }
+    
+    public function getUrlImage()
+    {
+        $url = NULL;
+        $resultat = parent::selectNomUrlImage();
+        foreach ($resultat as $ligne)
+        {
+            $url = $ligne['url'];
+        }
+        return $url;
     }
     
     public function getCategories()

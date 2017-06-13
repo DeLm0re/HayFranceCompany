@@ -15,7 +15,7 @@
     
 ?> 
 
-<fieldset id="affichage du compte">
+<fieldset id="affichage_du_compte">
     <form>
         <p class="titre">Votre compte <p> 
             <!-- affichage du compte client -->

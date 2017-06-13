@@ -105,7 +105,7 @@ class Produit extends RequeteProduit
         {
             foreach ($categories as $ligne)
             {
-                if(intval($categorie) === $ligne['id_categorie']
+                if(intval($categorie) === intval($ligne['id_categorie'])
                         || $categorie === $ligne['nom_categorie'])
                 {
                     $appartient = true;

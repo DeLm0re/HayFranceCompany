@@ -82,4 +82,7 @@ $infos = $unProduit->infos();
 //Pour séléctionner les données
 echo $infos['id_produit'];
 echo $infos['description'];
-        
+
+//Pour récupérer les images
+echo $unProduit->getNomImage();
+echo $unProduit->getUrlImage();

@@ -57,26 +57,30 @@ class Produit extends RequeteProduit
         return parent::getInfos();
     }
     
-    public function getNomImage()
+    public function getNomImages()
     {
-        $nom = NULL;
+        $noms = NULL;
+        $index = 0;
         $resultat = parent::selectNomUrlImage();
         foreach ($resultat as $ligne)
         {
-            $nom = $ligne['nom_image'];
+            $noms[$index] = $ligne['nom_image'];
+            $index += 1;
         }
-        return $nom;
+        return $noms;
     }
     
-    public function getUrlImage()
+    public function getUrlImages()
     {
-        $url = NULL;
+        $urls = NULL;
+        $index = 0;
         $resultat = parent::selectNomUrlImage();
         foreach ($resultat as $ligne)
         {
-            $url = $ligne['url'];
+            $urls[$index] = $ligne['url'];
+            $index += 1;
         }
-        return $url;
+        return $urls;
     }
     
     public function getCategories()

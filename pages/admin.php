@@ -82,11 +82,10 @@ function ajouteCellule($cellule)
 function animauxToString($animaux)
 {
     $string = '';
-    foreach ($animaux as $animal)
+    $max = count($animaux);
+    for($i = 0; $i < $max; $i++)
     {
-        $string = $string . ' ' . $animal['nom_categorie'];
+        $string = $string . ' ' . $animaux[$i]['nom_categorie'];
     }
     return $string;
 }
-
- 

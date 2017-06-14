@@ -1,6 +1,7 @@
 <link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
 
   <span id="erreur_connexion" class="erreur"></span>
+  <span id="validation_connexion" class="erreur"></span>
 <fieldset id="formulaire_connexion">
     <form>
         <p>Connexion<p> 

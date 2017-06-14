@@ -33,7 +33,7 @@ if (($_GET['nbr_pallette'] >= 8)&&($_GET['nbr_pallette'] <= 0)){
 if ($_GET['Format'] == 22)  {
     
     $prix_produit = $_GET['id_produit'] ; 
-    $prix_transport_calcul ; 
+    $prix_transport_calcul =  trouve_prix_tansport( $_GET['nbr_pallette'] , $prix_transport) ; 
    
         echo "OK";
     } else {

@@ -20,7 +20,7 @@
         
       
         <span id="erreur_nbr_pallette" class="erreur"></span>
-        <p>Nombre de palette : <input id="nbr_pallette" type="number" name="nbr_pallette" min="0" max="8" spellcheck="false" onchange="request_connexion(readData_connexion,'enbr_pallette');"></p>
+        <p>Nombre de palette : <input id="nbr_pallette" type="number" name="nbr_pallette" min="1" max="8" spellcheck="false" onchange="request_connexion(readData_connexion,'enbr_pallette');"></p>
             <span id="ok_email_connexion" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_email_connexion" style="display: none;"><img src="../images/ko.png"/></span>
         

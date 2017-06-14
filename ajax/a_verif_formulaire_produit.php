@@ -1,27 +1,52 @@
 <?php
     //inclusion de la session et des objets
-    include_once '../objet/session_objet.php';
-    $user = new Utilisateur($bdd);
+     $user = new Utilisateur($bdd);
     demarreSession($user);
+    $info = $user->donneInfos();
+    $departement = intval($info['departement']);
+    $prix = new PrixTransport($bdd,$departement);
+  $prix_transport =   $prix->infos(); 
+  //  var_dump($user);
+  
+  function trouve_prix_tansport( $nombre_pallette , $prix_du_transport){
+      
+      $id_transport = "p"+ strval($nombre_pallette) ;
+      
+      $prix_transport_coorespondant = $prix_du_transport[$id_transport] ;
+      
+      return  $prix_transport_coorespondant;
+  }
+  
 
 /* ---------------------------------------------------------------------------------- */
 // verification du champ de mail
-if (($_GET['champ_connexion'] == 'email_connexion')) {
-    if ((preg_match("/^[-+.\w]{1,64}@[-.\w]{1,15}\.[-.\w]{2,6}$/i", trim($_GET['contenu'])) == 0) || ((strlen($_GET['contenu'])) > 100)) {
-        echo "KO_connexion";
-    } else {
-        echo "OK_connexion";
+if (($_GET['nbr_pallette'] >= 8)&&($_GET['nbr_pallette'] <= 0)){
+   
+        echo "KO";
+   
+}else {
+        echo "OK";
     }
-}
 
 /* ---------------------------------------------------------------------------------- */
 // verification du champ de mot de passe 
-if ($_GET['champ_connexion'] == 'mdp_connexion')  {
-    if ((preg_match('`^[a-zA-Z0-9]*$`', trim($_GET['contenu'])) == 0) || (strlen($_GET['contenu'])) > 20) {
-        echo "KO_connexion";
+if ($_GET['Format'] == 22)  {
+    
+    $prix_produit = $_GET['id_produit'] ; 
+    $prix_transport_calcul ; 
+   
+        echo "OK";
     } else {
-        echo "OK_connexion";
-    }
+         echo "KO";
+}
+if ($_GET['Format'] == 32)  {
+   
+    
+        echo "OK";
+    } else {
+        echo "KO";
+        
+    
 }
 
 /* ---------------------------------------------------------------------------------- */
@@ -44,3 +69,4 @@ if (($_GET['champ_connexion'] == 'button_connexion')) {
        }
     }
 }
+

@@ -69,19 +69,20 @@ function readData_connexion(data,champ)
        
         //On affiche l'erreur au dessus du champ la contenant
         
-        alert(data);
+       // alert(data);
         if (data === "connexionR")
         {
-            alert("connecter!!"); 
+           // alert("connecter!!"); 
             document.getElementById("loader_connexion").style.display = "none";
-            document.getElementById("erreur_connexion").innerHTML = "connexion reussite";
-             document.location.href = "http://localhost/Hayfrance/pages/MonCompte.php";
-              
+            document.getElementById("formulaire_connexion").style.display = "none";
+            document.getElementById("erreur_connexion").innerHTML = "connexion reussite";            
+             document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
+
         } if (data === "connexionF")
         {
-            alert("erreur de connection"); 
+            //alert("erreur de connection"); 
             document.getElementById("loader_connexion").style.display = "none";
-            document.getElementById("erreur_connexion").innerHTML = "Erreur lors de la connexion l'un ou les champs rempli ne sont pas valide";
+            document.getElementById("erreur_connexion").innerHTML = "Erreur lors de la connexion , l'un des champs n'est pas valide";
             
         }
         

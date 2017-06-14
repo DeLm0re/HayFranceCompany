@@ -2,7 +2,7 @@
  - spellcheck="false", permet d'indiquer au navigateur de ne pas appliquer une vérification orthographique dans les champs
  - checked="true", permet de cocher l'imput radio spécifié par défault (ici M.)
 -->
-<link href="../css/i_inscription.css" rel="stylesheet" type="text/css"/>
+<link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
 
 <fieldset id="formulaire_inscription">
     <form>
@@ -53,7 +53,7 @@
             <span id="ok_dpt" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_dpt" style="display: none;"><img src="../images/ko.png"/></span>
             
-        <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
+        <span id="loader" style="display: none;"><img id="img_loader" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
     <input id="button" type="button" value="S'inscrire" onclick="request2(readData);">
 </fieldset>

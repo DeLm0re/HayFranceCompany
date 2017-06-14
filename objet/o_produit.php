@@ -28,6 +28,17 @@ abstract class RequeteProduit extends Hydratable
                 . "WHERE animal_produit.id_produit = $id");
         return $resultat;
     }
+    
+    protected function selectNomUrlImage()
+    {
+        $id = intval($this->id_produit);
+        $resultat = $this->exeRequete("SELECT image.nom_image, image.url "
+                . "FROM produit_image "
+                . "INNER JOIN image "
+                . "ON produit_image.id_image = image.id_image "
+                . "WHERE produit_image.id_produit = $id");
+        return $resultat;
+    }
 }
 
 
@@ -44,6 +55,32 @@ class Produit extends RequeteProduit
     {
         $this->hydrate();
         return parent::getInfos();
+    }
+    
+    public function getNomImages()
+    {
+        $noms = NULL;
+        $index = 0;
+        $resultat = parent::selectNomUrlImage();
+        foreach ($resultat as $ligne)
+        {
+            $noms[$index] = $ligne['nom_image'];
+            $index += 1;
+        }
+        return $noms;
+    }
+    
+    public function getUrlImages()
+    {
+        $urls = NULL;
+        $index = 0;
+        $resultat = parent::selectNomUrlImage();
+        foreach ($resultat as $ligne)
+        {
+            $urls[$index] = $ligne['url'];
+            $index += 1;
+        }
+        return $urls;
     }
     
     public function getCategories()
@@ -64,12 +101,15 @@ class Produit extends RequeteProduit
     {
         $appartient = false;
         $categories = $this->getCategories();
-        foreach ($categories as $ligne)
+        if ($categories !== NULL)
         {
-            if($categorie === intval($ligne['id_categorie'])
-                    || $categorie === $ligne['nom_categorie'])
+            foreach ($categories as $ligne)
             {
-                $appartient = true;
+                if(intval($categorie) === intval($ligne['id_categorie'])
+                        || $categorie === $ligne['nom_categorie'])
+                {
+                    $appartient = true;
+                }
             }
         }
         return $appartient;

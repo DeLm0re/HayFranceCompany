@@ -1,0 +1,125 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13 juin 2017, 10:50:00
+    Author     : rjacquiez
+*/
+
+/* Définition des fonts non-standard */
+@font-face {
+	font-family: "Roboto";
+	src: url('../polices/Roboto-Regular.ttf');
+}
+
+/* On cache les puces des li */
+li{
+    list-style-type: none;
+}
+
+/* Action sur l'ensemble de la navbar */
+.div_navbar{
+    font-family: "Roboto";
+    background-color: #F9F9F9;
+    width: 75%;
+    margin: auto; 
+    text-align: center
+}
+
+/* La div qui contient tout le dropdown */
+.div_dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Le boutton dropdown */
+.button_dropdown {
+    background-color: #F9F9F9 !important;
+    color: #969696;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* La fleche sur le boutton dropdown */
+.fleche_dropdown_produits {
+    margin-left: 5px;
+    color: #888787;
+}
+
+/* La fleche devant chaque option du contenu du dropdown */
+.fleche_contenu_dropdown{
+    color: #888787;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+    float: left;
+    margin-top: 11px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+/* Survol de la fleche devant chaque option du dropdown */
+.fleche_contenu_dropdown:hover{
+    cursor: pointer;
+}
+
+/* Contenu du dropdown (Hidden par default) */
+.contenu_dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 218px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Liens dans le contenu du dropdown */
+.a_contenu_dropdown {
+    text-align: initial;
+    margin-left: 3px;
+    color: #969696;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: block;
+}
+
+/* Change la couleur lors du passage de la souris sur le dropdown */
+.a_contenu_dropdown:hover {
+    color: #FF7A42;
+}
+
+/* Montre le contenu du dropdown */
+.div_dropdown:hover .contenu_dropdown {
+    display: block;
+}
+
+/*Action si le dropdown est survolé */
+.button_dropdown:hover{
+    color : #FF7A42;
+}
+
+/* Action sur la fleche, si le boutton dropdown est survolé */
+.button_dropdown:hover .fleche_dropdown_produits{
+    color : #FF7A42;
+    transition: .3s color;
+}
+
+/* Survol des options */
+.li_contenu_dropdown:hover {
+    background-color: #AACAB2;
+}
+
+/* Survol des options qui agissent sur la fleche devant l'option survolé */
+.li_contenu_dropdown:hover .fleche_contenu_dropdown {
+    visibility: visible;
+    color : #FF7A42;
+    opacity: 1;    
+}

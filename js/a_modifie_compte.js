@@ -37,9 +37,7 @@ function request2(callback) {
         }
     };
 
-   
     var champ = 'button';
-   
     var email = encodeURIComponent(document.getElementById("email").value);
     var mdp = encodeURIComponent(document.getElementById("mdp").value);
     var cmdp = encodeURIComponent(document.getElementById("cmdp").value);
@@ -64,7 +62,6 @@ function readData(data,champ)
         document.getElementById("ok_"+champ).style.display = "none";
         document.getElementById("ko_"+champ).style.display = "inherit";
     }
-    
     if (champ === 'button')
     {
         //On vide les spans d'erreur qui se sont remplis pour l'erreur précedente
@@ -73,7 +70,29 @@ function readData(data,champ)
             vide_span_erreur('cmdp');
         
         //On affiche l'erreur au dessus du champ la contenant
-    
+        //alert(data); 
+        if (data === "modifT")
+        {
+            document.getElementById("erreur_modification").innerHTML = "connexion reussite";
+             document.getElementById("loader").style.display = "none";
+           document.location.href = "http://localhost/HayFranceCompany/pages/inscription_connexion.php";
+            //alert("modification faite ! "); 
+        } 
+        if (data === "modifF")
+        {
+           // alert("erreur modification ! "); 
+           document.getElementById("loader").style.display = "none";
+           document.getElementById("erreur_modification").innerHTML = "Erreur lors de la modification ";
+          
+        } if (data === "NonCo")
+        {
+           // alert("erreur modification ! "); 
+           document.getElementById("loader").style.display = "none";
+           document.getElementById("erreur_modification").innerHTML = "vous n'etes pas connecter , nous vous redirigeons";
+           document.getElementById("formulaire_modification_compte").style.display = "none";
+           //document.getElementById(" affichage_du_compte").style.display = "none";
+           document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
+        }
         if (data === "erreur_email")
             document.getElementById("erreur_email").innerHTML = "Veuillez saisir un email valide";
         if (data === "erreur_mdp")

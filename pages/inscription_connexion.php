@@ -1,7 +1,8 @@
 <?php
     //inclusion de la session et des objets
     include_once '../objet/session_objet.php';
-
+    $user = new Utilisateur($bdd);
+    demarreSession($user);
 ?>
 <html>
     <head>
@@ -16,7 +17,7 @@
           <?php       
             /*inclusion du formulaire de connexion*/
             include '../includes/i_connexion.php';
-            var_dump($user->donneInfos());
+            
            include '../includes/i_inscription.php';
             
             ?>

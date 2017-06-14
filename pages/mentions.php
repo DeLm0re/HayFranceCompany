@@ -1,6 +1,8 @@
 <?php
     //inclusion de la session et des objets
     include_once '../objet/session_objet.php';
+    $user = new Utilisateur($bdd);
+    demarreSession($user);
 ?>
 <!DOCTYPE html>
 <!--
@@ -12,7 +14,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
-    </head>
+    </head> 
     <body>
         <?php
         // put your code here

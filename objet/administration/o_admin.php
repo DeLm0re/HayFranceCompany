@@ -1,6 +1,5 @@
 <?php
 
-include_once '../o_utilisateur';
 
 class Admin extends Utilisateur
 {
@@ -11,10 +10,32 @@ class Admin extends Utilisateur
     
     public function ajouteProduit($nom, $description, $description_rapide, $prix_tonne)
     {
-        
+        $this->insertProduit($nom, $description, $description_rapide, $prix_tonne);
+        return $this->getBDD()->getLastInsertId();
     }
     
-    public function modifieProduit(Produit $produit, $nom, $description, $description_rapide, $prix_tonne)
+    public function ajouteImageProduit($id_produit, $id_image)
+    {
+        $this->insertImageProduit($id_produit, $id_image);
+    }
+    
+    public function supprimeImageProduit($id_produit)
+    {
+        $this->deleteImageProduit($id_produit);
+    }
+    
+    public function ajouteAnimalProduit($id_produit, $id_animal)
+    {
+        $this->insertAnimalProduit($id_produit, $id_animal);
+    }
+    
+    public function supprimeAnimalProduit($id_produit)
+    {
+        $this->deleteAnimalProduit($id_produit);
+    }
+    
+    public function modifieProduit(Produit $produit, $nom, $description, 
+            $description_rapide, $prix_tonne)
     {
         $this->updateProduit($produit->getInfos()['id_produit'], $nom, $description,
                 $description_rapide, $prix_tonne);
@@ -29,16 +50,59 @@ class Admin extends Utilisateur
     {
         
     }
+    
+    private function insertProduit($nom, $desc, $dera, $prix)
+    {
+        $this->bindRequete('INSERT INTO produit (nom_produit, description, '
+                . 'description_rapide, prix_tonne) '
+                . 'VALUES (?, ?, ?, ?)',
+                array(1 => $nom, 2 => $desc, 3 => $dera, 4 => $prix));
+    }
+    
+    private function insertImageProduit($idp, $idi)
+    {
+        $this->bindRequete('INSERT INTO produit_image '
+                . '(id_produit, id_image) '
+                . 'VALUES (?, ?)',
+                array(1 => $idp, 2 => $idi));
+    }
+    
+    private function deleteImageProduit($idp)
+    {
+        $this->bindRequete('DELETE FROM produit_image WHERE id_produit = ?',
+                array(1 => $idp));
+    }    
+    
+    private function deleteAnimalProduit($idp)
+    {
+        $this->bindRequete('DELETE FROM animal_produit WHERE id_produit = ?',
+                array(1 => $idp));
+    }
 
+    private function insertAnimalProduit($idp, $ida)
+    {
+        $this->bindRequete('INSERT INTO animal_produit '
+                . '(id_produit, id_animal) '
+                . 'VALUES (?, ?)',
+                array(1 => $idp, 2 => $ida));
+    }
+    
     private function updateProduit($id, $nom, $desc, $dera, $prix)
     {
-        $this->bindRequete('UPDATE produit SET nom_produit = ?, description = ?, '
-                . 'description_rapide = ?, $prix_tonne = ? WHERE id_produit = ?',
-                array( 1 => $nom, 2 => $desc, 3 => $dera, 4 => $prix, 5 => $id));
+        $this->bindRequete('UPDATE produit '
+                . 'SET nom_produit = ?, description = ?, '
+                . 'description_rapide = ? ,prix_tonne = ?, '
+                . 'WHERE id_produit = ?',
+                array( 1 => $nom, 2 => $desc, 3 => $dera, 4 => $prix, 
+                    5 => $id));
     }
     
     private function deleteProduit($id_produit)
     {
+        $this->bindRequete('DELETE FROM produit_image WHERE id_produit = ?',
+                array( 1 => $id_produit));
+        $this->bindRequete('DELETE FROM animal_produit WHERE id_produit = ?',
+                array( 1 => $id_produit));
         $this->bindRequete('DELETE FROM produit WHERE id_produit = ?',
                 array( 1 => $id_produit));
     }

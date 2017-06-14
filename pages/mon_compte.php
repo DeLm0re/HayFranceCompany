@@ -16,20 +16,24 @@
             <link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
     </head>
  
-      <body>
+    <body>
+        <div class="page">
+	<div class="bloc-principal">
            
-          <?php       
-             include '../includes/i_affichage_compte.php';
+        <?php       
+            include '../includes/i_affichage_compte.php';
             /*inclusion du formulaire de modification du compte*/
-            include '../includes/i_modifie_compte.php';
-             
-            ?>
+            include '../includes/i_modifie_compte.php';     
+        ?>
           
-          <!-- SCRIPTS POUR L'AJAX -->
+        <!-- SCRIPTS POUR L'AJAX -->
         <script src="../js/a_modifie_compte.js" type="text/javascript"></script>
         <script src="../js/oXHR.js" type="text/javascript"></script>
+        <div class="clear"></div>
+        </div><!-- fin bloc-principal -->
+	<?php
+            include '../includes/i_footer.php';
+        ?>
+        </div><!-- fin page -->
     </body>
-    <?php
-        //include '../includes/i_footer.php'
-    ?>
 </html>

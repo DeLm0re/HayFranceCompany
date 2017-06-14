@@ -16,7 +16,8 @@
 
 
     <body>
-        
+        <div class="page">
+	<div class="bloc-principal">
         <?php       
             /*inclusion de l'overlay*/
             include '../includes/i_overlay.php';
@@ -58,11 +59,12 @@
         <!-- SCRIPTS POUR L'overlay -->
         <script src="../js/overlay.js" type="text/javascript"></script>
         <script src="../js/polyfill.js" type="text/javascript"></script>
-        
+            
+        <div class="clear"></div>
+        </div><!-- fin bloc-principal -->
+            <?php
+                include '../includes/i_footer.php';
+            ?>
+        </div><!-- fin page -->
     </body>
-    
-    <?php
-        include '../includes/i_footer.php';
-    ?>
-
 </html>

@@ -70,7 +70,7 @@ function readData(data,champ)
             vide_span_erreur('cmdp');
         
         //On affiche l'erreur au dessus du champ la contenant
-        alert(data); 
+        //alert(data); 
         if (data === "modifT")
         {
             document.getElementById("erreur_modification").innerHTML = "connexion reussite";
@@ -80,10 +80,18 @@ function readData(data,champ)
         } 
         if (data === "modifF")
         {
-            alert("erreur modification ! "); 
+           // alert("erreur modification ! "); 
            document.getElementById("loader").style.display = "none";
-           document.getElementById("erreur_modification").innerHTML = "Erreur lors de la modification de l'un ou des champs remplis sont déja pris";
+           document.getElementById("erreur_modification").innerHTML = "Erreur lors de la modification ";
           
+        } if (data === "NonCo")
+        {
+           // alert("erreur modification ! "); 
+           document.getElementById("loader").style.display = "none";
+           document.getElementById("erreur_modification").innerHTML = "vous n'etes pas connecter , nous vous redirigeons";
+           document.getElementById("formulaire_modification_compte").style.display = "none";
+           //document.getElementById(" affichage_du_compte").style.display = "none";
+           document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
         }
         if (data === "erreur_email")
             document.getElementById("erreur_email").innerHTML = "Veuillez saisir un email valide";

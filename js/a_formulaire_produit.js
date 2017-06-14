@@ -33,7 +33,7 @@ function request2(callback) {
 
   
     var champ = 'button';
-    var Format 
+    var Format;
     
     var nbr_pallette = encodeURIComponent(document.getElementById("nbr_pallette").value);
     
@@ -51,7 +51,6 @@ function request2(callback) {
 
 function readData(data,champ)
 {
-    alert(data);
     if (data === "OK")
     {
         document.getElementById("ok_"+champ).style.display = "inherit";

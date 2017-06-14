@@ -1,6 +1,4 @@
 
-
-
 function request_connexion(callback,champ) {
     var xhr = getXMLHttpRequest();
 

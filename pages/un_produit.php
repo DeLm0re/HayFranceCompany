@@ -31,7 +31,7 @@ demarreSession($user);
         $liste = $user->consulteListeProduit();
         $id = intval($_GET['id_produit']);
         $produit = new Produit($bdd, $id);
-        $infos = $produit->infos();
+        $infos = $produit->infos();        
         $alt = $produit->getNomImages();
         ?>
         <div class="div_produit">
@@ -91,5 +91,8 @@ demarreSession($user);
             include '../includes/i_footer.php';
         ?>
         </div><!-- fin page -->
+        
+        <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+        <script src="../js/oXHR.js" type="text/javascript"></script>
     </body>
 </html>

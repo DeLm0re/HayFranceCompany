@@ -8,6 +8,16 @@ and open the template in the editor.
     Author     : rjacquiez
 */
 
+html, body{
+  min-height: 100%;
+}
+
+body{
+  position: relative;
+  background-image: url(../images/hayfrancecompany_fondpage.jpg);
+  background-repeat: repeat-y;
+}
+
 .erreur{
     font-family: 'Arial';
     font-weight: bold;

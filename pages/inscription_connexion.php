@@ -16,7 +16,8 @@
         <div class="page">
 	<div class="bloc-principal">
            
-        <?php       
+        <?php
+            include '../includes/i_navbar.php';
             /*inclusion du formulaire de connexion*/
             include '../includes/i_connexion.php';
             

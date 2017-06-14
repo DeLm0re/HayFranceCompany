@@ -96,6 +96,8 @@ function readData(data,champ)
             document.getElementById("erreur_adresse").innerHTML = "Votre adresse est invalide";
         if (data === "erreur_dpt")
             document.getElementById("erreur_adresse").innerHTML = "Numéro de département incorrect ou non désservi";
+        if (data === "inscription_valide")
+            window.location.reload(false);
     }
 }
 

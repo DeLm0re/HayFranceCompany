@@ -36,17 +36,26 @@ function creer_navbar_options_elevages($liste1,$liste2){
                 <img class="logo_navbar" src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"/>
             </div>
             <div class="div_info_navbar">
-                <p class="bonjour_navbar">
-                    Bonjour :
+                <p class="bonjour_navbar">Bonjour <span class="span_bonjour_navbar" onclick="window.location.href='http://localhost/HayFranceCompany/pages/mon_compte.php'">
+                    <?php
+                        $infos = $user->donneInfos();
+                        /* si l'utilisateur est connecté*/
+                            if(!empty($infos)){
+                                /* on recupére son nom et prenom */
+                                $nom = $infos['nom'];
+                                $prenom = $infos['prenom'];
+                                echo($nom.' '.$prenom);
+                            }
+                    ?>
+                    </span>
                 </p>
                 <div class="autre_navbar">
                     <span>Votre localisation : </span>
                     <span id="mon_departement">
                         <?php
                         /* si l'utilisateur est connecté*/
-                            if(!empty($user->donneInfos())){
+                            if(!empty($infos)){
                                 /* on recupére son departement */
-                                $infos = $user->donneInfos();
                                 $departement = $infos['departement'];
                                 $ville = $infos['ville'];
                                 echo($ville.' ('.$departement.')');

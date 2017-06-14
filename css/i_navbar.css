@@ -61,6 +61,14 @@ li{
     text-align: end;
 }
 
+.span_bonjour_navbar{
+    color: #f74a00;
+}
+
+.span_bonjour_navbar:hover{
+    cursor: pointer;
+}
+
 .autre_navbar{
     text-align: end;
 }

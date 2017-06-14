@@ -51,6 +51,10 @@ function request2(callback) {
 
 function readData(data,champ)
 {
+<<<<<<< HEAD
+=======
+    //alert(data);
+>>>>>>> refs/remotes/origin/master
     if (data === "OK")
     {
         document.getElementById("ok_"+champ).style.display = "inherit";

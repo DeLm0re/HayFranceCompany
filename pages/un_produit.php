@@ -91,8 +91,13 @@ demarreSession($user);
             include '../includes/i_footer.php';
         ?>
         </div><!-- fin page -->
+<<<<<<< HEAD
         
         <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
         <script src="../js/oXHR.js" type="text/javascript"></script>
+=======
+        <script src="../js/oXHR.js" type="text/javascript"></script>
+        <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+>>>>>>> refs/remotes/origin/master
     </body>
 </html>

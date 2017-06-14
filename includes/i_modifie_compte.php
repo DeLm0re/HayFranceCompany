@@ -19,6 +19,7 @@
  
 ?>
   <span id="erreur_modification" class="erreur"></span>
+   <span id="validation_modification" class="erreur"></span>
 <fieldset id="formulaire_modification_compte">
     <form>   
         <p>Compte modification<p>   

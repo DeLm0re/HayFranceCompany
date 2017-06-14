@@ -1,7 +1,8 @@
-<?php include_once '../objet/session_objet.php'; 
+<?php /*include_once '../objet/session_objet.php'; 
       include_once '../objet/administration/o_admin.php';
       $admin = new Admin($bdd) ; 
       demarreSession($admin);
+                 */
 ?>
 
 <?php 
@@ -97,9 +98,7 @@ if( !isset($_POST['titre'])) {?>
     $animal = [];
     //Recupère la liste de tous les animaux
     $tabAnimaux = recupListeAnimaux() ;
-    var_dump($tabAnimaux) ;
-    $chevre =  $_POST["chevre"] ;
-    echo" <br>  chèvre : $chevre <br>" ; 
+    
     //Pour chaque animal on test si sa valeur en _POST existe càd qu'il a été coché 
     
     foreach($tabAnimaux as $valueAnimal){
@@ -113,19 +112,16 @@ if( !isset($_POST['titre'])) {?>
         }
     }
     
-    echo"<br> vardump animal";
-    var_dump($animal) ; 
-    
-    echo"<br> getIdAnimal : "; 
-    echo getIdAnimal($animal['chevre']) ; 
-    echo"<br>" ; 
+   
 
      $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
 
      if( !isset($_GET['ID'])){
           echo"if ID est PAS set";
           var_dump($animal);
-        $stmt = $dbh->prepare('INSERT INTO produit(id_produit,nom_produit,description,description_rapide,prix_tonne) VALUES(?,?,?,?,?)');
+          //retoune la valeur de l'id produit qui vient d'être inséré
+          $admin->ajouteProduit($titre, $texte, $courteDesc, $prix) ; 
+       /* $stmt = $dbh->prepare('INSERT INTO produit(id_produit,nom_produit,description,description_rapide,prix_tonne) VALUES(?,?,?,?,?)');
                $stmt->bindValue(1, null);
                settype($titre, "string");
                $stmt->bindParam(2, $titre, PDO::PARAM_STR);
@@ -133,7 +129,8 @@ if( !isset($_POST['titre'])) {?>
                $stmt->bindParam(4, $courteDesc, PDO::PARAM_STR);
                $stmt->bindParam(5, $prix, PDO::PARAM_INT); 
           $stmt->execute();
-
+*/
+          
           foreach($animal as $valueAnimal )
           {
            $id_produit = getIdAnimal($valueAnimal) ; 
@@ -147,6 +144,7 @@ if( !isset($_POST['titre'])) {?>
      else if (isset($_GET['ID'])){
          echo"if ID est set";
         $id_produit = $_GET['ID'] ; 
+        //$admin->modifieProduit($produit, $nom, $description, $description_rapide, $prix_tonne);
         $stmt = $dbh->prepare('UPDATE produit SET nom_produit= :nom, description= :desc, description_rapide= :descRap, prix_tonne= :prix WHERE id_produit=' . $id_produit . '');
         $stmt->bindParam(':nom', $titre);
         $stmt->bindParam(':desc', $texte);
@@ -162,11 +160,14 @@ if( !isset($_POST['titre'])) {?>
           {
              echo"<br> for isset valeur animal $valueAnimal <br>";
              $id_animal = getIdAnimal($valueAnimal) ; 
-             echo"<br> for isset idAnimal $id_animal " ; 
-           $stmt = $dbh->prepare('INSERT INTO animal_produit(id_produit,id_animal) VALUES(?,?)');
+             echo"<br> for isset idAnimal $id_animal " ;
+           $admin->ajouteAnimalProduit($id_produit, $id_animal);
+          /* $stmt = $dbh->prepare('INSERT INTO animal_produit(id_produit,id_animal) VALUES(?,?)');
            $stmt->bindValue(1, $id_produit);          
            $stmt->bindParam(2, $id_animal, PDO::PARAM_STR);
            $stmt->execute();
+           
+           */
           }
      
      }

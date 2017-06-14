@@ -29,7 +29,7 @@
                 </div>
         
                 <div class="div_contenu">
-                    <p class="p_contenu"> Votre prenom : <?php echo$prenom; ?>  </p>
+                    <p class="p_contenu"> Votre prénom : <?php echo$prenom; ?>  </p>
                 </div>
                 
                 <div class="div_contenu">

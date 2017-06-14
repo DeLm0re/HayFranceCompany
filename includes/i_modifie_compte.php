@@ -7,11 +7,15 @@
  *
  * 
  */
+  include_once '../objet/session_objet.php';
+    $user = new Utilisateur($bdd);
+    demarreSession($user);
+    $info = $user->donneInfos();
 
- $email = $user->donneInfos()['email'];
- $ville =  $user->donneInfos()['ville'];
- $adresse  = $user->donneInfos()['adresse'];
- $departement = $user->donneInfos()['departement'];
+ $email = $info['email'];
+ $ville =  $info['ville'];
+ $adresse  = $info['adresse'];
+ $departement = $info['departement'];
  
 ?>
   <span id="erreur_modification" class="erreur"></span>
@@ -50,7 +54,7 @@
             <span id="ok_dpt" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_dpt" style="display: none;"><img src="../images/ko.png"/></span>
             
-        <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
+        <span id="loader" style="display: none;"><img id="img_loader" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
     <input id="button" type="button" value="Modifier" onclick="request2(readData);">
    

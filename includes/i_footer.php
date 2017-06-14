@@ -10,7 +10,7 @@
     <link href="../css/i_footer.css" rel="stylesheet" type="text/css"/>
     <div class="site-footer">
         <div class="up_footer">
-            <img class="logo_footer_hay" onclick="window.open('http://hayfrancecompany.com')" src="../images/LOGO-COULEUR-220X140-PX-footer.png" alt=""/>
+            <img class="logo_footer_hay" onclick="window.open('http://hayfrancecompany.com')" src="../images/hayfrancecompany_footer.png" alt=""/>
             <img class="logo_footer_facebook" onclick="window.open('https://www.facebook.com/hayfrancecompany/')" src="../images/facebook.png" alt=""/>
             <div id="pages_redirection">
                 <a class="up_footer_content" href="../pages/faq.php">FAQ</a>

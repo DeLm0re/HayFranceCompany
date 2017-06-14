@@ -3,12 +3,17 @@
     include_once '../objet/session_objet.php';
     $user = new Utilisateur($bdd);
     demarreSession($user);
+    
+    if (empty($user->donneInfos()))  
+    {
+        header('location:inscription_connexion.php');
+    }
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
-            <link href="../css/i_inscription.css" rel="stylesheet" type="text/css"/>
+            <link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
     </head>
  
     <body>

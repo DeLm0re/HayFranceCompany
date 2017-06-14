@@ -1,4 +1,4 @@
-<link href="../css/i_inscription.css" rel="stylesheet" type="text/css"/>
+<link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
 
   <span id="erreur_connexion" class="erreur"></span>
 <fieldset id="formulaire_connexion">
@@ -19,7 +19,7 @@
         
         
         
-        <span id="loader_connexion" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
+        <span id="loader_connexion" style="display: none;"><img id="img_loader" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
     <input id="button_connexion" type="button" value="Se connecter" onclick="request2_connexion(readData_connexion);">
 </fieldset>

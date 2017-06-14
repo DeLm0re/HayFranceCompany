@@ -14,6 +14,7 @@ html, body{
 
 body{
   position: relative;
+  background-image: url(../images/hayfrancecompany_fondpage.jpg);
 }
 
 /* Définition des fonts non-standard */
@@ -24,6 +25,7 @@ body{
 
 /* LA DIV QUI ENGLOBE L'ENSEMBLE DE LA PAGE HORS NAVBAR */
 .ensemble_produit{
+    background-color: white;
     padding-bottom: 50px;
     border-width: 1px;
     border-style: solid;
@@ -49,6 +51,7 @@ body{
 
 /* La div qui englobe le produit */
 .div_produit{
+    vertical-align: text-top;
     display: inline-block;
     margin: 0px 30px 0px 30px;
     margin-top: 40px;

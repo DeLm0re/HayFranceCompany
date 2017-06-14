@@ -1,4 +1,4 @@
-<link href="../css/i_inscription.css" rel="stylesheet" type="text/css"/>
+<link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
 
   <span id="erreur_connexion" class="erreur"></span>
 <fieldset id="formulaire_connexion">

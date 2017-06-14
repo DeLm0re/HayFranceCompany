@@ -64,6 +64,11 @@ li{
     margin-right: 6px;
 }
 
+/* Survol de la fleche devant chaque option du dropdown */
+.fleche_contenu_dropdown:hover{
+    cursor: pointer;
+}
+
 /* Contenu du dropdown (Hidden par default) */
 .contenu_dropdown {
     display: none;

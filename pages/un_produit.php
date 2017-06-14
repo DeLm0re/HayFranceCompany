@@ -56,12 +56,11 @@ demarreSession($user);
                         </span>
                     </div>
                     <div class="div_formulaire_produit">
-                        <form class="formulaire_produit">
                             <p>le formulairele formulairele formulairele formulairele formulaire
                                 le formulairele formulairele formulairele formulairele formulaire
                                 le formulairele formulairele formulairele formulairele formulaire
                                 le formulairele formulairele formulairele formulairele formulaire</p>
-                        </form>
+                        </fieldset>>
                     </div>
                 </div>
 

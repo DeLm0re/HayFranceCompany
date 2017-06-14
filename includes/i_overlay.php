@@ -1,4 +1,4 @@
-<link href="../css/overlay.css" rel="stylesheet" type="text/css"/>
+<link href="../css/i_overlay.css" rel="stylesheet" type="text/css"/>
 <link href="../css/carte_overlay.css" rel="stylesheet" type="text/css"/>
         
 <div id="overlay">

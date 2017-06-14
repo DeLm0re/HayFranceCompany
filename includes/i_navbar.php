@@ -31,7 +31,21 @@ function creer_navbar_options_elevages($liste1,$liste2){
 
 <nav class="navbar">
     <div class="div_navbar">
-        <ul class="ul_navbar">
+        <div class="div_dessus_navbar">
+            <div class="div_logo_navbar">
+                <img class="logo_navbar" src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"/>
+            </div>
+            <div class="div_info_navbar">
+                <p class="bonjour_navbar">
+                    Bonjour :
+                </p>
+                <div class="autre_navbar">
+                    <span>Votre département : </span>
+                    <span id="mon_departement"></span>
+                </div>
+            </div>
+        </div>
+        <div class="div_dessous_navbar">
             <div class="div_dropdown">
                 <button class="button_dropdown" onclick="window.location.href='http://localhost/HayFranceCompany/pages/tout_produit.php'">TOUS LES PRODUITS<i class="fleche_dropdown_produits">&#9660;</i></button>
                 <div class="contenu_dropdown">
@@ -57,6 +71,6 @@ function creer_navbar_options_elevages($liste1,$liste2){
             <div class="div_dropdown">
                 <button class="button_dropdown">MON PANIER</button>
             </div>
-        </ul>
+        </div>
     </div>
 </nav>

@@ -94,11 +94,10 @@ abstract class RequeteUtilisateur extends Hydratable
     
     private function initialisePanier($id_utilisateur, $nb_departement)
     {
-        $param = array( 1 => 0, 2 => 0, 3 => 0, 4 => $id_utilisateur, 
-            5 => $nb_departement);
-        $this->bindRequete("INSERT INTO panier (prix_panier, format_produit, "
-                . "nb_palette, id_utilisateur, id_prix_transport) "
-                . "VALUES (?,?,?,?,?)", $param);
+        $param = array( 1 => 0, 2 => $id_utilisateur, 3 => $nb_departement);
+        $this->bindRequete("INSERT INTO panier (prix_panier, "
+                . "id_utilisateur, id_prix_transport) "
+                . "VALUES (?,?,?)", $param);
         return $this->getBDD()->getLastInsertId();
     }
         

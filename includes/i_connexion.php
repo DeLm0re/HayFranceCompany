@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-<span id="erreur_connexion" class="erreur"></span>
-=======
-<link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
-
   <span id="erreur_connexion" class="erreur"></span>
   <span id="validation_connexion" class="erreur"></span>
->>>>>>> refs/remotes/origin/master
 <fieldset id="formulaire_connexion">
     <form>
         <p>Connexion<p> 

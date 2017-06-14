@@ -74,7 +74,7 @@ function readData_connexion(data,champ)
             document.getElementById("loader_connexion").style.display = "none";
             document.getElementById("formulaire_connexion").style.display = "none";
             document.getElementById("validation_modification").innerHTML = "Connexion reussite";            
-             document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
+            document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
 
         } if (data === "connexionF")
         {

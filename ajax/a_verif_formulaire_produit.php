@@ -13,12 +13,12 @@ $departement = intval($info['departement']);
 
 
 //  var_dump($user);
-
+/*
 $produit = new Produit($bdd, $id);
 $infos = $produit->infos();
 $prix = $infos['prix_tonne'];
 var_dump($prix); 
-
+*/
 
 
 /* ---------------------------------------------------------------------------------- */

@@ -91,7 +91,7 @@ function readData(data,champ)
            document.getElementById("erreur_modification").innerHTML = "vous n'etes pas connecter , nous vous redirigeons";
            document.getElementById("formulaire_modification_compte").style.display = "none";
            //document.getElementById(" affichage_du_compte").style.display = "none";
-           document.location.href = "http://localhost/Hayfrance/pages/tout_produit.php";
+           document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
         }
         if (data === "erreur_email")
             document.getElementById("erreur_email").innerHTML = "Veuillez saisir un email valide";

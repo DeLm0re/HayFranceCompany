@@ -19,9 +19,19 @@ class Admin extends Utilisateur
         $this->insertImageProduit($id_produit, $id_image);
     }
     
+    public function supprimeImageProduit($id_produit)
+    {
+        $this->deleteImageProduit($id_produit);
+    }
+    
     public function ajouteAnimalProduit($id_produit, $id_animal)
     {
         $this->insertAnimalProduit($id_produit, $id_animal);
+    }
+    
+    public function supprimeAnimalProduit($id_produit)
+    {
+        $this->deleteAnimalProduit($id_produit);
     }
     
     public function modifieProduit(Produit $produit, $nom, $description, 
@@ -57,6 +67,18 @@ class Admin extends Utilisateur
                 array(1 => $idp, 2 => $idi));
     }
     
+    private function deleteImageProduit($idp)
+    {
+        $this->bindRequete('DELETE FROM produit_image WHERE id_produit = ?',
+                array(1 => $idp));
+    }    
+    
+    private function deleteAnimalProduit($idp)
+    {
+        $this->bindRequete('DELETE FROM animal_produit WHERE id_produit = ?',
+                array(1 => $idp));
+    }
+
     private function insertAnimalProduit($idp, $ida)
     {
         $this->bindRequete('INSERT INTO animal_produit '
@@ -64,7 +86,7 @@ class Admin extends Utilisateur
                 . 'VALUES (?, ?)',
                 array(1 => $idp, 2 => $ida));
     }
-
+    
     private function updateProduit($id, $nom, $desc, $dera, $prix)
     {
         $this->bindRequete('UPDATE produit '

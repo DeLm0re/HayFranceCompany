@@ -6,7 +6,7 @@
     
     if (empty($user->donneInfos()))  
     {
-        header('location:tout_produit.php');
+        header('location:inscription_connexion.php');
     }
 ?>
 <html>

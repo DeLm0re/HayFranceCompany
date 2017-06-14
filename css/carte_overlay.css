@@ -8,26 +8,46 @@ and open the template in the editor.
     Author     : rjacquiez
 */
 
-.map {
+@font-face {
+	font-family: "Roboto";
+	src: url('../polices/Roboto-Regular.ttf');
+}
+
+.div_overlay {
     overflow: hidden;
-    border-width: medium;
-    border-radius: 2%;
-    background-color: white;
+    border : solid 1px #EAEAEA;
+    background-color: #F9F9F9;
     margin: auto;
-    margin-top: 50px;
-    width: 33%;
-    height: 84%;
-}
-
-.map__image{
-    width: 97%;
-    height: 82%;
     margin-top: 10px;
-    position: relative;
+    width: 500px;
+    height: 615px;
+    text-align: center;
+    font-family: "Roboto";
 }
 
-.map__image path{
-    fill: #CCCCCC;
+.texte_overlay{
+    color: #969696;
+}
+
+.div_titre_overlay{
+    margin-top: 5px;
+}
+
+.titre_overlay{
+    letter-spacing: 2px;
+    font-size: 175%;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.div_svg{
+    margin-bottom: 10px;
+    width: 75%;
+    display: inline-block;
+}
+
+.svg path{
+    fill: #B7D4BE;
     fill-opacity: 1;
     stroke:white;
     stroke-opacity: 1;
@@ -35,12 +55,55 @@ and open the template in the editor.
     transition: fill 0.3s;
 }
 
-.map__image path:hover{
-    fill: grey;
+.svg path:hover{
+    fill: #f74a00;
 }
 
-.map__select {
+.div_bas_overlay{
+    margin-top: 10px;
+}
+
+.div_select_overlay{
     display: block;
     text-align: center;
     margin: auto;
+}
+
+#validation_overlay{
+    margin: 8px 0 0 0;
+}
+
+#span_validation_overlay{
+    color: #969696;
+}
+
+#select_overlay{
+    background-color: #CCCCCC;
+    font-family: "Roboto";
+    border: solid 1px #f74a00;
+    padding: 3px;
+    
+}
+
+#select_overlay:hover{
+    color: #888787;
+    transition: .3s color;
+}
+
+.option_overlay{
+    background-color: #EAEAEA;
+    color: black;
+}
+
+.option_overlay:hover{
+    background-color: #EAEAEA;
+    color: black;
+}
+
+.button_overlay{
+    margin: 5px 0 5px 0;
+    background-color: #CCCCCC;
+    font-family: "Roboto";
+    border: solid 1px #f74a00;
+    padding: 3px;
 }

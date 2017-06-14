@@ -6,7 +6,7 @@
     
     if (empty($user->donneInfos()))  
     {
-        header('Location: tout_produit.php');
+        header('location:tout_produit.php');
     }
 ?>
 <html>

@@ -52,7 +52,7 @@ function creer_navbar_options_elevages($liste1,$liste2){
                 </div>
             </div>
             <div class="div_dropdown">
-                <button class="button_dropdown" onclick="window.location.href='http://localhost/HayFranceCompany/pages/MonCompte.php'">MON COMPTE</button>
+                <button class="button_dropdown" onclick="window.location.href='http://localhost/HayFranceCompany/pages/monCompte.php'">MON COMPTE</button>
             </div>
             <div class="div_dropdown">
                 <button class="button_dropdown">MON PANIER</button>

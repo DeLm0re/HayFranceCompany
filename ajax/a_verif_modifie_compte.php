@@ -4,6 +4,8 @@ include_once '../objet/session_objet.php';
 $user = new Utilisateur($bdd);
 demarreSession($user);
 
+
+
 /* ---------------------------------------------------------------------------------- */
 
 /* Si on effectue l'ajax sur un champ(input) d'id 'email' on rentre dans le if */
@@ -49,9 +51,10 @@ if ($_GET['champ'] == 'dpt') {
 /* Si on valide le formulaire une série de test est effectuée */
 if (($_GET['champ'] == 'button')) {
     
-   
-    if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
-        /**ENVOIE MAIL*/
+   if (empty($user->donneInfos()))  
+    {
+        echo "NonCo";
+    }else if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
         echo "erreur_email";
     } else if (( isset($_GET['mdp']) AND empty($_GET['mdp']) ) || ((strlen($_GET['mdp'])) > 50)) {
         echo "erreur_mdp";

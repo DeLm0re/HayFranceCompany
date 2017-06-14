@@ -15,43 +15,39 @@
     
 ?> 
 
-<fieldset id="affichage du compte">
+<fieldset id="affichage_du_compte">
     <form>
         <p class="titre">Votre compte <p> 
             <!-- affichage du compte client -->
             
             <div class="div_contenu">
-                    <p class="p_contenu"> votre civilite : <?php echo$civ; ?>  </p>
+                    <p class="p_contenu"> Votre civilite : <?php echo$civ; ?>  </p>
                 </div>
                 
                 <div class="div_contenu">
-                    <p class="p_contenu"> votre nom : <?php echo$nom; ?>  </p>
+                    <p class="p_contenu"> Votre nom : <?php echo$nom; ?>  </p>
                 </div>
         
                 <div class="div_contenu">
-                    <p class="p_contenu"> votre prenom : <?php echo$prenom; ?>  </p>
+                    <p class="p_contenu"> Votre prenom : <?php echo$prenom; ?>  </p>
                 </div>
                 
                 <div class="div_contenu">
-                    <p class="p_contenu"> votre email : <?php echo$email; ?>  </p>
+                    <p class="p_contenu"> Votre email : <?php echo$email; ?>  </p>
                 </div>
         
                 <div class="div_contenu">
-                    <p class="p_contenu"> votre ville : <?php echo$ville; ?>  </p>
+                    <p class="p_contenu"> Votre ville : <?php echo$ville; ?>  </p>
                 </div>
         
                 <div class="div_contenu">
-                    <p class="p_contenu"> votre adresse : <?php echo$adresse; ?>  </p>
+                    <p class="p_contenu"> Votre adresse : <?php echo$adresse; ?>  </p>
                 </div>
         
                  <div class="div_contenu">
-                    <p class="p_contenu"> votre département : <?php echo$departement; ?>  </p>
-                </div>
-		
-        
-            
-          
-    
+                    <p class="p_contenu"> Votre département : <?php echo$departement; ?>  </p>
+                </div>    
+
 </fieldset>
 
 

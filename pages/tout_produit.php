@@ -19,7 +19,7 @@
         
         <?php       
             /*inclusion de l'overlay*/
-            include '../includes/i_overlay.php';
+            //include '../includes/i_overlay.php';
             
             /*inclusion de la navbar */
             include '../includes/i_navbar.php';
@@ -43,8 +43,16 @@
         
             /*je recupére tous les articles */
             $listeProduits = $user -> consulteListeProduit();
-            /*j'affiche*/
-            creer_section_article($listeProduits);
+            
+            /*si on a choisi un animal en particulier */
+            if (isset($_GET['id_animal']) === true){
+                $id_animal = $_GET['id_animal'];
+            }else{
+                $id_animal = null;
+            }
+            
+            /* et j'affiche en fonction de l'animal */
+            creer_section_article($listeProduits,$id_animal);
         ?>
             </div>
         </div>
@@ -61,7 +69,7 @@
     </body>
     
     <?php
-        include '../includes/i_footer.php'
+        include '../includes/i_footer.php';
     ?>
 
 </html>

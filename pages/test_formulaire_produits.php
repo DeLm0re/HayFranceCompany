@@ -19,7 +19,7 @@
            
           <?php       
           
-             include '../includes/i_formulaire_produit.php';
+              include '../includes/i_formulaire_produit.php';
          
              
             ?>

@@ -7,11 +7,15 @@
  *
  * 
  */
+  include_once '../objet/session_objet.php';
+    $user = new Utilisateur($bdd);
+    demarreSession($user);
+    $info = $user->donneInfos();
 
- $email = $user->donneInfos()['email'];
- $ville =  $user->donneInfos()['ville'];
- $adresse  = $user->donneInfos()['adresse'];
- $departement = $user->donneInfos()['departement'];
+ $email = $info['email'];
+ $ville =  $info['ville'];
+ $adresse  = $info['adresse'];
+ $departement = $info['departement'];
  
 ?>
   <span id="erreur_modification" class="erreur"></span>

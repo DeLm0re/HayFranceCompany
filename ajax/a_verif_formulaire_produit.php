@@ -8,13 +8,16 @@ demarreSession($user);
 $info = $user->donneInfos();
 $departement = intval($info['departement']);
 // on recupere le prix du transport
-$prix = new PrixTransport($bdd, $departement);
-$prix_transport = $prix->infos();
+
 // on recupere le prix du produits
 
 
 //  var_dump($user);
 
+$produit = new Produit($bdd, $id);
+$infos = $produit->infos();
+$prix = $infos['prix_tonne'];
+var_dump($prix); 
 
 
 
@@ -42,13 +45,18 @@ if (($_GET['champ'] == 'button')) {
     } else if (( isset($_GET['Format']) AND empty($_GET['Format']))) {
         echo "erreur_Format";
     } else {
-      $result = $user->ajouteProduitPanier($_GET['id_produit'], $_GET['Format'],$_GET['nbr_pallette']);
+        
+      $result = $user->ajouteProduitPanier($prix, $_GET['Format'],$_GET['nbr_pallette']);
+       echo "ajoutT";
+       /*
        if($result === TRUE)
        {
            echo "ajoutT";
        }else{
             echo "ajoutF";
        }
+       
+        */
     }
 }
 

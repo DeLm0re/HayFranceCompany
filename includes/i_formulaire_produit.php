@@ -10,6 +10,7 @@ $produit = new Produit($bdd, $id);
 $infos = $produit->infos();
 $prix = $infos['prix_tonne'];
 var_dump($prix); 
+
 ?>
 
 <form class="formulaire_produit">

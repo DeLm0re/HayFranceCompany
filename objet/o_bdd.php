@@ -28,7 +28,7 @@ class BDD
     {
         try 
         {
-            $pdo = new PDO('mysql:host=localhost;dbname=hayfrance', 'root', 'LRRH4H');
+            $pdo = new PDO('mysql:host=localhost;dbname=hayfrance', 'root', '');
         } 
         catch (PDOExeption $e)
         {

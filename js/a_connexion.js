@@ -1,6 +1,4 @@
 
-
-
 function request_connexion(callback,champ) {
     var xhr = getXMLHttpRequest();
 
@@ -75,8 +73,8 @@ function readData_connexion(data,champ)
            // alert("connecter!!"); 
             document.getElementById("loader_connexion").style.display = "none";
             document.getElementById("formulaire_connexion").style.display = "none";
-            document.getElementById("validation_modification").innerHTML = "Connexion reussite";            
-             document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
+            document.getElementById("validation_connexion").innerHTML = "Connexion reussite";            
+            document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
 
         } if (data === "connexionF")
         {

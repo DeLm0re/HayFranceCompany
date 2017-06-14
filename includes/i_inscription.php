@@ -2,8 +2,6 @@
  - spellcheck="false", permet d'indiquer au navigateur de ne pas appliquer une vérification orthographique dans les champs
  - checked="true", permet de cocher l'imput radio spécifié par défault (ici M.)
 -->
-<link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
-
 <fieldset id="formulaire_inscription">
     <form>
         <p>Inscription<p> 
@@ -44,7 +42,7 @@
             <span id="ko_ville" style="display: none;"><img src="../images/ko.png"/></span>
             
         <span id="erreur_adresse" class="erreur"></span>
-        <p">Votre adresse : <textarea id="adresse" rows=3 cols=40 onchange="request(readData,'adresse');"></textarea></p>
+        <p>Votre adresse : <textarea id="adresse" rows=3 cols=40 onchange="request(readData,'adresse');"></textarea></p>
             <span id="ok_adresse" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_adresse" style="display: none;"><img src="../images/ko.png"/></span>
             

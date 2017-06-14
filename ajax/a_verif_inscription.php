@@ -78,5 +78,6 @@ if (($_GET['champ'] == 'button')) {
     }else{
         $user->inscrit($_GET['nom'],$_GET['prenom'],$_GET['civ'],$_GET['email'],
                 $_GET['mdp'],$_GET['ville'],$_GET['adresse'],$_GET['dpt']);
+        echo "inscription_valide";
     }
 }

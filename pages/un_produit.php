@@ -1,8 +1,8 @@
 <?php
-    //inclusion de la session et des objets
-    include_once '../objet/session_objet.php';
-    $user = new Utilisateur($bdd);
-    demarreSession($user);
+//inclusion de la session et des objets
+include_once '../objet/session_objet.php';
+$user = new Utilisateur($bdd);
+demarreSession($user);
 ?>
 
 <html>
@@ -18,45 +18,70 @@
 
 
         <?php
-            /* inclusion de la navbar */
-            include '../includes/i_navbar.php';
+        /* inclusion de la navbar */
+        include '../includes/i_navbar.php';
         ?>
 
         <?php
-            if (isset($_GET['id_produit']) === false){
-                header('location:http://localhost/HayFranceCompany/pages/tout_produit.php');
-                exit();
-            }
-            
-            $liste = $user->consulteListeProduit();
-            $id = intval($_GET['id_produit']);
-            $i = 0;
-            while ($liste[$i]->appartientCategorie($id) !== true){
-                $i++;
-            }
-            $produit = $liste[$i];
-            $infos = $produit->infos();
-            $alt = $produit->getNomImages();
+        if (isset($_GET['id_produit']) === false) {
+            header('location:http://localhost/HayFranceCompany/pages/tout_produit.php');
+            exit();
+        }
+
+        $liste = $user->consulteListeProduit();
+        $id = intval($_GET['id_produit']);
+        $produit = new Produit($bdd, $id);
+        $infos = $produit->infos();
+        $alt = $produit->getNomImages();
         ?>
         <div class="div_produit">
-            <div class="div_nom_produit">
-                <p class="nom_produit">
+
+            <div class="div_g_d_produit">
+
+                <div class="div_gauche_produit">
+                    <img class="image_produit" 
                     <?php
-                        echo($infos['nom_produit']);
+                    echo " src=\"../images/foin2.png\"";
+                    echo " alt=\"" . $alt[0] . "\"";
                     ?>
-                </p>
+                         />
+                </div>
+
+                <div class="div_droite_produit">
+                    <div class="div_nom_produit">
+                        <span class="nom_produit">
+                            <?php
+                            echo($infos['nom_produit']);
+                            ?>
+                        </span>
+                    </div>
+                    <div class="div_formulaire_produit">
+                        <form class="formulaire_produit">
+                            <p>le formulairele formulairele formulairele formulairele formulaire
+                                le formulairele formulairele formulairele formulairele formulaire
+                                le formulairele formulairele formulairele formulairele formulaire
+                                le formulairele formulairele formulairele formulairele formulaire</p>
+                        </form>
+                    </div>
+                </div>
+
             </div>
-            <div class="div_image_produit">
-                <img class="image_produit" 
-                     <?php
-                     echo " src=\"../image/foin2.png\"";
-                     echo " alt=\"".$alt[0]."\"";
-                     ?>
-                />
+            
+            <div class="contener_description_produit">
+                <div class="div_description">
+                    <span class="description">
+                        Description
+                    </span>
+                </div>
+                <div class="div_description_produit"
+                    <p class="description_produit">
+                        <?php
+                            echo($infos['description']);
+                        ?>
+                    </p>
+                </div>
             </div>
-            <div class="div_description_produit">
-                <p class="description_produit"><?php$infos['description']?></p>
-            </div>
+            
         </div>
 
         <div class="clear"></div>

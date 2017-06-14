@@ -17,3 +17,7 @@ and open the template in the editor.
 fieldset{
     background-color: white;
 }
+
+#img_loader{
+    width: 5%;
+}

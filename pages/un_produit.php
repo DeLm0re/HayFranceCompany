@@ -13,6 +13,9 @@ demarreSession($user);
     </head>
 
     <body>
+        <div class="page">
+	<div class="bloc-principal">
+
 
         <?php
         /* inclusion de la navbar */
@@ -81,10 +84,11 @@ demarreSession($user);
             
         </div>
 
+        <div class="clear"></div>
+	</div><!-- fin bloc-principal -->
+	<?php
+            include '../includes/i_footer.php';
+        ?>
+        </div><!-- fin page -->
     </body>
-
-    <?php
-    include '../includes/i_footer.php';
-    ?>
-
 </html>

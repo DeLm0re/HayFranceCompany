@@ -12,22 +12,27 @@
            
     </head>
  
-      <body>
+    <body>
+        <div class="page">
+	<div class="bloc-principal">
            
-          <?php       
+        <?php       
             /*inclusion du formulaire de connexion*/
             include '../includes/i_connexion.php';
             
-           include '../includes/i_inscription.php';
-            
-            ?>
+            include '../includes/i_inscription.php';    
+        ?>
           
-          <!-- SCRIPTS POUR L'AJAX -->
-          <script src="../js/a_connexion.js" type="text/javascript"></script>
-          <script src="../js/a_inscription.js" type="text/javascript"></script> 
+        <!-- SCRIPTS POUR L'AJAX -->
+        <script src="../js/a_connexion.js" type="text/javascript"></script>
+        <script src="../js/a_inscription.js" type="text/javascript"></script> 
         <script src="../js/oXHR.js" type="text/javascript"></script>
+    
+        <div class="clear"></div>
+	</div><!-- fin bloc-principal -->
+	<?php
+            include '../includes/i_footer.php';
+        ?>
+        </div><!-- fin page -->
     </body>
-    <?php
-        //include '../includes/i_footer.php'
-    ?>
 </html>

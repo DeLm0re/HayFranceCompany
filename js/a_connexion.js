@@ -75,14 +75,14 @@ function readData_connexion(data,champ)
            // alert("connecter!!"); 
             document.getElementById("loader_connexion").style.display = "none";
             document.getElementById("formulaire_connexion").style.display = "none";
-            document.getElementById("erreur_connexion").innerHTML = "connexion reussite";            
+            document.getElementById("erreur_connexion").innerHTML = "Connexion reussite";            
              document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
 
         } if (data === "connexionF")
         {
             //alert("erreur de connection"); 
             document.getElementById("loader_connexion").style.display = "none";
-            document.getElementById("erreur_connexion").innerHTML = "Erreur lors de la connexion , l'un des champs n'est pas valide";
+            document.getElementById("erreur_connexion").innerHTML = "Aucun utilisateur trouvé ";
             
         }
         

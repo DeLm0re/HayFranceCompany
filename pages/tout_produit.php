@@ -16,22 +16,16 @@
 
 
     <body>
-        
+        <div class="page">
+	<div class="bloc-principal">
         <?php       
             /*inclusion de l'overlay*/
-            //include '../includes/i_overlay.php';
+            include '../includes/i_overlay.php';
             
             /*inclusion de la navbar */
             include '../includes/i_navbar.php';
-            
-            /*inclusion du formulaire d'inscription*/
-            include '../includes/i_connexion.php';
         ?>
-
-        <span>Votre département : </span>
-        <span id="mon_departement"></span></br>
-        <a href="carte.php">carte</a>
-        
+       
         <div class="ensemble_produit">
             <p class="titre_ensemble_produit">
                 TOUS NOS PRODUITS
@@ -65,11 +59,12 @@
         <!-- SCRIPTS POUR L'overlay -->
         <script src="../js/overlay.js" type="text/javascript"></script>
         <script src="../js/polyfill.js" type="text/javascript"></script>
-        
+            
+        <div class="clear"></div>
+        </div><!-- fin bloc-principal -->
+            <?php
+                include '../includes/i_footer.php';
+            ?>
+        </div><!-- fin page -->
     </body>
-    
-    <?php
-        include '../includes/i_footer.php';
-    ?>
-
 </html>

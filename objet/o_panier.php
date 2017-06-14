@@ -14,40 +14,61 @@ abstract class RequetePanier extends Hydratable
     public function hydrate()
     {
         $id = intval($this->id_utilisateur);
-        $resultat = $this->exeRequete("SELECT * FROM panier "
-                . "WHERE id_utilisateur = $id");
+        $resultat = $this->bindRequete('SELECT * FROM panier '
+                . 'WHERE id_utilisateur = ?',
+                array(1 => $id));
         parent::hydrateInfos($resultat);
     }
     
-    protected function updateDepartement($id_panier, $nb_departement)
+    protected function updateDepartement($idpa, $nbde)
     {
-        $this->exeRequete("UPDATE panier "
-                . "SET id_prix_transport = $nb_departement "
-                . "WHERE id_panier = $id_panier");
+        $this->bindRequete('UPDATE panier SET id_prix_transport = ? '
+                . 'WHERE id_panier = ?',
+                array(1 => $nbde, 2 => $idpa));
     }
     
-    protected function insertPanierProduit($id_panier, $id_produit)
+    protected function insertPanierProduit($idpa, $idpr, $form, $nbpa)
     {
-        $this->exeRequete("INSERT INTO panier_produit (id_panier, id_produit) "
-                . "VALUES ($id_panier, $id_produit)");
+        $this->bindRequete('INSERT INTO panier_produit (id_panier, id_produit, '
+                . 'format, nb_palette) '
+                . 'VALUES (?, ?, ?, ?)',
+                array(1 => $idpa, 2 => $idpr, 3 => $form, 4 => $nbpa));
     }
     
-    protected function deletePanierProduit($id_panier, $id_produit)
+    protected function deletePanierProduit($idpa, $idpr)
     {
-        $this->exeRequete("DELETE FROM panier_produit "
-                . "WHERE id_panier = $id_panier AND id_produit = $id_produit");
+        $this->bindRequete('DELETE FROM panier_produit '
+                . 'WHERE id_panier = ? AND id_produit = ?',
+                array(1 => $idpa, 2 => $idpr));
     }
     
-    protected function videPanierProduit($id_panier)
+    protected function videPanierProduit($idpa)
     {
-        $this->exeRequete("DELETE FROM panier_produit "
-                . "WHERE id_panier = $id_panier");
+        $this->bindRequete('DELETE FROM panier_produit WHERE id_panier = ?',
+                array(1 => $idpa));
     }
     
-    protected function selectPanierProduit($id_panier)
+    protected function selectPanierProduit($idpa)
     {
-        $resultat = $this->exeRequete("SELECT * FROM panier_produit "
-                . "WHERE id_panier = $id_panier");
+        $resultat = $this->bindRequete('SELECT id_produit FROM panier_produit '
+                . 'WHERE id_panier = ?',
+                array(1 => $idpa));
+        return $resultat;
+    }
+    
+    protected function selectFormatProduit($idpa, $idpr)
+    {
+        $resultat = $this->bindRequete('SELECT format FROM panier_produit '
+                . 'WHERE id_panier = ? AND id_produit = ?',
+                array(1 => $idpa, 2 => $idpr));
+        return $resultat;
+    }
+    
+    protected function selectQuantiteProduit($idpa, $idpr)
+    {
+        $resultat = $this->bindRequete('SELECT nb_palette FROM panier_produit '
+                . 'WHERE id_panier = ? AND id_produit = ?',
+                array(1 => $idpa, 2 => $idpr));
         return $resultat;
     }
 }
@@ -84,12 +105,40 @@ class Panier extends RequetePanier
         return $tab_produits;
     }
     
-    public function ajouteProduit(Produit $produit)
+    public function donneFormatProduit(Produit $produit)
+    {
+        $this->hydrate();
+        $format = NULL;
+        $id_produit = $produit->getInfos()['id_produit'];
+        $id_panier = $this->getInfos()['id_panier'];
+        $resultat = parent::selectFormatProduit($id_panier, $id_produit);
+        foreach ($resultat as $ligne) 
+        {
+                $format = $ligne['format'];
+        }
+        return $format;
+    }
+    
+    public function donneQuantiteProduit(Produit $produit)
+    {
+        $this->hydrate();
+        $quantite = NULL;
+        $id_produit = $produit->getInfos()['id_produit'];
+        $id_panier = $this->getInfos()['id_panier'];
+        $resultat = parent::selectQuantiteProduit($id_panier, $id_produit);
+        foreach ($resultat as $ligne) 
+        {
+            $quantite = $ligne['nb_palette'];
+        }
+        return $quantite;
+    }
+    
+    public function ajouteProduit(Produit $produit, $format, $nb_palette)
     {
         $this->hydrate();
         $id_panier = $this->getInfos()['id_panier'];
         $id_produit = $produit->getInfos()['id_produit'];
-        parent::insertPanierProduit($id_panier, $id_produit);
+        parent::insertPanierProduit($id_panier, $id_produit, $format, $nb_palette);
     }
     
     public function retireProduit(Produit $produit)

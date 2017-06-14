@@ -22,9 +22,10 @@ abstract class RequeteUtilisateur extends Hydratable
     public function hydrate() 
     {
         $id = intval($this->id_utilisateur);
-        $resultat = $this->exeRequete("SELECT id_utilisateur, nom, prenom, "
-                . "civilite, email, ville, adresse, departement, id_panier "
-                . "FROM utilisateur WHERE id_utilisateur = $id");
+        $resultat = $this->bindRequete('SELECT id_utilisateur, nom, prenom, '
+                . 'civilite, email, ville, adresse, departement, id_panier '
+                . 'FROM utilisateur WHERE id_utilisateur = ?',
+                array(1 => $id));
         parent::hydrateInfos($resultat);
     }
     
@@ -182,9 +183,9 @@ class Utilisateur extends RequeteUtilisateur
         $this->hydrate();
     }
 
-    public function ajouteProduitPanier(Produit $produit)
+    public function ajouteProduitPanier(Produit $produit, $format, $nb_palette)
     {
-        $this->getPanier()->ajouteProduit($produit);
+        $this->getPanier()->ajouteProduit($produit, $format, $nb_palette);
     }
     
     public function retireProduitPanier(Produit $produit)
@@ -200,6 +201,16 @@ class Utilisateur extends RequeteUtilisateur
     public function donneContenuPanier()
     {
         return $this->getPanier()->donneContenu();
+    }
+    
+    public function donneQuantiteProduit(Produit $produit)
+    {
+        return $this->getPanier()->donneQuantiteProduit($produit);
+    }
+    
+    public function donneFormatProduit(Produit $produit)
+    {
+        return $this->getPanier()->donneFormatProduit($produit);
     }
     
     public function consulteListeProduit($categorie = NULL)

@@ -13,8 +13,9 @@ abstract class RequetePrixTransport extends Hydratable
     public function hydrate()
     {
         $nb = intval($this->nb_departement);
-        $resultat = $this->exeRequete("SELECT * FROM prix_transport "
-                . "WHERE id_prix_transport = $nb");
+        $resultat = $this->bindRequete('SELECT * FROM prix_transport '
+                . 'WHERE id_prix_transport = ?',
+                array(1 => $nb));
         parent::hydrateInfos($resultat);   
     }
 }

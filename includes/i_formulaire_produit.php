@@ -1,4 +1,5 @@
 <?php
+/*
   include_once '../objet/session_objet.php';
     $user = new Utilisateur($bdd);
     demarreSession($user);
@@ -7,8 +8,7 @@
     $prix_transport = new PrixTransport($bdd,$departement);
     $prix_transport->infos(); 
   //  var_dump($user);
-    var_dump($prix_transport->infos());
-    
+  */  
 ?>
 
 
@@ -20,23 +20,21 @@
         
       
         <span id="erreur_nbr_pallette" class="erreur"></span>
-        <p>Nombre de palette : <input id="nbr_pallette" type="number" name="nbr_pallette" min="1" max="8" spellcheck="false" onchange="request_connexion(readData_connexion,'enbr_pallette');"></p>
-            <span id="ok_email_connexion" style="display: none;"><img src="../images/ok.png"/></span>
-            <span id="ko_email_connexion" style="display: none;"><img src="../images/ko.png"/></span>
+        <p>Nombre de palette : <input id="nbr_pallette" type="number"  min="1" max="8"  onchange="request(readData,'nbr_pallette');"></p>
+        <span id="ok_nbr_pallette" style="display: none;"><img src="../images/ok.png"/></span>
+        <span id="ko_nbr_pallette" style="display: none;"><img src="../images/ko.png"/></span>
+          
         
-        <span id="erreur_Format" class="erreur"></span>
-        <p>Format : <select id="Format"  onchange="request_connexion(readData_connexion,'Format');">
-        <option value="22">CHC 22kg</option>
-        <option value="32">CHC 32kg</option>
-        </select>
+        <p> balle CHC : <input id="Format22" type="radio" name="Format" value="22" checked="true">
+        <label for="Format22">22kg</label>
+        <input id="Format32" type="radio" name="Format" value="32"><label for="Format32">32kg</label>
         </p>
-            <span id="ok_mdp_connexion" style="display: none;"><img src="../images/ok.png"/></span>
-            <span id="ko_mdp_connexion" style="display: none;"><img src="../images/ko.png"/></span>
         
         
         
-        <span id="loader_connexion" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
+        
+        <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
-    <input id="button_connexion" type="button" value="ajouter au panier " onclick="request2_connexion(readData_connexion);">
+    <input id="button" type="button" value="ajouter au panier " onclick="request2(readData);">
 </fieldset>
 

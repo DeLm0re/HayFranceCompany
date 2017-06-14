@@ -30,10 +30,19 @@ function request2(callback) {
     };
 
   
-    var champ = 'button';
-    var nbr_pallette = encodeURIComponent(document.getElementById("nbr_pallette").value);
-    var Format = encodeURIComponent(document.getElementById("Format").value);
+  //  var champ = 'button';
+  //  var Format 
     
+    var nbr_pallette = encodeURIComponent(document.getElementById("nbr_pallette").value);
+    
+    if (document.getElementById("Format22").checked === true){
+        Format= encodeURIComponent(document.getElementById("Format22").value);
+    }
+    else{
+        Format = encodeURIComponent(document.getElementById("Format32").value);
+    }
+    alert(nbr_pallette);
+    alert(Format); 
     xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?champ="+champ+"&nbr_pallette="+nbr_pallette+"&Format="+Format+"", true);
     xhr.send(null);
 }
@@ -59,7 +68,7 @@ function readData(data,champ)
         
         //On affiche l'erreur au dessus du champ la contenant
         if (data === "nbr_pallette")
-            document.getElementById("erreur_prenom").innerHTML = "le nombre de pallette est incorect ";
+            document.getElementById("erreur_nbr_pallette").innerHTML = "le nombre de pallette est incorect ";
        
     }
 }

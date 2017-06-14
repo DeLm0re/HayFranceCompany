@@ -53,7 +53,7 @@
             <span id="ok_dpt" style="display: none;"><img src="../images/ok.png"/></span>
             <span id="ko_dpt" style="display: none;"><img src="../images/ko.png"/></span>
             
-        <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
+        <span id="loader" style="display: none;"><img id="img_loader" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
     <input id="button" type="button" value="S'inscrire" onclick="request2(readData);">
 </fieldset>

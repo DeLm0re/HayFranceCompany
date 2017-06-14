@@ -14,7 +14,7 @@ html, body{
 
 body{
   position: relative;
-  background-image: url(../images/fond_page.jpg);
+  background-image: url(../images/hayfrancecompany_fondpage.jpg);
   background-repeat: repeat-y;
 }
 
@@ -28,8 +28,11 @@ body{
 .div_produit{
     width: 75%;
     margin: auto;
-    margin-top: 40px;
+    padding: 40px;
     background-color: white;
+    border-width: 1px;
+    border-color: #EAEAEA;
+    border-style: solid;
 }
 
 /*L'ensemble de la div droite et gauche */
@@ -96,11 +99,6 @@ body{
 
 /* La div qui contient "Description" */
 .div_description{
-    border-top: none;
-    border-right: none;
-    border-bottom: solid 2px #EAEAEA;
-    border-left: none;
-    padding-bottom: 5px;
     margin-bottom: 15px;
 }
 
@@ -119,6 +117,8 @@ body{
     text-align: justify;
     font-family: "Roboto";
     color: #77778D;
+    border-left: solid 2px #f74a00;
+    padding-left: 15px;
 }
 
 /* Le texte de la description BALISE <p> */

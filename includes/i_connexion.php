@@ -19,7 +19,7 @@
         
         
         
-        <span id="loader_connexion" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
+        <span id="loader_connexion" style="display: none;"><img id="img_loader" src="../images/loader.gif" alt="Chargement" /></span>
     </form>
     <input id="button_connexion" type="button" value="Se connecter" onclick="request2_connexion(readData_connexion);">
 </fieldset>

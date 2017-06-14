@@ -51,8 +51,8 @@ li{
 .div_info_navbar{
     display: inline-block;
     position: absolute;
-    bottom: 15px;
-    right: 0;
+    bottom: 8px;
+    right: 8px;;
     font-family: "Roboto";
     color: #969696;    
 }
@@ -71,6 +71,19 @@ li{
 
 .autre_navbar{
     text-align: end;
+}
+
+.div_deconnexion_navbar{
+    text-align: end;
+    margin-top: 15px;
+}
+
+.deconnexion_navbar{
+    color: #AACAB2;
+}
+
+.deconnexion_navbar:hover{
+    cursor: pointer;
 }
 
 /* = = = = = = = DESSOUS NAVBAR = = = = = = = = = =*/

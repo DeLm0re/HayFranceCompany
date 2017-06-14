@@ -4,7 +4,7 @@
     $user = new Utilisateur($bdd);
     demarreSession($user);
     
-    if (empty($user->donneInfos()))  
+    if (empty($user->donneInfos()['departement']))  
     {
         header('location:inscription_connexion.php');
     }

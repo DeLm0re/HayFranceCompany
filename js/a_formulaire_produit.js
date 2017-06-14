@@ -9,7 +9,9 @@ function request(callback,champ) {
     };
 
     var contenu = encodeURIComponent(document.getElementById(champ).value);
-
+   //alert(contenu);
+   //alert(champ);
+ //   alert("on passe par là")
     xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?contenu="+contenu+"&champ="+champ, true);
     xhr.send(null);
 }
@@ -31,15 +33,25 @@ function request2(callback) {
 
   
     var champ = 'button';
-    var nbr_pallette = encodeURIComponent(document.getElementById("nbr_pallette").value);
-    var Format = encodeURIComponent(document.getElementById("Format").value);
+    var Format 
     
+    var nbr_pallette = encodeURIComponent(document.getElementById("nbr_pallette").value);
+    
+    if (document.getElementById("Format22").checked === true){
+        Format= encodeURIComponent(document.getElementById("Format22").value);
+    }
+    else{
+        Format = encodeURIComponent(document.getElementById("Format32").value);
+    }
+  //  alert(nbr_pallette);
+  
     xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?champ="+champ+"&nbr_pallette="+nbr_pallette+"&Format="+Format+"", true);
     xhr.send(null);
 }
 
 function readData(data,champ)
 {
+    alert(data);
     if (data === "OK")
     {
         document.getElementById("ok_"+champ).style.display = "inherit";
@@ -51,16 +63,16 @@ function readData(data,champ)
         document.getElementById("ko_"+champ).style.display = "inherit";
     }
     
+    //alert(data); 
     if (champ === 'button')
     {
         //On vide les spans d'erreur qui se sont remplis pour l'erreur précedente
-            vide_span_erreur('nbr_pallette');
+        vide_span_erreur('nbr_pallette');
           
         
         //On affiche l'erreur au dessus du champ la contenant
-        if (data === "nbr_pallette")
-            document.getElementById("erreur_prenom").innerHTML = "le nombre de pallette est incorect ";
-       
+        if (data === "erreur_nbr_pallette")
+            document.getElementById("erreur_nbr_pallette").innerHTML = "le nombre de pallette est incorect ";
     }
 }
 

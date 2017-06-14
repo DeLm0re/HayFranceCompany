@@ -20,19 +20,12 @@
 	<div class="bloc-principal">
         <?php       
             /*inclusion de l'overlay*/
-            //include '../includes/i_overlay.php';
+            include '../includes/i_overlay.php';
             
             /*inclusion de la navbar */
             include '../includes/i_navbar.php';
-            
-            /*inclusion du formulaire d'inscription*/
-            include '../includes/i_connexion.php';
         ?>
-
-        <span>Votre département : </span>
-        <span id="mon_departement"></span></br>
-        <a href="carte.php">carte</a>
-        
+       
         <div class="ensemble_produit">
             <p class="titre_ensemble_produit">
                 TOUS NOS PRODUITS

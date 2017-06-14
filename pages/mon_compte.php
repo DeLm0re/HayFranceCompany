@@ -3,6 +3,11 @@
     include_once '../objet/session_objet.php';
     $user = new Utilisateur($bdd);
     demarreSession($user);
+    
+    if (empty($user->donneInfos()))  
+    {
+        header('Location: tout_produit.php');
+    }
 ?>
 <html>
     <head>

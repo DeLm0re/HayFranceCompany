@@ -8,10 +8,11 @@
   $prix_transport =   $prix->infos(); 
   //  var_dump($user);
   
-  function trouve_prix_tansport( $nombre_pallette,  $prix_tronsport_calcul){
-      $prix_transport_coorespondant ;
+  function trouve_prix_tansport( $nombre_pallette , $prix_du_transport){
       
+      $id_transport = "p"+ strval($nombre_pallette) ;
       
+      $prix_transport_coorespondant = $prix_du_transport[$id_transport] ;
       
       return  $prix_transport_coorespondant;
   }
@@ -32,7 +33,7 @@ if (($_GET['nbr_pallette'] >= 8)&&($_GET['nbr_pallette'] <= 0)){
 if ($_GET['Format'] == 22)  {
     
     $prix_produit = $_GET['id_produit'] ; 
-    $prix_transport_calcul =  $prix_transport
+    $prix_transport_calcul ; 
    
         echo "OK";
     } else {

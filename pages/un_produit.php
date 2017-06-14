@@ -56,12 +56,13 @@ demarreSession($user);
                         </span>
                     </div>
                     <div class="div_formulaire_produit">
+
+
                         <fieldset class="field_formulaire_produit">
-                            <p>le formulairele formulairele formulairele formulairele formulaire
-                                le formulairele formulairele formulairele formulairele formulaire
-                                le formulairele formulairele formulairele formulairele formulaire
-                                le formulairele formulairele formulairele formulairele formulaire</p>
-                        </fieldset>>
+                           <?php include '../includes/i_formulaire_produit.php'; ?>
+         
+                        </fieldset>
+
                     </div>
                 </div>
 

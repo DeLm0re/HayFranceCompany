@@ -68,5 +68,7 @@ demarreSession($user);
             include '../includes/i_footer.php';
             ?>
         </div><!-- fin page -->
+        <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+        <script src="../js/oXHR.js" type="text/javascript"></script>
     </body>
 </html>

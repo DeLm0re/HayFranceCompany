@@ -13,3 +13,7 @@ and open the template in the editor.
     font-weight: bold;
     color: red;
 }
+
+fieldset{
+    background-color: white;
+}

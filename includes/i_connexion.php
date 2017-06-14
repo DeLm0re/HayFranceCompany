@@ -1,4 +1,4 @@
-<link href="../css/i_inscription.css" rel="stylesheet" type="text/css"/>
+<link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
 
 <fieldset id="formulaire_connexion">
     <form>

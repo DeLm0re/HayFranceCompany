@@ -2,7 +2,7 @@
  - spellcheck="false", permet d'indiquer au navigateur de ne pas appliquer une vérification orthographique dans les champs
  - checked="true", permet de cocher l'imput radio spécifié par défault (ici M.)
 -->
-<link href="../css/i_inscription.css" rel="stylesheet" type="text/css"/>
+<link href="../css/i_inscription_connexion.css" rel="stylesheet" type="text/css"/>
 
 <fieldset id="formulaire_inscription">
     <form>

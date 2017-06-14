@@ -19,7 +19,7 @@
         
         <?php       
             /*inclusion de l'overlay*/
-            //include '../includes/i_overlay.php';
+            include '../includes/i_overlay.php';
             
             /*inclusion de la navbar */
             include '../includes/i_navbar.php';

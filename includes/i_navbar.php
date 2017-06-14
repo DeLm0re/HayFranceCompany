@@ -40,8 +40,19 @@ function creer_navbar_options_elevages($liste1,$liste2){
                     Bonjour :
                 </p>
                 <div class="autre_navbar">
-                    <span>Votre département : </span>
-                    <span id="mon_departement"></span>
+                    <span>Votre localisation : </span>
+                    <span id="mon_departement">
+                        <?php
+                        /* si l'utilisateur est connecté*/
+                            if(!empty($user->donneInfos())){
+                                /* on recupére son departement */
+                                $infos = $user->donneInfos();
+                                $departement = $infos['departement'];
+                                $ville = $infos['ville'];
+                                echo($ville.' ('.$departement.')');
+                            }
+                        ?>
+                    </span>
                 </div>
             </div>
         </div>

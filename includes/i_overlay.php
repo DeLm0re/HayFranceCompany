@@ -1,3 +1,6 @@
+<link href="../css/i_overlay.css" rel="stylesheet" type="text/css"/>
+<link href="../css/carte_overlay.css" rel="stylesheet" type="text/css"/>
+        
 <div id="overlay">
     <div class="div_overlay" id="map">
         <div class="div_info_overlay">

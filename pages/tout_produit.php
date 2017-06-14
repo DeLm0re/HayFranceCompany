@@ -10,8 +10,6 @@ demarreSession($user);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
         <link href="../css/tout_produit.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/overlay.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/carte_overlay.css" rel="stylesheet" type="text/css"/>
     </head>
 
 
@@ -19,11 +17,13 @@ demarreSession($user);
         <div class="page">
             <div class="bloc-principal">
                 <?php
-                /* inclusion de l'overlay */
-                include '../includes/i_overlay.php';
-
                 /* inclusion de la navbar */
                 include '../includes/i_navbar.php';
+                
+                if (empty($user->donneInfos())){
+                    /* inclusion de l'overlay */
+                    include '../includes/i_overlay.php';
+                }
                 ?>
 
                 <div class="ensemble_produit">

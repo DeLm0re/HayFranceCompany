@@ -34,6 +34,7 @@ li{
     margin: auto; 
     padding-bottom: 20px;
     position: relative;
+    border-top: solid 2px #f74a00;
 }
 
 /* Div du logo dans la navbar */

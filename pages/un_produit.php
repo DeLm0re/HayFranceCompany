@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_GET['id_produit'])) {
+    header('location:http://localhost/HayFranceCompany/pages/tout_produit.php');
+    exit();
+}
+
 //inclusion de la session et des objets
 include_once '../objet/session_objet.php';
 $user = new Utilisateur($bdd);
@@ -28,11 +34,6 @@ demarreSession($user);
         ?>
 
         <?php
-        if (isset($_GET['id_produit']) === false) {
-            header('location:http://localhost/HayFranceCompany/pages/tout_produit.php');
-            exit();
-        }
-
         $liste = $user->consulteListeProduit();
         $id = intval($_GET['id_produit']);
         $produit = new Produit($bdd, $id);

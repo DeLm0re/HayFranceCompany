@@ -33,9 +33,6 @@ function modifie_palette_produit(id_produit){
             if(xhr.responseText === "modification"){
                 document.location.reload(false);
             }
-            if(xhr.responseText === "modificatio"){
-                alert('truc');
-            }
         }
     };
     

@@ -37,6 +37,8 @@ function request2(callback) {
     
     var nbr_pallette = encodeURIComponent(document.getElementById("nbr_pallette").value);
     
+    var id_produit = encodeURIComponent(document.getElementById("id_produit").value);
+  
     if (document.getElementById("Format22").checked === true){
         Format= encodeURIComponent(document.getElementById("Format22").value);
     }
@@ -44,8 +46,8 @@ function request2(callback) {
         Format = encodeURIComponent(document.getElementById("Format32").value);
     }
   //  alert(nbr_pallette);
-  
-    xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?champ="+champ+"&nbr_pallette="+nbr_pallette+"&Format="+Format+"", true);
+    
+    xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?champ="+champ+"&nbr_pallette="+nbr_pallette+"&Format="+Format+"&id_produit="+id_produit +"", true);
     xhr.send(null);
 }
 
@@ -62,16 +64,20 @@ function readData(data,champ)
         document.getElementById("ko_"+champ).style.display = "inherit";
     }
     
-    //alert(data); 
+   
     if (champ === 'button')
     {
         //On vide les spans d'erreur qui se sont remplis pour l'erreur précedente
         vide_span_erreur('nbr_pallette');
-          
+        
+     
+           alert(data); 
         
         //On affiche l'erreur au dessus du champ la contenant
         if (data === "erreur_nbr_pallette")
             document.getElementById("erreur_nbr_pallette").innerHTML = "le nombre de pallette est incorect ";
+          if (data === "ajoutT")
+           document.getElementById("confirmation commande").innerHTML = " votre produits a été ajouter au panier  ";
     }
 }
 

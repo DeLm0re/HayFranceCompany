@@ -110,6 +110,20 @@ body{
     color : #f74a00;
 }
 
+/* Le select du nombre de palettes */
+.select_produit_panier{
+    border: none;
+    border-bottom-color: #B7D4BE;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: #969696;
+    font-size: 105%;
+}
+.select_produit_panier:hover{
+    border-color: #f74a00;
+    transition: .3s;
+}
+
 /* La croix du produit */
 .supp_produit_panier{
     color: red;

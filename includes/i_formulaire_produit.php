@@ -34,6 +34,7 @@ $id = $_GET['id_produit'];
     <input id="button" type="button" value="Ajouter ce produit à mon panier" onclick="request2(readData);"><br>
     
      <span id="confirmation commande" class="erreur" ></span><br>
+     <span id="erreur_commande" class="erreur" ></span><br>
      <span id="erreur_connecter" class="erreur" ></span>
 </form>
 

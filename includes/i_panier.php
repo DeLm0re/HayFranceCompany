@@ -31,8 +31,9 @@ demarreSession($user);
                 </div>
                 <div class=\"element_produit_panier\" style=\"margin: 58px 0 0 45px;\">
                 <span class=\"span_select_produit_panier\">Nombre de palettes : </span>
-                <input class=\"select_produit_panier\" type=\"number\" min=\"1\" max=\"8\" 
-                    value=\"".$nbr."\" oninput=\"modifie_palette_produit(".$info['id_produit'].",".$nbr.");\" >
+                <input id=\"select_p\" class=\"select_produit_panier\" type=\"number\" min=\"1\" max=\"8\" 
+                    value=\"".$nbr."\" "
+                        . 'onchange="modifie_palette_produit('.$info['id_produit'].');" >'."
                 </div>
                 <div class=\"element_produit_panier\" style=\"margin: 58px 0 0 40px;\">
                 <span class=\"span_prix_produit_panier\">Prix : </span>

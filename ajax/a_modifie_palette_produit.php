@@ -8,6 +8,7 @@ $id_produit = $_GET['id'];
 $nbr_palette = $_GET['nbr'];
 
 $produit = new Produit($bdd, $id_produit);
+$user->changeNbrPalette($produit, $nbr_palette);
         
 echo("modification");
 

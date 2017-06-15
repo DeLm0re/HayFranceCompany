@@ -36,7 +36,7 @@ if (($_GET['champ'] == 'button')) {
         
         if ($resultat == TRUE) {
             echo "ajoutT";
-        } else if($resultat == FALSE) {
+        } else  {
             echo "ajoutF";
         }
     }

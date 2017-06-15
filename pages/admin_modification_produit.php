@@ -41,7 +41,7 @@ if (!isset($_GET['ID'])) {
             <label for="titre"></label>
             <input type="text" name="titre" id="titre" placeholder="Nom article" size="30" /><br>
             <!-- Barre d'option de text -->
-            <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
+           <!-- <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
             <input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
             <input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
             <input type="button" value="Lien" onclick="commande('createLink');" >
@@ -50,22 +50,23 @@ if (!isset($_GET['ID'])) {
             <input type="button" value="Centrer" onclick="commande('justifycenter');" >
             <input type="button" value="Droite" onclick="commande('justifyright');" >
             <input type="button" value="Puce" onclick="commande('insertunorderedlist');" >
-            <!-- Zone de texte --> 
+             Zone de texte
             <div id="editeur" contentEditable></div>
-            <input type="button" onclick="resultat();" value="Obtenir le HTML" ><br />
-            <textarea id="resuEditeur" name="texte"></textarea>
-            <label for="courteDesc">Description Rapide</label> 
+            <input type="button" onclick="resultat();" value="Obtenir le HTML" ><br /> -->
+            <textarea id="resuEditeur" name="texte"></textarea><br>
+            <label for="courteDesc">Description Rapide</label> <br>
             <textarea id="courteDesc" name="courteDesc"></textarea><br>
             <!-- </fieldset>
             <!-- Zone Prix --> 
             
-            <fieldset>
+           
                 <label for="prix">Prix</label><br>
                 <input type="number" name="prix" id="prix" /><br>
-            </fieldset>
+           
 
 
             <!-- Zone check box --> 
+            <div id='checkbox'>
             <fieldset>
                 <legend>Pour quelle animal ?</legend>
                 <?php
@@ -78,6 +79,7 @@ if (!isset($_GET['ID'])) {
                 creerCheckBoxAnimal($listeIdAnimal, $listeNomAnimal, $produit);
                 ?>
             </fieldset>
+            </div>
             <input type="submit" value="Valider" />
         </form>
 

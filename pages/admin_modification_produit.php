@@ -75,7 +75,7 @@ if (!isset($_GET['ID'])) {
             <!-- Zone check box --> 
             <div id='checkbox'>
             <fieldset>
-                <legend>Pour quelle animal ?</legend>
+                <legend>Pour quel animal ?</legend>
                 <?php
                 $listeNomAnimal = $admin->donneListeAnimal();
                 //echo'var_dump $listeNomAnimal';
@@ -90,13 +90,16 @@ if (!isset($_GET['ID'])) {
                 <input type='button' onclick='afficheListeImages()'>
                 <span id="listeImages" display='none'>
                 <?php
-                $listeImage = $admin->donneListeImage();
+                $listeURLImage = $admin->donneListeUrlImage();
                 echo'var_dump $listeImage';
-                var_dump($listeImage);
+                var_dump($listeURLImage);
                 $listeIdImage = $admin->donneListeIdImage();
                 echo'var_dump $listeIdImage';
                 var_dump($listeIdImage);
-                creerCheckBoxAnimal($listeIdImage, $listeImage, $produit);
+                $listeNomImage = $admin->donneListeNomImage();
+                echo'var_dump $listeNomImage';
+                var_dump($listeNomImage);
+                creerCheckBoxAnimal($listeIdImage, $listeURLImage, $listeNomImage, $produit);
                 ?>
                 </span>
             </fieldset>
@@ -164,7 +167,7 @@ if (!isset($_GET['ID'])) {
     $tabIdImageChecked = [];
     //Recupère la liste de tous les images
     $tabIdImage = $admin->donneListeIdImage() ; 
-    echo"var_dump tabAnimaux";
+    echo"var_dump tabIdImage";
     var_dump($tabIdImage);
     //Pour chaque image on test si sa valeur en _POST existe càd qu'il a été coché 
     //On créer un tableau d'image qui ont été cochés $imageChecked
@@ -173,7 +176,7 @@ if (!isset($_GET['ID'])) {
         echo"value image : $valueIdImage <br>";
         if (isset($_POST[$valueIdImage])) {
             $laValeur = $_POST[$valueIdImage] ; 
-            echo"entrer dans if du  foreach tableau animal, $laValeur <br>";
+            echo"entrer dans if du  foreach tableau image, $laValeur <br>";
             //$animal est le tableau des animaux cochés 
             $tabIdAnimalChecked[$valueIdImage] = $valueIdImage;
         }
@@ -223,7 +226,7 @@ if (!isset($_GET['ID'])) {
     }
 }
 
-function creerCheckBoxImage($listeIdImage, $listeUrlImage, $ObjProduit) {
+function creerCheckBoxImage($listeIdImage, $listeUrlImage, $listeNomImage, $ObjProduit) {
     $max = count($listeIdImage);
     for ($i = 0; $i < $max; $i+=1) {
         if (isset($_GET['ID'])) {
@@ -231,14 +234,14 @@ function creerCheckBoxImage($listeIdImage, $listeUrlImage, $ObjProduit) {
             //echo'$Bool Machin';
             //var_dump($BoolAppartientCategorie);
             if ($BoolAppartientCategorie == TRUE) {
-                echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeUrlImage[$i]\" checked=\"checked\"/> <label for=\"$listeUrlImage[$i]\"><img src=\"$listeUrlImage[$i]\"/> </label><br />" ; 
+                echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeNomImage[$i]\" checked=\"checked\"/> <label for=\"$listeNomImage[$i]\"><img src=\"$listeUrlImage[$i]\"/> </label><br />" ; 
             }
             else{
-                echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeUrlImage[$i]\" /> <label for=\"$listeIdImage[$i]\"><img src=\"$listeUrlImage[$i]\"/></label><br />";
+                echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeNomImage[$i]\" /> <label for=\"$listeNomImage[$i]\"><img src=\"$listeUrlImage[$i]\"/></label><br />";
             }
         } 
         else {
-            echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeUrlImage[$i]\" /> <label for=\"$listeIdImage[$i]\"><img src=\"$listeUrlImage[$i]\"/></label><br />";
+            echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeNomImage[$i]\" /> <label for=\"$listeNomImage[$i]\"><img src=\"$listeUrlImage[$i]\"/></label><br />";
         }
     }
 }

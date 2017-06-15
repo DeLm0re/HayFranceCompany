@@ -56,7 +56,7 @@ function request2(callback) {
 
 function readData(data,champ)
 {
-    //alert(data) ; 
+    alert(data) ; 
     if (data === "OK")
     {
         document.getElementById("ok_"+champ).style.display = "inherit";

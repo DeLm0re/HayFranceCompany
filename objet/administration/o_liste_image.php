@@ -57,7 +57,7 @@ class ListeImage extends RequeteListeImage
         $index = 0;
         foreach ($this->_infos as $image) 
         {
-            $images[$index] = $image['nom'];
+            $images[$index] = $image['nom_image'];
             $index += 1;
         }
         return $images;

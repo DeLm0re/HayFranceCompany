@@ -29,10 +29,11 @@ abstract class RequetePanier extends Hydratable
     
     protected function insertPanierProduit($idpa, $idpr, $form, $nbpa)
     {
-        return $this->bindRequete('INSERT INTO panier_produit (id_panier, id_produit, '
+        $this->bindRequete('INSERT INTO panier_produit (id_panier, id_produit, '
                 . 'format, nb_palette) '
                 . 'VALUES (?, ?, ?, ?)',
                 array(1 => $idpa, 2 => $idpr, 3 => $form, 4 => $nbpa));
+        return $this->getBDD()->getLastRequestStatus();
     }
     
     protected function deletePanierProduit($idpa, $idpr)

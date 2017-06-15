@@ -19,8 +19,8 @@ demarreSession($user);
                 <?php
                 /* inclusion de la navbar */
                 include '../includes/i_navbar.php';
-                
-                if (empty($user->donneInfos())){
+
+                if (empty($user->donneInfos())) {
                     /* inclusion de l'overlay */
                     include '../includes/i_overlay.php';
                 }
@@ -53,22 +53,21 @@ demarreSession($user);
                     </div>
                 </div>
 
-                <!-- SCRIPTS POUR L'AJAX -->
-                <script src="../js/a_inscription.js" type="text/javascript"></script>
-                <script src="../js/a_connexion.js" type="text/javascript"></script>
-                <script src="../js/oXHR.js" type="text/javascript"></script>
-
-                <!-- SCRIPTS POUR L'overlay -->
-                <script src="../js/overlay.js" type="text/javascript"></script>
-                <script src="../js/polyfill.js" type="text/javascript"></script>
-
                 <div class="clear"></div>
             </div><!-- fin bloc-principal -->
+            
             <?php
             include '../includes/i_footer.php';
             ?>
+            
+            <!-- SCRIPTS POUR L'AJAX -->
+            <script src="../js/oXHR.js" type="text/javascript"></script>
+            <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+            <!-- SCRIPTS POUR L'overlay -->
+            <script src="../js/overlay.js" type="text/javascript"></script>
+            <script src="../js/polyfill.js" type="text/javascript"></script>
+            
         </div><!-- fin page -->
-        <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
-        <script src="../js/oXHR.js" type="text/javascript"></script>
+        
     </body>
 </html>

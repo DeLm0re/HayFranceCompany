@@ -24,14 +24,14 @@ class ListeImage extends RequeteListeImage
         parent::__construct($BDD);
     }
     
-    public function donneListeImage()
+    public function donneListeUrlImage()
     {
         $this->hydrate();
         $images = NULL;
         $index = 0;
         foreach ($this->_infos as $image) 
         {
-            $images[$index] = $image['nom_image'];
+            $images[$index] = $image['url'];
             $index += 1;
         }
         return $images;
@@ -44,7 +44,20 @@ class ListeImage extends RequeteListeImage
         $index = 0;
         foreach ($this->_infos as $image) 
         {
-            $images[$index] = $image['id_animal'];
+            $images[$index] = $image['id_image'];
+            $index += 1;
+        }
+        return $images;
+    }
+    
+    public function donneListeNomImage()
+    {
+        $this->hydrate();
+        $images = NULL;
+        $index = 0;
+        foreach ($this->_infos as $image) 
+        {
+            $images[$index] = $image['nom'];
             $index += 1;
         }
         return $images;

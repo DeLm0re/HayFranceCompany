@@ -172,8 +172,8 @@ class Utilisateur extends RequeteUtilisateur
         $this->changeDepartement($this->donneInfos()['departement']);
         if($this->estConnecte() === true)
         {
-            $_SESSION['email'] = $email;
-            $_SESSION['password'] = $password;
+            $_SESSION['email'] = encrypte($email);
+            $_SESSION['password'] = encrypte($password);
             return true;
         }
         return false;

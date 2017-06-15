@@ -35,7 +35,6 @@ function validation(){
     var departement = document.getElementById("span_validation_overlay").innerHTML;
     var xhr = getXMLHttpRequest();
         xhr.open("GET", "../ajax/a_departement.php?dep="+departement, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send(null);
     
     /*On fait une action avec notre donnée*/

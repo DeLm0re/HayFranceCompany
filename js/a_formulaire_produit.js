@@ -80,10 +80,12 @@ function readData(data,champ)
             document.getElementById("erreur_connecter").innerHTML = "Vous n'etes pas connecter veillez vous connecter ";
             document.location.href = "http://localhost/HayFranceCompany/pages/inscription_connexion.php";
         }
-        if (data === "erreur_nbr_pallette")
+         if (data === "erreur_nbr_pallette")
             document.getElementById("erreur_nbr_pallette").innerHTML = "Le nombre de pallette maximum par produit est de 8 ";
         if (data === "ajoutT")
            document.getElementById("confirmation commande").innerHTML = "Votre produits a été ajouter au panier  ";
+        if (data === "ajoutF")
+           document.getElementById("erreur_commande").innerHTML = "Vous avez déja commandé ce produit   ";
     }
 }
 

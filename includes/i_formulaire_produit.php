@@ -25,8 +25,7 @@ $prix = $infos['prix_tonne' ];
     </span><br>
     
     <!-- passage de l'id du produit en mode shlag !! a changé immediatement -->
-    <span> <input type="hidden" id="id_produit" value="<?php echo $id  ;?>"  onchange="request(readData, 'id_produit');"> </span>
-    
+     <input type="hidden" id="id_produit" value="<?php echo $id  ;?>"  onchange="request(readData, 'id_produit');"> 
     <!-- ***************************************************************************************************-->
     
     <span id="erreur_nbr_pallette" class="erreur" ></span><br>

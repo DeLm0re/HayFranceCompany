@@ -12,7 +12,7 @@ $produit = new Produit($bdd,$_GET['id_produit'] );
 /* ---------------------------------------------------------------------------------- */
 //verifie
 if ($_GET['champ'] == "nbr_pallette") {
-    if ((($_GET['contenu']) >= 8)||(($_GET['contenu']) <= 0)) {
+    if ((($_GET['contenu']) > 8)||(($_GET['contenu']) <= 0)) {
 
         echo "KO";
     } else {

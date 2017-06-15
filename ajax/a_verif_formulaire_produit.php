@@ -13,9 +13,12 @@ $departement = intval($info['departement']);
 
 
 //  var_dump($user);
-/*
-$produit = new Produit($bdd, $id);
+
+$produit = new Produit($bdd,$_GET['id_produit'] );
 $infos = $produit->infos();
+$prix = $infos['prix_tonne'];
+
+/*$infos = $produit->infos();
 $prix = $infos['prix_tonne'];
 var_dump($prix); 
 */
@@ -46,8 +49,9 @@ if (($_GET['champ'] == 'button')) {
         echo "erreur_Format";
     } else {
         
-      $result = $user->ajouteProduitPanier($prix, $_GET['Format'],$_GET['nbr_pallette']);
-       echo "ajoutT";
+      /**/
+    $result =  $user->ajouteProduitPanier($prix, $_GET['Format'],$_GET['nbr_pallette']);
+      echo "ajoutT";
        /*
        if($result === TRUE)
        {

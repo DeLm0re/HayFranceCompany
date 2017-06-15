@@ -27,64 +27,63 @@ $departement = $info['departement'];
     </div>
     <div class="div_ensemble_champ">
 
-        <div id="div_champ_erreur_ville" style="display: none;">
-            <span id="erreur_modification" class="erreur"></span>
-            <span id="erreur_email" class="erreur"></span>
+        <div id="div_champ_erreur_email" style="display: none;">
+            <span id="erreur_email" class="champ_erreur"></span>
         </div>
         <div class="div_champ">
-            <span class="champ">Nouvelle adresse mail : <input id="email" style="width: 250px;"type="text" value="<?php echo $email ?>" spellcheck="false" onchange="request(readData, 'email');">
-                <span id="ok_email" style="display: none;"><img src="../images/ok.png"/></span>
-                <span id="ko_email" style="display: none;"><img src="../images/ko.png"/></span>
+            <span class="champ">Nouvelle adresse mail : <input id="email" style="width: 200px;"type="text" value="<?php echo $email ?>" spellcheck="false" onchange="request(readData, 'email');">
+                <span id="ok_email" style="display: none;"><img src="../images/ok.png" class="icon_preverif"/></span>
+                <span id="ko_email" style="display: none;"><img src="../images/ko.png" class="icon_preverif"/></span>
             </span><br>
         </div>
 
-        <div id="div_champ_erreur_ville" style="display: none;">
-            <span id="erreur_mdp" class="erreur"></span>
+        <div id="div_champ_erreur_mdp" style="display: none;">
+            <span id="erreur_mdp" class="champ_erreur"></span>
         </div>
         <div class="div_champ">
             <span class="champ">Nouveau mot de passe : <input id="mdp" type="password" onchange="request(readData, 'mdp');">
-                <span id="ok_mdp" style="display: none;"><img src="../images/ok.png"/></span>
-                <span id="ko_mdp" style="display: none;"><img src="../images/ko.png"/></span>
+                <span id="ok_mdp" style="display: none;"><img src="../images/ok.png" class="icon_preverif"/></span>
+                <span id="ko_mdp" style="display: none;"><img src="../images/ko.png" class="icon_preverif"/></span>
             </span><br>
         </div>
 
-        <div id="div_champ_erreur_ville" style="display: none;">
-            <span id="erreur_cmdp" class="erreur"></span>
+        <div id="div_champ_erreur_cmdp" style="display: none;">
+            <span id="erreur_cmdp" class="champ_erreur"></span>
         </div>
         <div class="div_champ">
             <span class="champ">Confirmation de votre nouveau  mot de passe  : <input id="cmdp" type="password" onchange="request(readData, 'cmdp');">
-                <span id="ok_cmdp" style="display: none;"><img src="../images/ok.png"/></span>
-                <span id="ko_cmdp" style="display: none;"><img src="../images/ko.png"/></span>
+                <span id="ok_cmdp" style="display: none;"><img src="../images/ok.png" class="icon_preverif"/></span>
+                <span id="ko_cmdp" style="display: none;"><img src="../images/ko.png" class="icon_preverif"/></span>
             </span><br>
         </div>
 
         <div id="div_champ_erreur_ville" style="display: none;">
-            <span id="erreur_ville" class="erreur"></span>
+            <span id="erreur_ville" class="champ_erreur"></span>
         </div>
         <div class="div_champ">
             <span class="champ">Nouvelle ville : <input id="ville" type="text" value="<?php echo $ville ?>" onchange="request(readData, 'ville');">
-                <span id="ok_ville" style="display: none;"><img src="../images/ok.png"/></span>
-                <span id="ko_ville" style="display: none;"><img src="../images/ko.png"/></span>
+                <span id="ok_ville" style="display: none;"><img src="../images/ok.png" class="icon_preverif"/></span>
+                <span id="ko_ville" style="display: none;"><img src="../images/ko.png" class="icon_preverif"/></span>
             </span><br>
         </div>
 
-        <div id="div_champ_erreur_ville" style="display: none;">
-            <span id="erreur_adresse" class="erreur"></span>
+        <div id="div_champ_erreur_adresse" style="display: none;">
+            <span id="erreur_adresse" class="champ_erreur"></span>
         </div>
         <div class="div_champ">
             <span class="champ">Nouvelle adresse : <textarea id="adresse" rows=3 cols=40  onchange="request(readData, 'adresse');"><?php echo $adresse ?></textarea>
-                <span id="ok_adresse" style="display: none;"><img src="../images/ok.png"/></span>
-                <span id="ko_adresse" style="display: none;"><img src="../images/ko.png"/></span>
+                <span id="ok_adresse" style="display: none;"><img src="../images/ok.png" class="icon_preverif"/></span>
+                <span id="ko_adresse" style="display: none;"><img src="../images/ko.png" class="icon_preverif"/></span>
             </span><br>
         </div>
 
-        <div id="div_champ_erreur_ville" style="display: none;">
-            <span id="erreur_dpt" class="erreur"></span>
+        <div id="div_champ_erreur_dpt" style="display: none;">
+            <span id="erreur_dpt" class="champ_erreur"></span>
         </div>
         <div class="div_champ">
             <span class="champ">Nouveau numéro de département <input id="dpt" type="number" value="<?php echo $departement ?>"  min="1" max="95" onchange="request(readData, 'dpt');">
-                <span id="ok_dpt" style="display: none;"><img src="../images/ok.png"/></span>
-                <span id="ko_dpt" style="display: none;"><img src="../images/ko.png"/></span>
+                <span id="ok_dpt" style="display: none;"><img src="../images/ok.png" class="icon_preverif"/></span>
+                <span id="ko_dpt" style="display: none;"><img src="../images/ko.png" class="icon_preverif"/></span>
             </span><br>
         </div>
 

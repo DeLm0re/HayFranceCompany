@@ -61,16 +61,16 @@ function calculPrixHorsTransport() {
     if  ((nbr_pallette_choisit < 9) && (nbr_pallette_choisit > 0))
     {
         Prix_hors_transport = calculPrix(Format_choisit, nbr_pallette_choisit, Prix_produit);
-        document.getElementById("prix_produit_par_JS").innerHTML = "Vortre prix " + Prix_hors_transport + " €";
+        document.getElementById("prix_produit_par_JS").innerHTML = "Vortre prix transport est " + Prix_hors_transport + " €";
     }else if (typeof nbr_pallette_choisit != "undefined")
    {
       
         Prix_hors_transport =0 ;
-        document.getElementById("prix_produit_par_JS").innerHTML = "Vortre prix " + Prix_hors_transport + " €";
+        document.getElementById("prix_produit_par_JS").innerHTML = "Vortre prix hors transport est " + Prix_hors_transport + " €";
    }
     else  {
          Prix_hors_transport =0 ;
-        document.getElementById("prix_produit_par_JS").innerHTML = "Vortre prix " + Prix_hors_transport + " €";
+        document.getElementById("prix_produit_par_JS").innerHTML = "Vortre prix hors transport est  " + Prix_hors_transport + " €";
     }
 
 }

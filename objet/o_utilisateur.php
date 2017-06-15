@@ -185,7 +185,7 @@ class Utilisateur extends RequeteUtilisateur
 
     public function ajouteProduitPanier(Produit $produit, $format, $nb_palette)
     {
-        $this->getPanier()->ajouteProduit($produit, $format, $nb_palette);
+        return $this->getPanier()->ajouteProduit($produit, $format, $nb_palette);
     }
     
     public function retireProduitPanier(Produit $produit)

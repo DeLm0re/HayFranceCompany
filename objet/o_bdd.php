@@ -68,19 +68,17 @@ class BDD
         try
         {
             $index = 1;
-            $prepare = $this->_DBH->prepare($requete);
-            
+            $prepare = $this->_DBH->prepare($requete);      
             for($index = 1; $index <= count($param); $index++)
             {
                 $prepare->bindParam($index, $param[$index]);
             }
-            
-            $prepare->execute();
+            $ok = $prepare->execute();
             $resultat = $prepare->fetchAll(PDO::FETCH_ASSOC);
             $this->_LAST_ID = $this->_DBH->lastInsertId();
-            if($resultat === NULL)
+            if(count($resultat) <= 0)
             {
-                return self::ERR_NOT_FOUND;
+                return $ok;
             }
             return $resultat;    
         } catch (PDOExeption $e) 

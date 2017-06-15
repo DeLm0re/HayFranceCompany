@@ -9,11 +9,15 @@ $departement = intval($info['departement']);
 $produit = new Produit($bdd, $id);
 $infos = $produit->infos();
 $id = $_GET['id_produit'];
+$prix = $infos['prix_tonne' ];
 //var_dump($infos); 
+
 
 ?>
 
 <form class="formulaire_produit" >
+    
+    <span>Prix du produit : <?php echo $prix;?>euro/tonne</span><br>
 
     <span> Format des balles CHC : <input id="Format22" type="radio" name="Format" value="22" checked="true">
         <label for="Format22">22 kg</label>
@@ -21,7 +25,8 @@ $id = $_GET['id_produit'];
     </span><br>
     
     <!-- passage de l'id du produit en mode shlag !! a changé immediatement -->
-    <span> <input type="number" id="id_produit" value="<?php echo $id  ;?>" style="display: none;"  onchange="request(readData, 'id_produit');"> </span>
+    <span> <input type="hidden" id="id_produit" value="<?php echo $id  ;?>"  onchange="request(readData, 'id_produit');"> </span>
+    
     <!-- ***************************************************************************************************-->
     
     <span id="erreur_nbr_pallette" class="erreur" ></span><br>

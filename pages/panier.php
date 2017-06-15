@@ -31,10 +31,7 @@ if (empty($user->donneInfos()['departement'])) {
                     ?>
                 </div>
 
-            </div>
-
             <div class="clear"></div>
-
         </div><!-- fin bloc-principal -->
 
         <?php

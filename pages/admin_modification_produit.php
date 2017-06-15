@@ -26,7 +26,13 @@ if (!isset($_GET['ID'])) {
             <script src="../js/charge_produit.js" type="text/javascript"></script>
             <title>Mon éditeur WYSIWYG</title>
         </head>
-        <body onload="request(<?php$id_produit?>);" >
+        <body <?php if(isset($_GET['ID'])){
+                  $id_produit = $_GET['ID'] ; 
+                    echo"onload=request($id_produit)";
+                    } ?> 
+            >
+            
+            
             <?php
             if (isset($id_produit)) {
                 echo"<form method=\"post\" action=\"$URL?ID=$id_produit \">";
@@ -40,8 +46,9 @@ if (!isset($_GET['ID'])) {
             <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span>
             <label for="titre"></label>
             <input type="text" name="titre" id="titre" placeholder="Nom article" size="30" /><br>
-            <!-- Barre d'option de text -->
-           <!-- <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
+            <!--Barre d'option de text -->
+            <!--
+            <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
             <input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
             <input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
             <input type="button" value="Lien" onclick="commande('createLink');" >
@@ -50,7 +57,6 @@ if (!isset($_GET['ID'])) {
             <input type="button" value="Centrer" onclick="commande('justifycenter');" >
             <input type="button" value="Droite" onclick="commande('justifyright');" >
             <input type="button" value="Puce" onclick="commande('insertunorderedlist');" >
-             Zone de texte
             <div id="editeur" contentEditable></div>
             <input type="button" onclick="resultat();" value="Obtenir le HTML" ><br /> -->
             <textarea id="resuEditeur" name="texte"></textarea><br>
@@ -60,8 +66,8 @@ if (!isset($_GET['ID'])) {
             <!-- Zone Prix --> 
             
            
-                <label for="prix">Prix</label><br>
-                <input type="number" name="prix" id="prix" /><br>
+            <label for="prix">Prix</label><br>
+            <input type="number" name="prix" id="prix" /><br>
            
 
 

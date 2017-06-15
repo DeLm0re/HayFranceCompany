@@ -65,12 +65,23 @@ abstract class RequeteUtilisateur extends Hydratable
         {
             return false;
         }
-        $param = array( 1 => $ema, 2 => md5($pas), 3 => $vil, 4 => $adr, 
-            5 => $dep, 6 => $this->id_utilisateur);
-        $this->bindRequete("UPDATE utilisateur  SET email = ?, password = ?, "
+        if(empty($pas) && isset($pas))
+        {
+            $param = array( 1 => $ema, 2 => $vil, 3 => $adr, 
+            4 => $dep, 5 => $this->id_utilisateur);
+            $this->bindRequete("UPDATE utilisateur SET email = ?, "
                 . "ville = ?, adresse = ?, departement = ? "
                 . "WHERE id_utilisateur = ?", $param);
-        return true;
+        }
+        else
+        {
+            $param = array( 1 => $ema, 2 => md5($pas), 3 => $vil, 4 => $adr, 
+            5 => $dep, 6 => $this->id_utilisateur);
+            $this->bindRequete("UPDATE utilisateur SET email = ?, password = ?, "
+                . "ville = ?, adresse = ?, departement = ? "
+                . "WHERE id_utilisateur = ?", $param);
+        }
+        return $this->getBDD()->getLastRequestStatus();
     }
 
     protected function connexion($email, $password)
@@ -117,7 +128,7 @@ abstract class RequeteUtilisateur extends Hydratable
         }
         return $existe;
     }
-
+    
 }
 
 
@@ -149,6 +160,7 @@ class Utilisateur extends RequeteUtilisateur
     
     public function modifie($email, $password, $ville, $adresse, $departement)
     {
+        $this->getPanier()->changeDepartement($departement);
         $is_ok = parent::modification($email, $password, $ville, $adresse, $departement);
         $this->hydrate();
         return $is_ok;
@@ -160,8 +172,8 @@ class Utilisateur extends RequeteUtilisateur
         $this->changeDepartement($this->donneInfos()['departement']);
         if($this->estConnecte() === true)
         {
-            $_SESSION['email'] = $email;
-            $_SESSION['password'] = $password;
+            $_SESSION['email'] = encrypte($email);
+            $_SESSION['password'] = encrypte($password);
             return true;
         }
         return false;
@@ -185,7 +197,7 @@ class Utilisateur extends RequeteUtilisateur
 
     public function ajouteProduitPanier(Produit $produit, $format, $nb_palette)
     {
-        $this->getPanier()->ajouteProduit($produit, $format, $nb_palette);
+        return $this->getPanier()->ajouteProduit($produit, $format, $nb_palette);
     }
     
     public function retireProduitPanier(Produit $produit)
@@ -201,6 +213,18 @@ class Utilisateur extends RequeteUtilisateur
     public function donneContenuPanier()
     {
         return $this->getPanier()->donneContenu();
+    }
+    
+    public function donnePrixProduit(Produit $produit)
+    {
+        $panier = $this->getPanier();
+        return $panier->donnePrixProduit($produit);
+    }
+    
+    public function donneTotalPanier()
+    {
+        $panier = $this->getPanier();
+        return $panier->donnePrixTotal();
     }
     
     public function donneQuantiteProduit(Produit $produit)

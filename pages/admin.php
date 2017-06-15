@@ -1,8 +1,8 @@
 <?php
-
 include_once '../objet/session_objet.php';
 include_once '../objet/administration/o_admin.php';
 $admin = new Admin($bdd);
+$URL ='admin_modification_produit.php' ; 
 ?>
 <html>
     <head>
@@ -14,7 +14,7 @@ $admin = new Admin($bdd);
     <body>
         <table>
             <h1>Produits</h1>
-            <form action="ModificationProduit.php">
+            <form action="admin_modification_produit.php">
             <input type="submit" value="Créer Produit" />
             </form>
            <tr>
@@ -56,7 +56,7 @@ function afficheTableauProduit($liste)
 
 function afficheProduit($infos)
 {
-    $URL = "ModificationProduit.php";
+    $URL = "admin_modification_produit.php";
     $max = count($infos);
     
     echo '<tr>';

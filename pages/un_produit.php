@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_GET['id_produit'])) {
+    header('location:http://localhost/HayFranceCompany/pages/tout_produit.php');
+    exit();
+}
+
 //inclusion de la session et des objets
 include_once '../objet/session_objet.php';
 $user = new Utilisateur($bdd);
@@ -20,14 +26,14 @@ demarreSession($user);
         <?php
         /* inclusion de la navbar */
         include '../includes/i_navbar.php';
+        
+        if (empty($user->donneInfos()) && !isset($_SESSION['nom_departement'])) {
+        /* inclusion de l'overlay */
+        include '../includes/i_overlay.php';
+        }
         ?>
 
         <?php
-        if (isset($_GET['id_produit']) === false) {
-            header('location:http://localhost/HayFranceCompany/pages/tout_produit.php');
-            exit();
-        }
-
         $liste = $user->consulteListeProduit();
         $id = intval($_GET['id_produit']);
         $produit = new Produit($bdd, $id);
@@ -90,14 +96,13 @@ demarreSession($user);
 	<?php
             include '../includes/i_footer.php';
         ?>
-        </div><!-- fin page -->
-<<<<<<< HEAD
         
-        <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+        <!-- SCRIPTS POUR L'overlay -->
+        <script src="../js/overlay.js" type="text/javascript"></script>
+        <script src="../js/polyfill.js" type="text/javascript"></script>
+        
+        </div><!-- fin page -->
         <script src="../js/oXHR.js" type="text/javascript"></script>
-=======
-        <script src="../js/oXHR.js" type="text/javascript"></script>
         <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
->>>>>>> refs/remotes/origin/master
     </body>
 </html>

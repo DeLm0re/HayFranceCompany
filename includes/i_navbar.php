@@ -69,6 +69,14 @@ function creer_navbar_options_elevages($liste1, $liste2) {
                             $ville = $infos['ville'];
                             echo($ville . ' (' . $departement . ')');
                         }
+                        else if(isset($_SESSION['nom_departement']))
+                        {
+                            $nom = $_SESSION['nom_departement'];
+                            echo $nom;
+                        }
+                        else{
+                            echo ' Inconnue';
+                        }                            
                         ?>
                     </span>
                 </div>
@@ -107,7 +115,7 @@ function creer_navbar_options_elevages($liste1, $liste2) {
                 <button class="button_dropdown" onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/mon_compte.php'">MON COMPTE</button>
             </div>
             <div class="div_dropdown">
-                <button class="button_dropdown">MON PANIER</button>
+                <button class="button_dropdown" onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/panier.php'">MON PANIER</button>
             </div>
         </div>
     </div>

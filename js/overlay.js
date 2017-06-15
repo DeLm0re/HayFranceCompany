@@ -32,10 +32,14 @@ function detecte_choix() {
 
 function validation(){
     
+    var departement = document.getElementById("span_validation_overlay").innerHTML;
+    var xhr = getXMLHttpRequest();
+        xhr.open("GET", "../ajax/a_departement.php?dep="+departement, true);
+        xhr.send(null);
+    
     /*On fait une action avec notre donnée*/
-    document.getElementById("mon_departement").innerHTML = document.getElementById("span_validation_overlay").innerHTML;
+    document.getElementById("mon_departement").innerHTML = departement;
     
      /*On masque l'overlay*/
     document.getElementById("overlay").style.display = "none";
 }
-

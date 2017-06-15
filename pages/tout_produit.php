@@ -20,7 +20,7 @@ demarreSession($user);
                 /* inclusion de la navbar */
                 include '../includes/i_navbar.php';
 
-                if (empty($user->donneInfos())) {
+                if (empty($user->donneInfos()) && !isset($_SESSION['nom_departement'])) {
                     /* inclusion de l'overlay */
                     include '../includes/i_overlay.php';
                 }

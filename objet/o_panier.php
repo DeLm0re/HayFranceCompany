@@ -29,7 +29,7 @@ abstract class RequetePanier extends Hydratable
     
     protected function insertPanierProduit($idpa, $idpr, $form, $nbpa)
     {
-        $this->bindRequete('INSERT INTO panier_produit (id_panier, id_produit, '
+        return $this->bindRequete('INSERT INTO panier_produit (id_panier, id_produit, '
                 . 'format, nb_palette) '
                 . 'VALUES (?, ?, ?, ?)',
                 array(1 => $idpa, 2 => $idpr, 3 => $form, 4 => $nbpa));
@@ -105,6 +105,39 @@ class Panier extends RequetePanier
         return $tab_produits;
     }
     
+    public function donnePrixProduit(Produit $produit)
+    {
+        $this->hydrate();
+        $prix_transport = new PrixTransport($this->getBDD(), $this->infos()['id_prix_transport']);
+        
+        $prix_tonne = intval($produit->infos()['prix_tonne']);
+        $format = intval($this->donneFormatProduit($produit));
+        $quantite = intval($this->donneQuantiteProduit($produit));
+        $prix_livraison = floatval($prix_transport->infos()['prix'.$quantite]);
+        
+        $format_final = 0;
+        if($format === 32 ){
+            $format_final = 32*24;
+        }
+        else{
+            $format_final = 22*36;            
+        }
+        $total = ($format_final*$quantite*$prix_tonne/1000) + $prix_livraison;
+        return $total;
+    }
+    
+    public function donnePrixTotal()
+    {
+        $prix_total = 0;
+        $liste = $this->donneContenu();
+        $max = count($liste);
+        for($i = 0; $i < $max; $i++)
+        {
+            $prix_total += $this->donnePrixProduit($liste[$i]);
+        }
+        return $prix_total;
+    }
+    
     public function donneFormatProduit(Produit $produit)
     {
         $this->hydrate();
@@ -138,7 +171,7 @@ class Panier extends RequetePanier
         $this->hydrate();
         $id_panier = $this->getInfos()['id_panier'];
         $id_produit = $produit->getInfos()['id_produit'];
-        parent::insertPanierProduit($id_panier, $id_produit, $format, $nb_palette);
+        return parent::insertPanierProduit($id_panier, $id_produit, $format, $nb_palette);
     }
     
     public function retireProduit(Produit $produit)

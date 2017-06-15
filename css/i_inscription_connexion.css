@@ -102,6 +102,11 @@ body{
     margin-top: 20px;
 }
 
+/* La div qui englobe les spans de réponse au formulaire connexion */
+.div_erreur_validation{
+    margin-bottom: 20px;
+}
+
 /* Les inputs de type button */
 input[type="button"]{
     padding: 3px 10px 3px 10px;
@@ -130,6 +135,7 @@ textarea{
     font-family: "Roboto";
     color:#77778D;
     font-size: 105%;
+    resize: none;
 }
 textarea:hover{
     border-color: #AACAB2;
@@ -172,7 +178,7 @@ input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hov
     display: inline-block;
 }
 
-/* La div qui englobe le formulaire de'inscription */
+/* La div qui englobe le formulaire d'inscription */
 .div_inscription{
     vertical-align: middle;
     margin: 30px 0 30px 0px;
@@ -181,9 +187,37 @@ input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hov
     display: inline-block;
 }
 
-/* La div qui englobe les spans de réponse au formulaire connexion */
-.div_erreur_validation{
-    margin-bottom: 20px;
-}
 /* ======================================================================================================== */
 
+/* ========================= FORMULAIRE AFFICHAGE MODIFICATION ==========================================*/
+
+/* La div qui contient les deux formulaires */
+.div_affichage_modification{
+    text-align: center;
+    background-color: white;
+    width: 75%;
+    margin: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EAEAEA;
+}
+
+/* La div qui englobe le formulaire d'affichage */
+.div_affichage{
+    vertical-align: middle;
+    width: 35%;
+    margin: 0px 60px 0px 15px;
+    display: inline-block;
+}
+
+/* La div qui englobe le formulaire de modification */
+.div_modification{
+    vertical-align: middle;
+    width: 45%;
+    margin: 30px 0 30px 0px;
+    padding-left: 60px;
+    border-left: solid 2px #f74a00;
+    display: inline-block;
+}
+
+/* ======================================================================================================== */

@@ -1,5 +1,6 @@
 <form id="formulaire">
     <div class="div_titre">
+        <span class="titre">Connexion</span> 
     </div>
 
     <div class="div_erreur_validation">

@@ -63,7 +63,6 @@ body{
 /* La div qui contient le produit */
 .produit_panier{
     text-align: initial;
-    padding-bottom: 10px;
     width: 100%;
     margin: auto;
     margin-bottom: 50px;
@@ -78,8 +77,6 @@ body{
 .element_produit_panier{
     display: inline-block;
     vertical-align: middle;
-    margin-left: 10px;
-    width: 290px;
     height: 80px;
 }
 
@@ -98,30 +95,52 @@ body{
     color: #969696;
 }
 
-/* La div contenant la sous div du prix du panier */
-.div_prix_panier{
-    display: inline-block;
-}
-
-/* Sous div contenant le prix total du panier */
-.prix_panier{
-}
-
-/* Le span qui introduit le prix du panier */
-.span_prix_panier{
-    font-size: 150%;
-    font-weight: bolder;
-    letter-spacing: 2px;
+/* Le span qui introduit le select du produit et le prix */
+.span_select_produit_panier, .span_prix_produit_panier, .span_prix_panier{
     color: #969696;
+    letter-spacing: 1px;
 }
 
-/* Le prix du panier */
-.le_prix_panier{
-    font-size: 150%;
-    font-weight: bolder;
-    letter-spacing: 2px;
-    color: #f74a00;
+/* Le select du produit */
+.select_produit_panier{
 }
+
+/* Le prix total du produit */
+.prix_produit_panier, .prix_panier {
+    color : #f74a00;
+}
+
+/* Le select du nombre de palettes */
+.select_produit_panier{
+    border: none;
+    border-bottom-color: #B7D4BE;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    color: #969696;
+    font-size: 105%;
+}
+.select_produit_panier:hover{
+    border-color: #f74a00;
+    transition: .3s;
+}
+
+/* La croix du produit */
+.supp_produit_panier{
+    color: red;
+    transition: all 0.7s ease-in-out 0s;
+}
+.supp_produit_panier:hover{
+    cursor: pointer;
+    transform: rotate(90deg);
+    transition: all .7s ease-in-out 0s;
+}
+
+/* La div du prix du panier */
+.div_prix_panier{
+    font-size: 150%;
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 /* La div du boutton d'envoi du panier */
 .div_button_panier{

@@ -58,7 +58,7 @@ if (($_GET['champ'] == 'adresse')) {
 /* Si on effectue l'ajax sur un champ(input) d'id 'dpt' on rentre dans le if */
 if (($_GET['champ'] == 'dpt')) {
     if ((strlen($_GET['contenu']) > 2) || ($_GET['contenu'] == 20)
-            || (is_int($_GET['contenu'] == false) || (is_int($_GET['dpt'] == false)))){
+            || (is_int($_GET['contenu'] == false))){
         echo "KO";
     } else {
         echo "OK";

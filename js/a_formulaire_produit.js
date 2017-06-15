@@ -74,6 +74,7 @@ function readData(data,champ)
         vide_span_erreur('nbr_pallette');
        //    alert(data); 
         
+        alert(data);
         //On affiche l'erreur au dessus du champ la contenant
         if (data === "NonCo")
         {

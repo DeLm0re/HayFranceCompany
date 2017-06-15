@@ -104,5 +104,6 @@ demarreSession($user);
         </div><!-- fin page -->
         <script src="../js/oXHR.js" type="text/javascript"></script>
         <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+        <script src="../js/calcul_prix_hors_transport.js" type="text/javascript"></script>
     </body>
 </html>

@@ -21,11 +21,7 @@ if ($_GET['champ'] == "nbr_pallette") {
    
     
 }
-/* ---------------------------------------------------------------------------------- */
-/*
 
- */
-/* ---------------------------------------------------------------------------------- */
 /* Si on valide le formulaire une série de test est effectuée */
 
 if (($_GET['champ'] == 'button')) {
@@ -42,7 +38,7 @@ if (($_GET['champ'] == 'button')) {
       /**/
     $result =  $user->ajouteProduitPanier($produit, $_GET['Format'],$_GET['nbr_pallette']);
      // echo "ajoutT";
-       
+     var_dump($result);
        if($result === TRUE)
        {
            echo "ajoutT"; 

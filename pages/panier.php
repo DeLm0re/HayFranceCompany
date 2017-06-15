@@ -39,6 +39,7 @@ if (empty($user->donneInfos()['departement'])) {
         ?>
 
     </div><!-- fin page -->
+    <script src="../js/a_panier.js" type="text/javascript"></script>
     <script src="../js/oXHR.js" type="text/javascript"></script>
     </body>
     

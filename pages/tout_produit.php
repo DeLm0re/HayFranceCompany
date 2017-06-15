@@ -3,6 +3,21 @@
 include_once '../objet/session_objet.php';
 $user = new Utilisateur($bdd);
 demarreSession($user);
+
+$liste = $user->consulteListeProduit();
+$user->ajouteProduitPanier($liste[1], 32, 4);
+$user->ajouteProduitPanier($liste[0], 22, 6);
+$user->ajouteProduitPanier($liste[2], 32, 8);
+$user->ajouteProduitPanier($liste[3], 22, 1);
+
+$pan = $user->donneContenuPanier();
+for($i = 0; $i < count($pan); $i++)
+{
+    var_dump($user->donnePrixProduit($pan[$i]));
+}
+echo 'TOTAL';
+var_dump($user->donneTotalPanier());
+
 ?>
 
 <html>

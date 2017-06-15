@@ -128,7 +128,7 @@ abstract class RequeteUtilisateur extends Hydratable
         }
         return $existe;
     }
-
+    
 }
 
 
@@ -212,6 +212,18 @@ class Utilisateur extends RequeteUtilisateur
     public function donneContenuPanier()
     {
         return $this->getPanier()->donneContenu();
+    }
+    
+    public function donnePrixProduit(Produit $produit)
+    {
+        $panier = $this->getPanier();
+        return $panier->donnePrixProduit($produit);
+    }
+    
+    public function donneTotalPanier()
+    {
+        $panier = $this->getPanier();
+        return $panier->donnePrixTotal();
     }
     
     public function donneQuantiteProduit(Produit $produit)

@@ -255,6 +255,11 @@ class Utilisateur extends RequeteUtilisateur
         return $liste->donneListeIdAnimal();
     }
     
+    public function changeNbrPalette(Produit $produit, $nb_palette)
+    {
+        return $this->getPanier()->changeNbrPalette($produit, $nb_palette);
+    }
+    
     private function getPanier()
     {
         return new Panier($this->getBDD(), $this->getInfos()['id_utilisateur']);

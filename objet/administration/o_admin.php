@@ -8,16 +8,22 @@ class Admin extends Utilisateur
         parent::__construct($BDD);
     }
    
-    public function donneListeImage()
+    public function donneListeUrlImage()
     {
         $liste = new ListeImage($this->getBDD());
-        return $liste->donneListeImage();
+        return $liste->donneListeUrlImage();
     }
     
     public function donneListeIdImage()
     {
         $liste = new ListeImage($this->getBDD());
         return $liste->donneListeIdImage();
+    }
+    
+    public function donneListeNomImage()
+    {
+        $liste = new ListeImage($this->getBDD());
+        return $liste->donneListeNomImage();
     }
     
     public function ajouteProduit($nom, $description, $description_rapide, $prix_tonne)

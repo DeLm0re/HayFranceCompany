@@ -128,7 +128,7 @@ abstract class RequeteUtilisateur extends Hydratable
         }
         return $existe;
     }
-
+    
 }
 
 
@@ -160,6 +160,7 @@ class Utilisateur extends RequeteUtilisateur
     
     public function modifie($email, $password, $ville, $adresse, $departement)
     {
+        $this->getPanier()->changeDepartement($departement);
         $is_ok = parent::modification($email, $password, $ville, $adresse, $departement);
         $this->hydrate();
         return $is_ok;
@@ -171,8 +172,8 @@ class Utilisateur extends RequeteUtilisateur
         $this->changeDepartement($this->donneInfos()['departement']);
         if($this->estConnecte() === true)
         {
-            $_SESSION['email'] = $email;
-            $_SESSION['password'] = $password;
+            $_SESSION['email'] = encrypte($email);
+            $_SESSION['password'] = encrypte($password);
             return true;
         }
         return false;
@@ -212,6 +213,18 @@ class Utilisateur extends RequeteUtilisateur
     public function donneContenuPanier()
     {
         return $this->getPanier()->donneContenu();
+    }
+    
+    public function donnePrixProduit(Produit $produit)
+    {
+        $panier = $this->getPanier();
+        return $panier->donnePrixProduit($produit);
+    }
+    
+    public function donneTotalPanier()
+    {
+        $panier = $this->getPanier();
+        return $panier->donnePrixTotal();
     }
     
     public function donneQuantiteProduit(Produit $produit)

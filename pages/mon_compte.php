@@ -4,7 +4,7 @@
     $user = new Utilisateur($bdd);
     demarreSession($user);
     
-    if (empty($user->donneInfos()))  
+    if (empty($user->donneInfos()['departement']))  
     {
         header('location:inscription_connexion.php');
     }
@@ -20,20 +20,22 @@
         <div class="page">
 	<div class="bloc-principal">
            
-        <?php       
+        <?php
+            include '../includes/i_navbar.php';
             include '../includes/i_affichage_compte.php';
             /*inclusion du formulaire de modification du compte*/
             include '../includes/i_modifie_compte.php';     
         ?>
           
-        <!-- SCRIPTS POUR L'AJAX -->
-        <script src="../js/a_modifie_compte.js" type="text/javascript"></script>
-        <script src="../js/oXHR.js" type="text/javascript"></script>
-        <div class="clear"></div>
         </div><!-- fin bloc-principal -->
 	<?php
             include '../includes/i_footer.php';
         ?>
         </div><!-- fin page -->
+        
+        <!-- SCRIPTS POUR L'AJAX -->
+        <script src="../js/a_modifie_compte.js" type="text/javascript"></script>
+        <script src="../js/oXHR.js" type="text/javascript"></script>
+        <div class="clear"></div>
     </body>
 </html>

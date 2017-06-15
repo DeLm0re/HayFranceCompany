@@ -73,7 +73,7 @@ function readData(data,champ)
         //alert(data); 
         if (data === "modifT")
         {
-            document.getElementById("erreur_modification").innerHTML = "Modification reussite";
+            document.getElementById("validation_modification").innerHTML = "Modification reussite";
              document.getElementById("loader").style.display = "none";
            document.location.href = "http://localhost/HayFranceCompany/pages/inscription_connexion.php";
             //alert("modification faite ! "); 

@@ -3,6 +3,11 @@
     Author     : aparant
 */
 
+@font-face {
+	font-family: "Roboto";
+	src: url('../polices/Roboto-Regular.ttf');
+}
+
 html, body 
 { 
     height: 100%; 
@@ -22,12 +27,12 @@ html, body
 
 .clear
 {
-    margin: 50px;
+    margin: 80px;
 }
 
 .site-footer 
 {
-    font-family: 'Trebuchet MS';
+    font-family: "Roboto";
     min-width: 100%;
     min-height: 50px;
     position: absolute;

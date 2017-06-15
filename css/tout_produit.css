@@ -15,6 +15,7 @@ html, body{
 body{
   position: relative;
   background-image: url(../images/hayfrancecompany_fondpage.jpg);
+  background-repeat: repeat-y;
 }
 
 /* Définition des fonts non-standard */
@@ -34,7 +35,11 @@ body{
     margin: auto;
 }
 
-/* Le titre de l'esemble des produits BALISE <p> */
+/* La div du titre de l'ensemble des produits */
+.div_titre_ensemble_produit{
+}
+
+/* Le titre de l'ensemble des produits BALISE <p> */
 .titre_ensemble_produit{
     margin-left: 30px;
     margin-bottom: 0px;
@@ -67,12 +72,13 @@ body{
 
 /* La div qui englobe le nom du produit */
 .div_nom_produit{
-    
 }
 
 /* Le nom du produit BALISE <p>*/
 .nom_produit{
+    padding-bottom: 5px;
     font-size: 150%;
+    border-bottom: solid 2px #f74a00;
 }
 
 /* La div qui englobe l'image du produit */

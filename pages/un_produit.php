@@ -31,7 +31,7 @@ demarreSession($user);
         $liste = $user->consulteListeProduit();
         $id = intval($_GET['id_produit']);
         $produit = new Produit($bdd, $id);
-        $infos = $produit->infos();
+        $infos = $produit->infos();        
         $alt = $produit->getNomImages();
         ?>
         <div class="div_produit">
@@ -56,12 +56,13 @@ demarreSession($user);
                         </span>
                     </div>
                     <div class="div_formulaire_produit">
-                        <form class="formulaire_produit">
-                            <p>le formulairele formulairele formulairele formulairele formulaire
-                                le formulairele formulairele formulairele formulairele formulaire
-                                le formulairele formulairele formulairele formulairele formulaire
-                                le formulairele formulairele formulairele formulairele formulaire</p>
-                        </form>
+
+
+                        <fieldset class="field_formulaire_produit">
+                           <?php include '../includes/i_formulaire_produit.php'; ?>
+         
+                        </fieldset>
+
                     </div>
                 </div>
 
@@ -90,5 +91,13 @@ demarreSession($user);
             include '../includes/i_footer.php';
         ?>
         </div><!-- fin page -->
+<<<<<<< HEAD
+        
+        <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+        <script src="../js/oXHR.js" type="text/javascript"></script>
+=======
+        <script src="../js/oXHR.js" type="text/javascript"></script>
+        <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+>>>>>>> refs/remotes/origin/master
     </body>
 </html>

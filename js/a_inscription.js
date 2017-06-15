@@ -104,7 +104,7 @@ function readData(data,champ)
             document.getElementById("erreur_cmdp").innerHTML = "Votre mot de passe et sa confirmation ne sont pas identiques";
         }
         if (data === "erreur_ville"){
-            document.getElementsById("div_champ_erreur_ville").style.display = "inherit";
+            document.getElementById("div_champ_erreur_ville").style.display = "inherit";
             document.getElementById("erreur_ville").innerHTML = "Votre ville n'existe pas";
         }
         if (data === "erreur_adresse"){

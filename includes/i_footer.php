@@ -15,7 +15,7 @@
                 <a class="up_footer_content" href="../pages/faq.php">FAQ</a>
                 <a class="up_footer_content" href="../pages/mentions.php">Mentions Légales</a>
                 <a class="up_footer_content" href="../pages/conditions.php">Conditions Générales</a>
-                <a class="up_footer_content" href="http://hayfrancecompany.com/contact/" target="blank">Nous Contacter</a>
+                <a class="up_footer_content" href="http://hayfrancecompany.com/contact/" target="_blank">Nous Contacter</a>
             </div>
             <img class="up_footer_content" id="logo_footer_facebook" onclick="window.open('https://www.facebook.com/hayfrancecompany/')" src="../images/facebook.png" alt=""/>
         </div>

@@ -26,9 +26,7 @@ if (!isset($_GET['ID'])) {
             <script src="../js/charge_produit.js" type="text/javascript"></script>
             <title>Mon éditeur WYSIWYG</title>
         </head>
-        <body <?php if (isset($id_produit)) {
-        echo"onload=\"request($id_produit);\" ";
-       } ?> >
+        <body onload="request(<?php$id_produit?>);" >
             <?php
             if (isset($id_produit)) {
                 echo"<form method=\"post\" action=\"$URL?ID=$id_produit \">";
@@ -56,9 +54,11 @@ if (!isset($_GET['ID'])) {
             <div id="editeur" contentEditable></div>
             <input type="button" onclick="resultat();" value="Obtenir le HTML" ><br />
             <textarea id="resuEditeur" name="texte"></textarea>
-            <textarea id="courteDesc" name="courteDesc"></textarea>
+            <label for="courteDesc">Description Rapide</label> 
+            <textarea id="courteDesc" name="courteDesc"></textarea><br>
             <!-- </fieldset>
             <!-- Zone Prix --> 
+            
             <fieldset>
                 <label for="prix">Prix</label><br>
                 <input type="number" name="prix" id="prix" /><br>

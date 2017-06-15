@@ -1,6 +1,8 @@
 function request(id_produit) { 
     console.log("entrer dans request(), id_produit = " + id_produit) ; 
-    alert("entrer dans request(), id_produit = " + id_produit) ; 
+    if (typeof id_produit !== 'undefined') {
+  // your code here
+
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function() {
@@ -26,6 +28,7 @@ function request(id_produit) {
     console.log("charge_produit" + id_produit);
     xhr.open("GET", "../ajax/a_XML_get_produit.php?variable1="+ id_produit, true);
     xhr.send(null);
+    }
 }
      
         

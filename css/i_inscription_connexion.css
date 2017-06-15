@@ -135,6 +135,7 @@ textarea{
     font-family: "Roboto";
     color:#77778D;
     font-size: 105%;
+    resize: none;
 }
 textarea:hover{
     border-color: #AACAB2;

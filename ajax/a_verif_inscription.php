@@ -35,9 +35,19 @@ if (($_GET['champ'] == 'mdp') || ($_GET['champ'] == 'cmdp')) {
 }
 /* ---------------------------------------------------------------------------------- */
 
-/* Si on effectue l'ajax sur un champ(input) d'id 'ville'/'adresse' on rentre dans le if */
-if (($_GET['champ'] == 'ville') || ($_GET['champ'] == 'adresse')) {
-    if (isset($_GET['champ']) AND empty($_GET['contenu'])){
+/* Si on effectue l'ajax sur un champ(input) d'id 'ville' on rentre dans le if */
+if (($_GET['champ'] == 'ville')) {
+    if ((strlen($_GET['contenu']) > 100)){
+        echo "KO";
+    } else {
+        echo "OK";
+    }
+}
+/* ---------------------------------------------------------------------------------- */
+
+/* Si on effectue l'ajax sur un champ(input) d'id 'ville' on rentre dans le if */
+if (($_GET['champ'] == 'adresse')) {
+    if ((strlen($_GET['contenu']) > 500)){
         echo "KO";
     } else {
         echo "OK";
@@ -46,8 +56,9 @@ if (($_GET['champ'] == 'ville') || ($_GET['champ'] == 'adresse')) {
 /* ---------------------------------------------------------------------------------- */
 
 /* Si on effectue l'ajax sur un champ(input) d'id 'dpt' on rentre dans le if */
-if ($_GET['champ'] == 'dpt') {
-    if ( (isset($_GET['champ']) AND empty($_GET['contenu'])) || ($_GET['contenu'] == 20) ){
+if (($_GET['champ'] == 'dpt')) {
+    if ((strlen($_GET['contenu']) > 2) || ($_GET['contenu'] == 20)
+            || (is_int($_GET['contenu'] == false))){
         echo "KO";
     } else {
         echo "OK";
@@ -58,23 +69,38 @@ if ($_GET['champ'] == 'dpt') {
 /* Si on valide le formulaire une série de test est effectuée */
 if (($_GET['champ'] == 'button')) {
     
-    if (( isset($_GET['prenom']) AND empty($_GET['prenom']) ) || ((strlen($_GET['prenom'])) > 50)) {
+    if (( isset($_GET['prenom']) AND empty($_GET['prenom']) ) || ((strlen($_GET['prenom'])) > 50)
+            || (preg_match('`^[a-zA-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+'
+                    . '(?:[\ \-\'][a-zA-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+)*$`',$_GET['prenom']) == 0)) {
         echo "erreur_prenom";
-    } else if (( isset($_GET['nom']) AND empty($_GET['nom']) ) || ((strlen($_GET['nom'])) > 50)) {
+        
+    } else if (( isset($_GET['nom']) AND empty($_GET['nom']) ) || ((strlen($_GET['nom'])) > 50)
+            || (preg_match('`^[a-zA-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+'
+                    . '(?:[\ \-\'][a-zA-ZÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+)*$`',$_GET['nom']) == 0)) {
         echo "erreur_nom";
-    } else if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
+        
+    } else if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100) || 
+            (preg_match("/^[-+.\w]{1,64}@[-.\w]{1,15}\.[-.\w]{2,6}$/i", trim($_GET['email'])) == 0)) {
         /**ENVOIE MAIL*/
         echo "erreur_email";
-    } else if (( isset($_GET['mdp']) AND empty($_GET['mdp']) ) || ((strlen($_GET['mdp'])) > 50)) {
+        
+    } else if (( isset($_GET['mdp']) AND empty($_GET['mdp']) ) || ((strlen($_GET['mdp'])) > 50) ||
+            (preg_match('`^[a-zA-Z0-9]*$`', trim($_GET['mdp'])) == 0)) {
         echo "erreur_mdp";
+        
     } else if ($_GET['mdp'] != $_GET['cmdp']) {                                                             
         echo "erreur_cmdp";
+        
     } else if (( isset($_GET['ville']) AND empty($_GET['ville']) ) || ((strlen($_GET['ville'])) > 100)) {
         echo "erreur_ville";
+        
     } else if (( isset($_GET['adresse']) AND empty($_GET['adresse']) ) || ((strlen($_GET['adresse'])) > 500)) {
         echo "erreur_adresse";
-    } else if (( isset($_GET['dpt']) AND empty($_GET['dpt']) ) || ((strlen($_GET['dpt'])) > 2) || $_GET['dpt'] == 20)  {
+        
+    } else if (( isset($_GET['dpt']) AND empty($_GET['dpt']) ) ||((strlen($_GET['dpt'])) > 2) || ($_GET['dpt'] == 20) 
+            || (is_int($_GET['dpt'] == false)))  {
         echo "erreur_dpt";
+        
     }else{
         $user->inscrit($_GET['nom'],$_GET['prenom'],$_GET['civ'],$_GET['email'],
                 $_GET['mdp'],$_GET['ville'],$_GET['adresse'],$_GET['dpt']);

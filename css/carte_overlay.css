@@ -88,6 +88,7 @@ and open the template in the editor.
 #select_overlay:hover{
     color: #888787;
     transition: .3s color;
+    cursor: pointer;
 }
 
 .option_overlay{
@@ -102,8 +103,13 @@ and open the template in the editor.
 
 .button_overlay{
     margin: 5px 0 5px 0;
+    padding: 3px;
     background-color: #CCCCCC;
     font-family: "Roboto";
     border: solid 1px #f74a00;
-    padding: 3px;
+}
+.button_overlay:hover{
+    cursor: pointer;
+    color: #888787;
+    transition: .3s color;
 }

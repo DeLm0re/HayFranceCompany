@@ -20,6 +20,11 @@ demarreSession($user);
         <?php
         /* inclusion de la navbar */
         include '../includes/i_navbar.php';
+        
+        if (empty($user->donneInfos()) && !isset($_SESSION['nom_departement'])) {
+        /* inclusion de l'overlay */
+        include '../includes/i_overlay.php';
+        }
         ?>
 
         <?php
@@ -90,14 +95,13 @@ demarreSession($user);
 	<?php
             include '../includes/i_footer.php';
         ?>
-        </div><!-- fin page -->
-<<<<<<< HEAD
         
-        <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
+        <!-- SCRIPTS POUR L'overlay -->
+        <script src="../js/overlay.js" type="text/javascript"></script>
+        <script src="../js/polyfill.js" type="text/javascript"></script>
+        
+        </div><!-- fin page -->
         <script src="../js/oXHR.js" type="text/javascript"></script>
-=======
-        <script src="../js/oXHR.js" type="text/javascript"></script>
         <script src="../js/a_formulaire_produit.js" type="text/javascript"></script>
->>>>>>> refs/remotes/origin/master
     </body>
 </html>

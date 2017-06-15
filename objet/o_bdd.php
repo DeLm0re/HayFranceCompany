@@ -8,6 +8,7 @@ class BDD
     private $_DBH;
     private $_ERR_MESSAGE;
     private $_LAST_ID;
+    private $_STATUS_LAST_REQUEST;
 
     //Constructeur
     public function __construct() 
@@ -73,13 +74,9 @@ class BDD
             {
                 $prepare->bindParam($index, $param[$index]);
             }
-            $ok = $prepare->execute();
+            $this->_STATUS_LAST_REQUEST = $prepare->execute();
             $resultat = $prepare->fetchAll(PDO::FETCH_ASSOC);
             $this->_LAST_ID = $this->_DBH->lastInsertId();
-            if(count($resultat) <= 0)
-            {
-                return $ok;
-            }
             return $resultat;    
         } catch (PDOExeption $e) 
         {
@@ -91,6 +88,11 @@ class BDD
     public function getLastInsertId()
     {
         return $this->_LAST_ID;
+    }
+    
+    public function getLastRequestStatus()
+    {
+        return $this->_STATUS_LAST_REQUEST;
     }
 }
 

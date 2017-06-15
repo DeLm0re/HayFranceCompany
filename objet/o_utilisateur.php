@@ -160,6 +160,7 @@ class Utilisateur extends RequeteUtilisateur
     
     public function modifie($email, $password, $ville, $adresse, $departement)
     {
+        $this->getPanier()->changeDepartement($departement);
         $is_ok = parent::modification($email, $password, $ville, $adresse, $departement);
         $this->hydrate();
         return $is_ok;

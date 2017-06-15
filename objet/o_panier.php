@@ -107,12 +107,13 @@ class Panier extends RequetePanier
     
     public function donnePrixProduit(Produit $produit)
     {
+        $this->hydrate();
         $prix_transport = new PrixTransport($this->getBDD(), $this->infos()['id_prix_transport']);
         
         $prix_tonne = intval($produit->infos()['prix_tonne']);
         $format = intval($this->donneFormatProduit($produit));
         $quantite = intval($this->donneQuantiteProduit($produit));
-        $prix_livraison = intval($prix_transport->infos()['prix'.$quantite]);
+        $prix_livraison = floatval($prix_transport->infos()['prix'.$quantite]);
         
         $format_final = 0;
         if($format === 32 ){
@@ -121,8 +122,7 @@ class Panier extends RequetePanier
         else{
             $format_final = 22*36;            
         }
-        
-        $total = ($format_final*$quantite*$prix_tonne/1000); + $prix_livraison;
+        $total = ($format_final*$quantite*$prix_tonne/1000) + $prix_livraison;
         return $total;
     }
     

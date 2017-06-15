@@ -40,7 +40,7 @@ if (($_GET['champ'] == 'ville') || ($_GET['champ'] == 'adresse')) {
 
 /* Si on effectue l'ajax sur un champ(input) d'id 'dpt' on rentre dans le if */
 if ($_GET['champ'] == 'dpt') {
-    if ( (isset($_GET['champ']) AND empty($_GET['contenu'])) || ($_GET['contenu'] == 20) ){
+    if ( (isset($_GET['champ']) AND empty($_GET['contenu'])) || (is_int($_GET['contenu'] == false)) || ($_GET['contenu'] == 20) ){
         echo "KO";
     } else {
         echo "OK";
@@ -54,19 +54,26 @@ if (($_GET['champ'] == 'button')) {
    if (empty($user->donneInfos()))  
     {
         echo "NonCo";
-    }else if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
+    }
+    else if ((isset($_GET['email']) AND empty($_GET['email']) ) || ((strlen($_GET['email'])) > 100)) {
         echo "erreur_email";
-    } else if (( isset($_GET['mdp']) AND empty($_GET['mdp']) ) || ((strlen($_GET['mdp'])) > 50)) {
+    }
+    else if ( (preg_match('`^[a-zA-Z0-9]*$`', trim($_GET['mdp'])) == 0) || ((strlen($_GET['mdp'])) > 50)) {
         echo "erreur_mdp";
-    } else if ($_GET['mdp'] != $_GET['cmdp']) {                                                             
+    } 
+    else if ($_GET['mdp'] != $_GET['cmdp']) {                                                             
         echo "erreur_cmdp";
-    } else if (( isset($_GET['ville']) AND empty($_GET['ville']) ) || ((strlen($_GET['ville'])) > 100)) {
+    } 
+    else if (( isset($_GET['ville']) AND empty($_GET['ville']) ) || ((strlen($_GET['ville'])) > 100)) {
         echo "erreur_ville";
-    } else if (( isset($_GET['adresse']) AND empty($_GET['adresse']) ) || ((strlen($_GET['adresse'])) > 500)) {
+    } 
+    else if (( isset($_GET['adresse']) AND empty($_GET['adresse']) ) || ((strlen($_GET['adresse'])) > 500)) {
         echo "erreur_adresse";
-    } else if (( isset($_GET['dpt']) AND empty($_GET['dpt']) ) || ((strlen($_GET['dpt'])) > 2) || $_GET['dpt'] == 20)  {
+    } 
+    else if (( isset($_GET['dpt']) AND empty($_GET['dpt']) ) || (is_int($_GET['dpt'] == false)) || ((strlen($_GET['dpt'])) > 2) || $_GET['dpt'] == 20)  {
         echo "erreur_dpt";
-    }else{
+    }
+    else{
         // a ajouter le compte Utilisateur 
      $result = $user->modifie($_GET['email'],$_GET['mdp'],$_GET['ville'],$_GET['adresse'],$_GET['dpt']);
         if($result === TRUE)

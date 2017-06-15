@@ -23,7 +23,7 @@ function suppression_produit(id_produit){
     xhr.send(null);
 }
 
-function modifie_palette_produit(){
+function modifie_palette_produit(id_produit,nbr_palette){
     
     var xhr = getXMLHttpRequest();
 
@@ -35,8 +35,11 @@ function modifie_palette_produit(){
             }
         }
     };
+    
+    var id = encodeURIComponent(id_produit);
+    var nbr = encodeURIComponent(nbr_palette);
 
-    xhr.open("GET", "../ajax/a_modifie_palette_produit.php", true);
+    xhr.open("GET", "../ajax/a_modifie_palette_produit.php?id"+id+"&nbr="+nbr+"", true);
     xhr.send(null);
 }
 

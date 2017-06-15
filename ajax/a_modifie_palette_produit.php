@@ -4,7 +4,10 @@ include_once '../objet/session_objet.php';
 $user = new Utilisateur($bdd);
 demarreSession($user);
 
-/*requete*/
+$id_produit = $_GET['id'];
+$nbr_palette = $_GET['nbr'];
+
+$produit = new Produit($bdd, $id_produit);
         
 echo("modification");
 

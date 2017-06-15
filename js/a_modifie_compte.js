@@ -68,6 +68,15 @@ function readData(data,champ)
             vide_span_erreur('email');
             vide_span_erreur('mdp');
             vide_span_erreur('cmdp');
+            vide_span_erreur('ville');
+            vide_span_erreur('adresse');
+            vide_span_erreur('dpt');
+            document.getElementById("div_champ_erreur_email").style.display="none";
+            document.getElementById("div_champ_erreur_mdp").style.display="none";
+            document.getElementById("div_champ_erreur_cmdp").style.display="none";
+            document.getElementById("div_champ_erreur_ville").style.display="none";
+            document.getElementById("div_champ_erreur_adresse").style.display="none";
+            document.getElementById("div_champ_erreur_dpt").style.display="none";
         
         //On affiche l'erreur au dessus du champ la contenant
         //alert(data); 
@@ -88,23 +97,28 @@ function readData(data,champ)
         {
            // alert("erreur modification ! "); 
            document.getElementById("loader").style.display = "none";
-           document.getElementById("erreur_modification").innerHTML = "vous n'etes pas connecter , nous vous redirigeons";
            document.getElementById("formulaire_modification_compte").style.display = "none";
            //document.getElementById(" affichage_du_compte").style.display = "none";
            document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
         }
         if (data === "erreur_email")
+            document.getElementById("div_champ_erreur_email").style.display="inherit";
             document.getElementById("erreur_email").innerHTML = "Veuillez saisir un email valide";
         if (data === "erreur_mdp")
+            document.getElementById("div_champ_erreur_mdp").style.display="inherit";
             document.getElementById("erreur_mdp").innerHTML = "Votre mot de passe ne peut contenir que des lettres et des chiffres\n et ne doit pas dépasser 50 caractères";
         if (data === "erreur_cmdp")
+            document.getElementById("div_champ_erreur_cmdp").style.display="inherit";
             document.getElementById("erreur_cmdp").innerHTML = "Votre mot de passe et sa confirmation ne sont pas identiques";
         if (data === "erreur_ville")
+            document.getElementById("div_champ_erreur_ville").style.display="inherit";
             document.getElementById("erreur_ville").innerHTML = "Votre ville n'existe pas";
         if (data === "erreur_adresse")
+            document.getElementById("div_champ_erreur_adresse").style.display="inherit";
             document.getElementById("erreur_adresse").innerHTML = "Votre adresse est invalide";
         if (data === "erreur_dpt")
-            document.getElementById("erreur_adresse").innerHTML = "Numéro de département incorrect ou non désservi";
+            document.getElementById("div_champ_erreur_dpt").style.display="inherit";
+            document.getElementById("erreur_dpt").innerHTML = "Numéro de département incorrect ou non désservi";
     }
 }
 

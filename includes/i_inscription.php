@@ -42,7 +42,7 @@
             <span id="erreur_email" class="champ_erreur"></span><br>
         </div>
         <div class="div_champ">
-            <span class="champ">Adresse mail : <input id="email" type="text" spellcheck="false" onchange="request(readData, 'email');">
+            <span class="champ">Adresse mail : <input id="email" style="width: 250px;" type="text" spellcheck="false" onchange="request(readData, 'email');">
                 <span id="ok_email" style="display: none;"><img class="icon_preverif" src="../images/ok.png" /></span>
                 <span id="ko_email" style="display: none;"><img class="icon_preverif" src="../images/ko.png" /></span>
             </span><br>

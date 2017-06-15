@@ -1,5 +1,8 @@
 function request(id_produit) { 
     console.log("entrer dans request(), id_produit = " + id_produit) ; 
+    if (typeof id_produit !== 'undefined') {
+  // your code here
+
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function() {
@@ -21,10 +24,11 @@ function request(id_produit) {
 			document.getElementById("loader").style.display = "center";
 		}
 	};
-
+        
     console.log("charge_produit" + id_produit);
-    xhr.open("GET", "../ajax/a_XMLHttpRequest_getListData?variable1=" + id_produit, true);
+    xhr.open("GET", "../ajax/a_XML_get_produit.php?variable1="+ id_produit, true);
     xhr.send(null);
+    }
 }
      
         
@@ -54,4 +58,4 @@ function request(id_produit) {
        document.getElementById("prix").value = nodes[0].getAttribute("prix_tonne");  
         
         }
-   window.onload = request();
+   window.onload =request();

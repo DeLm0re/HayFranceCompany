@@ -17,6 +17,9 @@ $URL ='admin_modification_produit.php' ;
             <form action="admin_modification_produit.php">
             <input type="submit" value="Créer Produit" />
             </form>
+            <form action="upload_image.php">
+            <input type="submit" value="Ajout Image" />
+            </form>
            <tr>
                <th>ID</th>
                <th>Nom Produit</th>

@@ -1,5 +1,5 @@
 <?php
-
+include_once 'o_liste_image.php';
 
 class Admin extends Utilisateur
 {

@@ -1,3 +1,4 @@
+<link href="../css/admin_modification.css" rel="stylesheet" type="text/css"/>
 <?php
 include_once '../objet/session_objet.php';
 include_once '../objet/administration/o_admin.php';
@@ -24,7 +25,7 @@ if (!isset($_GET['ID'])) {
              <script src="../js/oXHR.js" type="text/javascript"></script>
             <script src="../js/editeur_de_texte.js" type="text/javascript"></script>
             <script src="../js/charge_produit.js" type="text/javascript"></script>
-            <title>Mon éditeur WYSIWYG</title>
+            <title>Créer/Modifier Produit</title>
         </head>
         <body <?php if(isset($_GET['ID'])){
                   $id_produit = $_GET['ID'] ; 
@@ -47,7 +48,7 @@ if (!isset($_GET['ID'])) {
             <label for="titre"></label>
             <input type="text" name="titre" id="titre" placeholder="Nom article" size="30" /><br>
             <!--Barre d'option de text -->
-            <!--
+            <!--A ajouter plus tard
             <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');" />
             <input type="button" value="I" style="font-style: italic;" onclick="commande('italic');" />
             <input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');" />
@@ -85,11 +86,34 @@ if (!isset($_GET['ID'])) {
                 creerCheckBoxAnimal($listeIdAnimal, $listeNomAnimal, $produit);
                 ?>
             </fieldset>
+            <fieldset>
+                <input type='button' onclick='afficheListeImages()'>
+                <span id="listeImages" display='none'>
+                <?php
+                $listeImage = $admin->donneListeImage();
+                echo'var_dump $listeImage';
+                var_dump($listeImage);
+                $listeIdImage = $admin->donneListeIdImage();
+                echo'var_dump $listeIdImage';
+                var_dump($listeIdImage);
+                creerCheckBoxAnimal($listeIdImage, $listeImage, $produit);
+                ?>
+                </span>
+            </fieldset>
             </div>
             <input type="submit" value="Valider" />
         </form>
-
-
+                <script>
+                    function afficheListeImages() {
+                        if((document.getElementById("listeImage").style.display) === "none"){
+                            (document.getElementById("listeImage").style.display) = "inline";
+                        }
+                        else{
+                            (document.getElementById("listeImage").style.display) = "none";
+                        }
+                    }
+                </script>
+                
     </body>
 
     </html>
@@ -135,24 +159,40 @@ if (!isset($_GET['ID'])) {
     }
     echo"var_dump animalChecked :";
     var_dump($tabIdAnimalChecked);
+    
+    //On créer un tableau qui devra récupérer la liste des image qu'on a checké dans le formulaire
+    $tabIdImageChecked = [];
+    //Recupère la liste de tous les images
+    $tabIdImage = $admin->donneListeIdImage() ; 
+    echo"var_dump tabAnimaux";
+    var_dump($tabIdImage);
+    //Pour chaque image on test si sa valeur en _POST existe càd qu'il a été coché 
+    //On créer un tableau d'image qui ont été cochés $imageChecked
+   
+    foreach ($tabIdImage as $valueIdImage) {
+        echo"value image : $valueIdImage <br>";
+        if (isset($_POST[$valueIdImage])) {
+            $laValeur = $_POST[$valueIdImage] ; 
+            echo"entrer dans if du  foreach tableau animal, $laValeur <br>";
+            //$animal est le tableau des animaux cochés 
+            $tabIdAnimalChecked[$valueIdImage] = $valueIdImage;
+        }
+    }
+    echo"var_dump imageChecked :";
+    var_dump($tabIdImageChecked);
+    
+    
+    
 
 
-    // $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
+
     //S'il n'y a pas d'ID de setté sur la page
     if (!isset($_GET['ID'])) {
         echo"if ID est PAS set";
 
         //On entre toutes les valeurs de produit 
         $admin->ajouteProduit($titre, $texte, $courteDesc, $prix);
-        /* $stmt = $dbh->prepare('INSERT INTO produit(id_produit,nom_produit,description,description_rapide,prix_tonne) VALUES(?,?,?,?,?)');
-          $stmt->bindValue(1, null);
-          settype($titre, "string");
-          $stmt->bindParam(2, $titre, PDO::PARAM_STR);
-          $stmt->bindParam(3, $texte, PDO::PARAM_STR);
-          $stmt->bindParam(4, $courteDesc, PDO::PARAM_STR);
-          $stmt->bindParam(5, $prix, PDO::PARAM_INT);
-          $stmt->execute();
-         */
+
         
         //Récupérer l'id_produit du produit que l'on vient de rentrer 
         $listeObjProduit = $admin->consulteListeProduit() ; 
@@ -165,42 +205,40 @@ if (!isset($_GET['ID'])) {
         //On insert dans la BDD l'animal et son produit correspondant
         foreach ($tabIdAnimalChecked as $valueIdAnimal) {
             $admin->ajouteAnimalProduit($id_produit, $valueIdAnimal)  ; 
-            //$id_produit = getIdAnimal($valueAnimal) ; 
-            /*$id_animal = $admin->donneListeIdAnimal();
-            $id_animal["$value"];
-            $stmt = $dbh->prepare('INSERT INTO animal_produit(id_produit,id_animal) VALUES(?,?)');
-            $stmt->bindValue(1, null);
-            $stmt->bindParam(2, $id_animal, PDO::PARAM_STR);
-            $stmt->execute();
-             * 
-             */
+          
         }
     } else if (isset($_GET['ID'])) {
         echo"if ID est set";
 
         $admin->modifieProduit($produit, $titre, $texte, $courteDesc, $prix);
-        /*
-          $stmt = $dbh->prepare('UPDATE produit SET nom_produit= :nom, description= :desc, description_rapide= :descRap, prix_tonne= :prix WHERE id_produit=' . $id_produit . '');
-          $stmt->bindParam(':nom', $titre);
-          $stmt->bindParam(':desc', $texte);
-          $stmt->bindParam(':descRap', $courteDesc);
-          $stmt->bindParam(':prix', $prix);
-          $stmt->execute();
-         */
-        //$produit->appartientCategorie($animal) ; 
+      
         $admin->supprimeAnimalProduit($id_produit);
         //On supprime tous les id pour les refaires après
-        // $stmt2 = $dbh->prepare("DELETE FROM `animal_produit`WHERE `id_produit` = $id_produit ");
-        //$stmt2 ->execute() ; 
+         
 
         foreach ($tabIdAnimalChecked as $valueIdAnimal) {
             $admin->ajouteAnimalProduit($id_produit, $valueIdAnimal)  ;
-            /* $stmt = $dbh->prepare('INSERT INTO animal_produit(id_produit,id_animal) VALUES(?,?)');
-              $stmt->bindValue(1, $id_produit);
-              $stmt->bindParam(2, $id_animal, PDO::PARAM_STR);
-              $stmt->execute();
 
-             */
+        }
+    }
+}
+
+function creerCheckBoxImage($listeIdImage, $listeUrlImage, $ObjProduit) {
+    $max = count($listeIdImage);
+    for ($i = 0; $i < $max; $i+=1) {
+        if (isset($_GET['ID'])) {
+            $BoolAppartientCategorie = $ObjProduit->appartientCategorie($listeIdImage[$i]);
+            //echo'$Bool Machin';
+            //var_dump($BoolAppartientCategorie);
+            if ($BoolAppartientCategorie == TRUE) {
+                echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeUrlImage[$i]\" checked=\"checked\"/> <label for=\"$listeUrlImage[$i]\"><img src=\"$listeUrlImage[$i]\"/> </label><br />" ; 
+            }
+            else{
+                echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeUrlImage[$i]\" /> <label for=\"$listeIdImage[$i]\"><img src=\"$listeUrlImage[$i]\"/></label><br />";
+            }
+        } 
+        else {
+            echo"<input type=\"checkbox\" name=\"$listeIdImage[$i]\" id=\"$listeUrlImage[$i]\" /> <label for=\"$listeIdImage[$i]\"><img src=\"$listeUrlImage[$i]\"/></label><br />";
         }
     }
 }
@@ -242,6 +280,8 @@ function creerCheckBoxAnimal($listeIdAnimal, $listeNomAnimal, $ObjProduit) {
     }
     // return($row) ; 
 }
+
+
 
 //$listeAnimaux = $admin->donneListeAnimal() ;
 /*function recupListeAnimaux(){

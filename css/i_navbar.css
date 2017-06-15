@@ -19,13 +19,82 @@ li{
     list-style-type: none;
 }
 
-/* Action sur l'ensemble de la navbar */
+/*TOUTE LA NAVBAR */
 .div_navbar{
+    margin-bottom: 40px;
+}
+
+/* = = = = = = = DESSUS NAVBAR = = = = = = = = = =*/
+
+/* Action sur la div du dessus de la barre de la navbar */
+.div_dessus_navbar{
+    font-family: "Roboto";
+    background-color: white;
+    width: 75%;
+    margin: auto; 
+    padding-bottom: 20px;
+    position: relative;
+    border-top: solid 2px #f74a00;
+}
+
+/* Div du logo dans la navbar */
+.div_logo_navbar{
+    display: inline-block;
+}
+
+/* Image du dessus de la navbar */
+.logo_navbar{
+    width: 70%;
+}
+
+/* Div infos dans la navbar */
+.div_info_navbar{
+    display: inline-block;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;;
+    font-family: "Roboto";
+    color: #969696;    
+}
+
+.bonjour_navbar{
+    text-align: end;
+}
+
+.span_bonjour_navbar{
+    color: #f74a00;
+}
+
+.span_bonjour_navbar:hover{
+    cursor: pointer;
+}
+
+.autre_navbar{
+    text-align: end;
+}
+
+.div_deconnexion_navbar{
+    text-align: end;
+    margin-top: 15px;
+}
+
+.deconnexion_navbar{
+    color: #AACAB2;
+}
+
+.deconnexion_navbar:hover{
+    cursor: pointer;
+}
+
+/* = = = = = = = DESSOUS NAVBAR = = = = = = = = = =*/
+
+/* Action sur l'ensemble de la barre dans la navbar */
+.div_dessous_navbar{
     font-family: "Roboto";
     background-color: #F9F9F9;
     width: 75%;
     margin: auto; 
-    text-align: center
+    text-align: center;
 }
 
 /* La div qui contient tout le dropdown */
@@ -62,6 +131,11 @@ li{
     margin-top: 11px;
     margin-left: 6px;
     margin-right: 6px;
+}
+
+/* Survol de la fleche devant chaque option du dropdown */
+.fleche_contenu_dropdown:hover{
+    cursor: pointer;
 }
 
 /* Contenu du dropdown (Hidden par default) */

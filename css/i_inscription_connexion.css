@@ -1,0 +1,222 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30 mai 2017, 17:04:49
+    Author     : rjacquiez
+*/
+
+/* Définition des fonts non-standard */
+@font-face {
+	font-family: "Roboto";
+	src: url('../polices/Roboto-Regular.ttf');
+}
+
+#img_loader{
+    width: 5%;
+}
+
+html, body{
+  min-height: 100%;
+}
+
+body{
+  position: relative;
+  background-image: url(../images/hayfrancecompany_fondpage.jpg);
+  background-repeat: repeat-y;
+}
+
+#formulaire{
+    font-family: "Roboto";
+    color:#77778D;
+    background-color: white;
+}
+
+/* La div qui englobe les titres des formulaires */
+.div_titre{
+    margin-bottom: 20px;
+}
+
+/* Le titre des formulaires BALISE <span> */
+.titre{
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* La div qui englobe la partie champ des formulaires */
+.div_ensemble_champ{
+    text-align: initial;
+}
+
+/* Les div qui englobe les champs erreur/validation BALISE <span> */
+#div_champ_erreur_nom, #div_champ_erreur_adresse, #div_champ_erreur_cmdp,
+#div_champ_erreur_dpt, #div_champ_erreur_email, #div_champ_erreur_mdp,
+#div_champ_erreur_prenom, #div_champ_erreur_ville, #div_champ_erreur_email_connexion,
+#div_champ_erreur_mdp_connexion{
+    margin-bottom: 8px;
+}
+
+/* Le span qui est le champ erreur en question */
+.champ_erreur{
+    color: #f74a00;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+/* Le span qui est le champ validation en question */
+.champ_validation{
+    color: #B7D4BE;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+/* La div qui englobe les champs BALISE <span> */
+.div_champ{
+    margin-bottom: 20px;
+}
+
+/* Le span qui est le champ en question */
+.champ{
+
+}
+
+/* L'icone de preverif */
+.icon_preverif{
+    vertical-align: middle;
+    margin-left: 5px;
+    height: 15px;
+    width: 15px;
+}
+
+/* L'image du loader */
+#img_loader{
+    width: 60px;
+    height: 60px;
+}
+
+/* La div qui englobe le button onclick */
+.div_button{
+    margin-top: 20px;
+}
+
+/* La div qui englobe les spans de réponse au formulaire connexion */
+.div_erreur_validation{
+    margin-bottom: 20px;
+}
+
+/* Les inputs de type button */
+input[type="button"]{
+    padding: 3px 10px 3px 10px;
+    background-color: #CCCCCC;
+    font-family: "Roboto";
+    border: solid 1px #f74a00;
+    font-size: 110%;
+    letter-spacing: 1px;
+}
+input[type="button"]:hover{
+    cursor: pointer;
+    color: #888787;
+    transition: .3s color;
+}
+
+/* Les inputs de type radio */
+input[type="radio"]{
+    -webkit-appearance: checkbox; 
+}
+
+/* Les textarea */
+textarea{
+    border-color: #77778D;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Roboto";
+    color:#77778D;
+    font-size: 105%;
+}
+textarea:hover{
+    border-color: #AACAB2;
+    transition: .3s;
+}
+
+
+/* Les inputs de saisi */
+input[type="text"], input[type="password"], input[type="number"]{
+    border: none;
+    border-bottom-color: #77778D;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    font-family: "Roboto";
+    color:#77778D;
+    font-size: 105%;
+}
+input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover{
+    border-color: #AACAB2;
+    transition: .3s;
+}
+
+/* ========================= FORMULAIRE INSCRIPTION CONNEXION ==========================================*/
+
+/* La div qui contient les deux formulaires */
+.div_inscription_connexion{
+    text-align: center;
+    background-color: white;
+    width: 75%;
+    margin: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EAEAEA;
+}
+
+/* La div qui englobe le formulaire de connexion */
+.div_connexion{
+    vertical-align: middle;
+    margin: 0px 60px 0px 0px;
+    display: inline-block;
+}
+
+/* La div qui englobe le formulaire d'inscription */
+.div_inscription{
+    vertical-align: middle;
+    margin: 30px 0 30px 0px;
+    padding-left: 60px;
+    border-left: solid 2px #f74a00;
+    display: inline-block;
+}
+
+/* ======================================================================================================== */
+
+/* ========================= FORMULAIRE AFFICHAGE MODIFICATION ==========================================*/
+
+/* La div qui contient les deux formulaires */
+.div_affichage_modification{
+    text-align: center;
+    background-color: white;
+    width: 75%;
+    margin: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EAEAEA;
+}
+
+/* La div qui englobe le formulaire d'affichage */
+.div_affichage{
+    vertical-align: middle;
+    width: 35%;
+    margin: 0px 60px 0px 15px;
+    display: inline-block;
+}
+
+/* La div qui englobe le formulaire de modification */
+.div_modification{
+    vertical-align: middle;
+    width: 45%;
+    margin: 30px 0 30px 0px;
+    padding-left: 60px;
+    border-left: solid 2px #f74a00;
+    display: inline-block;
+}
+
+/* ======================================================================================================== */

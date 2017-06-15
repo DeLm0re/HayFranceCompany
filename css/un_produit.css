@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14 juin 2017, 09:26:28
+    Author     : rjacquiez
+*/
+
+html, body{
+  min-height: 100%;
+}
+
+body{
+  position: relative;
+  background-image: url(../images/hayfrancecompany_fondpage.jpg);
+  background-repeat: repeat-y;
+}
+
+/* Définition des fonts non-standard */
+@font-face {
+	font-family: "Roboto";
+	src: url('../polices/Roboto-Regular.ttf');
+}
+
+/* La div qui englobe tout le contenu */
+.div_produit{
+    width: 75%;
+    margin: auto;
+    padding: 40px;
+    background-color: white;
+    border-width: 1px;
+    border-color: #EAEAEA;
+    border-style: solid;
+}
+
+/*L'ensemble de la div droite et gauche */
+.div_g_d_produit{
+    text-align: center;
+}
+
+/* La div gauche du produit */
+.div_gauche_produit{
+    vertical-align: text-top;
+    display: inline-block;
+    width: 40%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EAEAEA;
+}
+
+/* La div droite du produit */
+.div_droite_produit{
+    vertical-align: text-top;
+    display: inline-block;
+    width: 50%;
+    margin-left: 15px;
+}
+
+/* L'image du produit */
+.image_produit{
+    padding: 10px;
+    max-width: 95%;
+}
+
+/* La div du nom du produit */
+.div_nom_produit{
+    border-top: none;
+    border-right: none;
+    border-bottom: solid 2px #EAEAEA;
+    border-left: none;
+    padding-bottom: 5px;
+}
+
+/* Le nom du produit BALISE <span> */
+.nom_produit{
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 120%;
+    color: #4B4B5A;
+    letter-spacing: 2px;
+}
+
+/* La div du formulaire du produit */
+.div_formulaire_produit{
+    
+}
+
+/* Le formulaire du produit */
+.formulaire_produit{
+    
+}
+
+/*Le contener de description du produit */
+.contener_description_produit{
+    margin-top: 40px;
+}
+
+/* La div qui contient "Description" */
+.div_description{
+    margin-bottom: 15px;
+}
+
+/*BALISE <span> */
+.description{
+    text-align: initial;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 120%;
+    color: #4B4B5A;
+    letter-spacing: 2px;
+}
+
+/* La div qui contient le texte de la description */
+.div_description_produit{
+    text-align: justify;
+    font-family: "Roboto";
+    color: #77778D;
+    border-left: solid 2px #f74a00;
+    padding-left: 15px;
+}
+
+/* Le texte de la description BALISE <p> */
+.description_produit{
+    
+}

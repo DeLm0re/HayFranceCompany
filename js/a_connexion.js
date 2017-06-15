@@ -1,6 +1,4 @@
 
-
-
 function request_connexion(callback,champ) {
     var xhr = getXMLHttpRequest();
 
@@ -72,34 +70,32 @@ function readData_connexion(data,champ)
        // alert(data);
         if (data === "connexionR")
         {
-           // alert("connecter!!"); 
-            document.getElementById("loader_connexion").style.display = "none";
-            document.getElementById("formulaire_connexion").style.display = "none";
-            document.getElementById("erreur_connexion").innerHTML = "connexion reussite";            
-             document.location.href = "http://localhost/Hayfrance/pages/tout_produit.php";
+            // alert("connecter!!");
+            document.getElementById("div_champ_erreur_email_connexion").style.display = "none";
+            document.getElementById("erreur_connexion").style.display = "none";
+            document.getElementById("validation_connexion").style.display = "inherit";
+            document.getElementById("validation_connexion").innerHTML = "Connexion reussite";            
+            document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
 
         } if (data === "connexionF")
         {
-            //alert("erreur de connection"); 
-            document.getElementById("loader_connexion").style.display = "none";
-            document.getElementById("erreur_connexion").innerHTML = "Erreur lors de la connexion , l'un des champs n'est pas valide";
+            //alert("erreur de connection");
+            document.getElementById("div_champ_erreur_email_connexion").style.display = "none";
+            document.getElementById("validation_connexion").style.display = "none";
+            document.getElementById("erreur_connexion").style = "inherit";
+            document.getElementById("erreur_connexion").innerHTML = "Aucun utilisateur trouvé";
             
         }
         
-        if (data === "erreur_email_connexion")
+        if (data === "erreur_connexion")
         {
-   //           alert("on est passé par erreur mail") ;
-            document.getElementById("erreur_email_connexion").innerHTML = "Veuillez saisir un email valide";
-        }
-        if (data === "erreur_mdp_connexion")
-        { 
-       // alert("on est passé par erreur mail") ;
-            document.getElementById("erreur_mdp_connexion").innerHTML = "Votre mot de passe ne peut contenir que des lettres et des chiffres\n et ne doit pas dépasser 50 caractères";
+            //alert("on est passé par erreur mail") ;
+            document.getElementById("div_champ_erreur_email_connexion").style.display = "inherit";
+            document.getElementById("erreur_email_connexion").innerHTML = "Données invalides";
         }
     }
    
 }
-
 
 function vide_span_erreur_connexion(idspan){
     document.getElementById("erreur_"+idspan).innerHTML = "";

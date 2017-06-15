@@ -67,10 +67,10 @@ abstract class RequeteUtilisateur extends Hydratable
         }
         $param = array( 1 => $ema, 2 => md5($pas), 3 => $vil, 4 => $adr, 
             5 => $dep, 6 => $this->id_utilisateur);
-        $this->bindRequete("UPDATE utilisateur  SET email = ?, password = ?, "
+        $this->bindRequete("UPDATE utilisateur SET email = ?, password = ?, "
                 . "ville = ?, adresse = ?, departement = ? "
                 . "WHERE id_utilisateur = ?", $param);
-        return true;
+        return $this->getBDD()->getLastRequestStatus();
     }
 
     protected function connexion($email, $password)

@@ -24,15 +24,21 @@ $prix = $infos['prix_tonne' ];
         <input id="Format32" type="radio" name="Format" value="32"><label for="Format32">32 kg</label>
     </span><br>
     
-    <!-- passage de l'id du produit en mode shlag !! a changé immediatement -->
-     <input type="hidden" id="id_produit" value="<?php echo $id  ;?>"  onchange="request(readData, 'id_produit');"> 
-    <!-- ***************************************************************************************************-->
+   
+        <!-- ******** passage de l'id du produit et du prix dangereux !! a changé immediatement *************** -->
+        <!-- ------------------------- pour l'ajax ------------------------------------------------------------ -->
+        <input type="hidden" id="id_produit" value="<?php echo $id  ;?>"  onchange="request(readData, 'id_produit');"> 
+        <!-- ------------------------- pour le javascipt du calcul à la volée  -------------------------------- -->
+        <input type="hidden" id="prix_produit" value="<?php echo $prix  ;?>" >
+        <!-- ***************************************************************************************************-->
+   
     
     <span id="erreur_nbr_pallette" class="erreur" ></span><br>
     <span> Nombre de pallette : <input id="nbr_pallette" type="number" min="1" max="8"  onchange="request(readData, 'nbr_pallette');"></span><br>
     <span id="ok_nbr_pallette" style="display: none;"><img src="../images/ok.png"/></span>
     <span id="ko_nbr_pallette" style="display: none;"><img src="../images/ko.png"/></span>
 
+    <span id="prix_produit_par_JS"></span>
     
     <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span><br>
     <input id="button" type="button" value="Ajouter ce produit à mon panier" onclick="request2(readData);"><br>

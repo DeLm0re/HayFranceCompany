@@ -7,10 +7,28 @@ class Admin extends Utilisateur
     {
         parent::__construct($BDD);
     }
+   
+    public function donneListeImage()
+    {
+        $liste = new ListeImage($this->getBDD());
+        return $liste->donneListeImage();
+    }
+    
+    public function donneListeIdImage()
+    {
+        $liste = new ListeImage($this->getBDD());
+        return $liste->donneListeIdImage();
+    }
     
     public function ajouteProduit($nom, $description, $description_rapide, $prix_tonne)
     {
         $this->insertProduit($nom, $description, $description_rapide, $prix_tonne);
+        return $this->getBDD()->getLastInsertId();
+    }
+    
+    public function ajouteImage($nom, $url)
+    {
+        $this->insertImage($nom, $url);
         return $this->getBDD()->getLastInsertId();
     }
     
@@ -59,6 +77,13 @@ class Admin extends Utilisateur
                 array(1 => $nom, 2 => $desc, 3 => $dera, 4 => $prix));
     }
     
+    private function insertImage($nom, $url)
+    {
+        $this->bindRequete('INSERT INTO image (nom_image, url) VALUES (?, ?)',
+                array(1 => $nom, 2 => $url));
+    }
+
+
     private function insertImageProduit($idp, $idi)
     {
         $this->bindRequete('INSERT INTO produit_image '
@@ -107,3 +132,13 @@ class Admin extends Utilisateur
                 array( 1 => $id_produit));
     }
 }
+
+
+/*
+
+ * donneListeUrlImage()
+ * donneListeIdImage()
+ * 
+ * 
+ * 
+ *  */

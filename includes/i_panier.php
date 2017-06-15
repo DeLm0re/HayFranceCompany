@@ -59,8 +59,8 @@ demarreSession($user);
     </div>
     <div class="div_prix_panier">
         <div class="prix_panier">
-            <span class="span_prix_panier">Prix total : </span>
-            <span class="le_prix_panier">500 €</span>
+            <span class="span_prix_panier">Prix total du panier : </span>
+            <span class="prix_panier">500</span><span class="span_prix_produit_panier"> €</span>
         </div>
     </div>
 </div>

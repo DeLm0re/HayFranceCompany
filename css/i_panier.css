@@ -96,7 +96,7 @@ body{
 }
 
 /* Le span qui introduit le select du produit et le prix */
-.span_select_produit_panier, .span_prix_produit_panier{
+.span_select_produit_panier, .span_prix_produit_panier, .span_prix_panier{
     color: #969696;
     letter-spacing: 1px;
 }
@@ -106,7 +106,7 @@ body{
 }
 
 /* Le prix total du produit */
-.prix_produit_panier{
+.prix_produit_panier, .prix_panier {
     color : #f74a00;
 }
 
@@ -131,8 +131,13 @@ body{
 }
 .supp_produit_panier:hover{
     cursor: pointer;
-    transform: rotate(180deg);
+    transform: rotate(90deg);
     transition: all .7s ease-in-out 0s;
+}
+
+/* La div du prix du panier */
+.div_prix_panier{
+    font-size: 150%;
 }
 
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */

@@ -84,7 +84,7 @@ function readData(data,champ)
         {
             document.getElementById("validation_modification").innerHTML = "Modification reussite";
              document.getElementById("loader").style.display = "none";
-           document.location.href = "http://localhost/HayFranceCompany/pages/inscription_connexion.php";
+           document.location.href = "http://localhost/HayFranceCompany/pages/mon_compte.php";
             //alert("modification faite ! "); 
         } 
         if (data === "modifF")

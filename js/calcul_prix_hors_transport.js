@@ -14,7 +14,7 @@ window.addEventListener("load", function () {
     for (i = 0; i < tabInputs.length; i++) {
 // Ajout d'un Listener sur tous les <input> sur l'évènement onkeyup
         tabInputs[i].addEventListener("keyup", function () {
-            //alert("keyup");
+            //alert("keyup"); 
             calculPrixHorsTransport();
         }, false);
 // Ajout d'un Listener sur tous les <input> sur l'évènement onchange

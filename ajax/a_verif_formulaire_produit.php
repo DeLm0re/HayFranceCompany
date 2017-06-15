@@ -38,8 +38,8 @@ if (($_GET['champ'] == 'button')) {
       /**/
     $result =  $user->ajouteProduitPanier($produit, $_GET['Format'],$_GET['nbr_pallette']);
      // echo "ajoutT";
-     var_dump($result);
-       if($result === TRUE)
+    // var_dump($result);
+       if($result == true )
        {
            echo "ajoutT"; 
        }else{

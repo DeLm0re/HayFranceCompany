@@ -20,7 +20,8 @@
         <div class="page">
 	<div class="bloc-principal">
            
-        <?php       
+        <?php
+            include '../includes/i_navbar.php';
             include '../includes/i_affichage_compte.php';
             /*inclusion du formulaire de modification du compte*/
             include '../includes/i_modifie_compte.php';     

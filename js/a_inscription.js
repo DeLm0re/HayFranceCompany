@@ -16,7 +16,7 @@ function request(callback,champ) {
 
     var contenu = encodeURIComponent(document.getElementById(champ).value);
 
-    xhr.open("GET", "../ajax/a_verif_inscription.php?contenu="+contenu+"&champ="+champ, true);
+    xhr.open("GET", "../ajax/a_verif_inscription.php?contenu="+contenu+"&champ="+champ+"", true);
     xhr.send(null);
 }
 
@@ -73,29 +73,48 @@ function readData(data,champ)
     if (champ === 'button')
     {
         //On vide les spans d'erreur qui se sont remplis pour l'erreur précedente
-            vide_span_erreur('prenom');
-            vide_span_erreur('nom');
-            vide_span_erreur('email');
-            vide_span_erreur('mdp');
-            vide_span_erreur('cmdp');
+        vide_span_erreur('prenom');
+        vide_span_erreur('nom');
+        vide_span_erreur('email');
+        vide_span_erreur('mdp');
+        vide_span_erreur('cmdp');
+        vide_span_erreur('ville');
+        vide_span_erreur('adresse');
+        vide_span_erreur('dpt');
         
         //On affiche l'erreur au dessus du champ la contenant
-        if (data === "erreur_prenom")
+        if (data === "erreur_prenom"){
+            document.getElementById("div_champ_erreur_prenom").style.display = "inherit";
             document.getElementById("erreur_prenom").innerHTML = "Veuillez saisir votre prénom";
-        if (data === "erreur_nom")
+        }
+        if (data === "erreur_nom"){
+            document.getElementById("div_champ_erreur_nom").style.display = "inherit";
             document.getElementById("erreur_nom").innerHTML = "Veuillez saisir votre nom";
-        if (data === "erreur_email")
+        }
+        if (data === "erreur_email"){
+            document.getElementById("div_champ_erreur_email").style.display = "inherit";
             document.getElementById("erreur_email").innerHTML = "Veuillez saisir un email valide";
-        if (data === "erreur_mdp")
-            document.getElementById("erreur_mdp").innerHTML = "Votre mot de passe ne peut contenir que des lettres et des chiffres\n et ne doit pas dépasser 50 caractères";
-        if (data === "erreur_cmdp")
+        }
+        if (data === "erreur_mdp"){
+            document.getElementById("div_champ_erreur_mdp").style.display = "inherit";
+            document.getElementById("erreur_mdp").innerHTML = "Votre mot de passe ne peut contenir que des lettres et des chiffres</br> et ne doit pas dépasser 50 caractères";
+        }
+        if (data === "erreur_cmdp"){
+            document.getElementById("div_champ_erreur_cmdp").style.display = "inherit";
             document.getElementById("erreur_cmdp").innerHTML = "Votre mot de passe et sa confirmation ne sont pas identiques";
-        if (data === "erreur_ville")
+        }
+        if (data === "erreur_ville"){
+            document.getElementsById("div_champ_erreur_ville").style.display = "inherit";
             document.getElementById("erreur_ville").innerHTML = "Votre ville n'existe pas";
-        if (data === "erreur_adresse")
+        }
+        if (data === "erreur_adresse"){
+            document.getElementById("div_champ_erreur_adresse").style.display = "inherit";
             document.getElementById("erreur_adresse").innerHTML = "Votre adresse est invalide";
-        if (data === "erreur_dpt")
-            document.getElementById("erreur_adresse").innerHTML = "Numéro de département incorrect ou non désservi";
+        }
+        if (data === "erreur_dpt"){
+            document.getElementById("div_champ_erreur_dpt").style.display = "inherit";
+            document.getElementById("erreur_dpt").innerHTML = "Numéro de département incorrect ou non désservi";
+        }
         if (data === "inscription_valide")
             window.location.reload(false);
     }

@@ -42,7 +42,8 @@ function creer_navbar_options_elevages($liste1, $liste2) {
     <div class="div_navbar">
         <div class="div_dessus_navbar">
             <div class="div_logo_navbar">
-                <img class="logo_navbar" src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"/>
+                <img class="logo_navbar" src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"
+                     onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/tout_produit.php'"/>
             </div>
             <div class="div_info_navbar">
                 <p class="bonjour_navbar">Bonjour <span class="span_bonjour_navbar" onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/mon_compte.php'">

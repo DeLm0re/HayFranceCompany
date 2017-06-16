@@ -28,7 +28,6 @@ body{
 .div_produit{
     width: 75%;
     margin: auto;
-    padding: 40px;
     background-color: white;
     border-width: 1px;
     border-color: #EAEAEA;
@@ -43,6 +42,7 @@ body{
 
 /* La div gauche du produit */
 .div_gauche_produit{
+    position: relative;
     vertical-align: text-top;
     display: inline-block;
     width: 40%;
@@ -54,6 +54,7 @@ body{
 
 /* La div droite du produit */
 .div_droite_produit{
+    padding-top: 40px;
     vertical-align: text-top;
     display: inline-block;
     width: 50%;
@@ -62,20 +63,25 @@ body{
 
 /* La div de l'image du produit */
 .div_image_produit{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    transform: translateY(-50%);
 }
 
 /* L'image du produit */
 .image_produit{
     padding: 10px;
     max-width: 95%;
-    max-height: 100%
+    max-height: 95%;
 }
 
 /* La div du nom du produit */
 .div_nom_produit{
     border-top: none;
     border-right: none;
-    border-bottom: solid 2px #EAEAEA;
+    border-bottom: solid 2px #f74a00;
     border-left: none;
     padding-bottom: 5px;
 }
@@ -84,7 +90,7 @@ body{
 .nom_produit{
     font-family: "Roboto";
     font-weight: bold;
-    font-size: 120%;
+    font-size: 225%;
     color: #4B4B5A;
     letter-spacing: 2px;
 }
@@ -102,11 +108,13 @@ body{
 /*Le contener de description du produit */
 .contener_description_produit{
     margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 /* La div qui contient "Description" */
 .div_description{
     margin-bottom: 15px;
+    margin-left: 40px;
 }
 
 /*BALISE <span> */
@@ -121,11 +129,12 @@ body{
 
 /* La div qui contient le texte de la description */
 .div_description_produit{
+    margin: 10px 40px 0 40px;
+    padding-left: 15px;
     text-align: justify;
     font-family: "Roboto";
     color: #77778D;
     border-left: solid 2px #f74a00;
-    padding-left: 15px;
 }
 
 /* Le texte de la description BALISE <p> */

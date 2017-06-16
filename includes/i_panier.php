@@ -8,10 +8,11 @@ demarreSession($user);
 <!-- div class="div_ensemble_panier" -->
 
 <div class="div_titre_panier">
-    <span class="titre_panier">Votre panier</span><br>
+    <span class="titre_panier">Votre panier</span>
 </div>
 
 <div class="div_panier">
+    <input class="vide_panier" type="button" value="Vider mon panier" onclick="vide_panier();">
     <div class="div_produit_panier">
         <?php
             $liste = $user->donneContenuPanier();

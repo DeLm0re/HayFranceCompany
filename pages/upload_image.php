@@ -1,3 +1,4 @@
+<link href="../css/admin_modification.css" rel="stylesheet" type="text/css"/>
 <?php
 include_once '../objet/session_objet.php';
 include_once '../objet/administration/o_admin.php';
@@ -5,15 +6,22 @@ $admin = new Admin($bdd);
 demarreSession($admin);
 ?>
 
-<form method="post" action="upload_image.php" enctype="multipart/form-data">
-     <label for="image">Image (JPG, PNG ou GIF | max. 1 Mo) :</label><br />
-     <input type="file" name="image" id="image" /><br />
-     <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
-     <label for="titre">Titre du fichier (max. 50 caractères) :</label><br />
-     <input type="text" name="titre" value="Titre du fichier" id="titre" /><br />
-     <input type="submit" name="submit" value="Envoyer" />
-</form>
-
+<body>
+        <div class="div_dessus_navbar">
+            <div onclick="window.document.location.href='admin.php'" class="div_logo_navbar">
+                <img class="logo_navbar"  src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"/>
+            </div> 
+            </div>
+        <div class="ensemble_produit">
+            <h1 class="titre_ensemble_produit">Importer image</h1><br>
+        <form method="post" action="upload_image.php" enctype="multipart/form-data">
+             <label for="image">Image (JPG, PNG ou GIF | max. 1 Mo) :</label><br />
+             <input type="file" name="image" id="image" /><br />
+             <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+             <label for="titre">Titre du fichier (max. 50 caractères) :</label><br />
+             <input type="text" name="titre" value="Titre du fichier" id="titre" /><br />
+             <input type="submit" name="submit" value="Envoyer" />
+        </form>
 
 
 <?php
@@ -27,10 +35,11 @@ $maxFiles = count($files) ;
 for($i = 0; $i < $maxFiles ; $i+=1){
     echo"<img src=\"../images/$files[$i]\"  maxwidth=\"100\"  height=\"100\" />" ; 
 }
+?>
+        </div>
+</body>
 
-
-
-
+<?php
 if ((isset($_POST['titre']) == TRUE)) {
         $titre = $_POST['titre'];
         $image  = $_FILES['image']['name'] ; 

@@ -1,3 +1,4 @@
+<link href="../css/admin_modification.css" rel="stylesheet" type="text/css"/>
 <?php
 include_once '../objet/session_objet.php';
 include_once '../objet/administration/o_admin.php';
@@ -12,8 +13,15 @@ $URL ='admin_modification_produit.php' ;
 
 
     <body>
+        <div class="div_dessus_navbar">
+            <div onclick="window.document.location.href='tout_produit.php'" class="div_logo_navbar">
+                <img class="logo_navbar"  src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"/>
+            </div> 
+            </div>
+       
+        <div class="ensemble_produit">
         <table>
-            <h1>Produits</h1>
+            <h1 class="titre_ensemble_produit">Produits</h1>
             <form action="admin_modification_produit.php">
             <input type="submit" value="Créer Produit" />
             </form>
@@ -33,6 +41,7 @@ $URL ='admin_modification_produit.php' ;
                 afficheTableauProduit($listeProduit);
            ?>
         </table>
+        </div>
     </body>
 </html>
 

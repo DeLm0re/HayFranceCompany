@@ -25,7 +25,7 @@ if (empty($user->donneInfos()) === true) {
 $prix_transport = null;
 
 try {
-    $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', 'LRRH4H');
+    $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
     foreach ($dbh->query('SELECT prix'.$nbr.' FROM prix_transport WHERE id_prix_transport='.$dpt.'') as $row) {
         $result = $row['prix'.$nbr];
         $prix_transport = floatval($result);

@@ -3,7 +3,8 @@
 include_once '../objet/session_objet.php';
 include_once '../objet/administration/o_admin.php';
 $admin = new Admin($bdd);
-$URL ='admin_modification_produit.php' ; 
+demarreSession($admin);
+$URL ='admin_modification_produit.php' ;
 ?>
 <html>
     <head>
@@ -33,14 +34,13 @@ $URL ='admin_modification_produit.php' ;
             </form>
            <tr>
                <th>ID</th>
-               <th>Nom Produit</th>
-               <th>Courte Description</th>
-               <th>Prix</th>
-               <th>Nombre Image</th>
-               <th>Animaux</th>
+               <th>Nom Animal</th>
            </tr>
-           <?php
-                $listeProduit = $admin->consulteListeProduit();
+             <?php
+                    $tabIdAnimaux = $admin->donneListeIdAnimal();
+                    $tabNomAnimaux = $admin->donneListeAnimal() ; 
+                    $admin->ajouteAnimal($nom);
+                ?>
                 afficheTableauProduit($listeProduit);
            ?>
         </table>
@@ -48,8 +48,9 @@ $URL ='admin_modification_produit.php' ;
     </body>
 </html>
 
-<?php
-function afficheTableauProduit($liste)
+
+<?php 
+function afficheTableauAnimaux($liste)
 {
     $max = count($liste);
     for($i = 0; $i < $max; $i++)
@@ -67,40 +68,4 @@ function afficheTableauProduit($liste)
         //Affiche le tout
         afficheProduit($infos2);
     }
-}
-
-function afficheProduit($infos)
-{
-    $URL = "admin_modification_produit.php";
-    $max = count($infos);
-    
-    echo '<tr>';
-    for($i = 0; $i < $max; $i++)
-    {
-        if($i == 1)
-        {
-            ajouteCellule("<a href=$URL?ID=$infos[0] > $infos[$i] </a>");
-        }
-        else
-        {
-            ajouteCellule($infos[$i]);   
-        }
-    }
-    echo '</tr>';
-}
-
-function ajouteCellule($cellule)
-{
-    echo "<td>$cellule</td>";
-}
-
-function animauxToString($animaux)
-{
-    $string = '';
-    $max = count($animaux);
-    for($i = 0; $i < $max; $i++)
-    {
-        $string = $string . ' ' . $animaux[$i]['nom_categorie'];
-    }
-    return $string;
 }

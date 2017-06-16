@@ -228,10 +228,25 @@ if (!isset($_GET['ID'])) {
         }
         
     } else if (isset($_GET['ID'])) {
-        echo"if ID est set";
-
-        $admin->modifieProduit($produit, $titre, $texte, $courteDesc, $prix);
-      
+        /*echo"if ID est set";
+        echo"var_dump produit, id_produit, texte, courteDesc, prix" ; 
+        var_dump($produit);
+        var_dump($titre) ;
+        var_dump($texte);
+        var_dump($courteDesc);
+        var_dump($prix) ; 
+        $var = $admin->modifieProduit($produit, $titre, $texte, $courteDesc, intval($prix) )  ;
+        echo"var_dump $var";
+        var_dump($var); */
+        //$admin->modifieProduit
+        //en entendant que l'o
+         $dbh = new PDO('mysql:host=localhost;dbname=hayfrance;charset=utf8', 'root', '');
+         $stmt = $dbh->prepare('UPDATE produit SET nom_produit= :nom, description= :desc, description_rapide= :descRap, prix_tonne= :prix WHERE id_produit=' . $id_produit . '');
+-        $stmt->bindParam(':nom', $titre);
+-        $stmt->bindParam(':desc', $texte);
+-        $stmt->bindParam(':descRap', $courteDesc);
+-        $stmt->bindParam(':prix', $prix); 
+-        $stmt->execute();
         //On supprime tous les id pour les refaires après
         $admin->supprimeAnimalProduit($id_produit);
        
@@ -245,7 +260,7 @@ if (!isset($_GET['ID'])) {
             $admin->ajouteImageProduit($id_produit, $valueIdImage)  ;
         }
     }
-   header("Location: admin.php");
+  header("Location: admin.php");
 }
 
 function creerCheckBoxImage($listeIdImage, $listeUrlImage, $listeNomImage, $ObjProduit) {

@@ -38,6 +38,12 @@ class Admin extends Utilisateur
         return $this->getBDD()->getLastInsertId();
     }
     
+    public function ajouteAnimal($nom)
+    {
+        $this->insertAnimal($nom);
+        return $this->getBDD()->getLastInsertId();
+    }
+    
     public function ajouteImageProduit($id_produit, $id_image)
     {
         $this->insertImageProduit($id_produit, $id_image);
@@ -87,6 +93,12 @@ class Admin extends Utilisateur
     {
         $this->bindRequete('INSERT INTO image (nom_image, url) VALUES (?, ?)',
                 array(1 => $nom, 2 => $url));
+    }
+    
+    private function insertAnimal($nom)
+    {
+        $this->bindRequete('INSERT INTO animal (animal) VALUES ?',
+                array(1 => $nom)) ; 
     }
 
 

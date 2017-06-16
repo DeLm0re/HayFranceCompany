@@ -1,30 +1,27 @@
-function request(callback,champ) {
+function request_input(callback, champ) {
+
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
         {
-            callback(xhr.responseText,champ);
+            callback(xhr.responseText, champ);
         }
     };
 
     var contenu = encodeURIComponent(document.getElementById(champ).value);
-    var id_produit = encodeURIComponent(document.getElementById("id_produit").value);
-  
-  // alert(contenu);
-  //  alert(champ);
- //   alert("on passe par là")
-    xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?contenu="+contenu+"&champ="+champ+"&id_produit="+id_produit, true);
+
+    xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?contenu=" + contenu + "&champ=" + champ + "", true);
     xhr.send(null);
 }
 
-function request2(callback) {
+function request_button(callback, id_produit) {
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
         {
-            callback(xhr.responseText,'button');
+            callback(xhr.responseText, 'button');
             document.getElementById("loader").style.display = "none";
         }
         else if (xhr.readyState < 4)
@@ -33,65 +30,119 @@ function request2(callback) {
         }
     };
 
-  
     var champ = 'button';
-    var Format;
-    
-    var nbr_pallette = encodeURIComponent(document.getElementById("nbr_pallette").value);
-    
-    var id_produit = encodeURIComponent(document.getElementById("id_produit").value);
-  
-    if (document.getElementById("Format22").checked === true){
-        Format= encodeURIComponent(document.getElementById("Format22").value);
+    var nbr = encodeURIComponent(document.getElementById("input_palette").value);
+    var id = encodeURIComponent(id_produit);
+    var format = null;
+    if (document.getElementById("format_22").checked === true) {
+        format = encodeURIComponent(document.getElementById("format_22").value);
     }
-    else{
-        Format = encodeURIComponent(document.getElementById("Format32").value);
+    else {
+        format = encodeURIComponent(document.getElementById("format_32").value);
     }
-    //alert(nbr_pallette)
-    //alert(id_produit);
-    
-    xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?champ="+champ+"&nbr_pallette="+nbr_pallette+"&Format="+Format+"&id_produit="+id_produit +"", true);
+
+    xhr.open("GET", "../ajax/a_verif_formulaire_produit.php?champ=" + champ + "&nbr=" + nbr + "&format=" + format + "&id=" + id + "", true);
     xhr.send(null);
 }
 
-function readData(data,champ)
+function readData(data, champ)
 {
-    alert(data) ; 
+    //alert(data);
     if (data === "OK")
     {
-        document.getElementById("ok_"+champ).style.display = "inherit";
-        document.getElementById("ko_"+champ).style.display = "none";
+        document.getElementById("ok_" + champ).style.display = "inherit";
+        document.getElementById("ko_" + champ).style.display = "none";
     }
     if (data === "KO")
     {
-        document.getElementById("ok_"+champ).style.display = "none";
-        document.getElementById("ko_"+champ).style.display = "inherit";
+        document.getElementById("ok_" + champ).style.display = "none";
+        document.getElementById("ko_" + champ).style.display = "inherit";
     }
-    
+
     if (champ === 'button')
     {
-        //On vide les spans d'erreur qui se sont remplis pour l'erreur précedente
-        vide_span_erreur('nbr_pallette');
-       //    alert(data); 
-        
-      // alert(data);
+        //alert(data);
+
         //On affiche l'erreur au dessus du champ la contenant
-        if (data === "NonCo")
+        if (data === "non_co")
         {
-            document.getElementById("erreur_connecter").innerHTML = "Vous n'etes pas connecter veillez vous connecter ";
+            document.getElementById("erreur_commande").style.display = "none";
+            document.getElementById("validation_commande").style.display = "none";
+            document.getElementById("erreur_connecte").style.display = "inherit";
+            document.getElementById("erreur_connecte").innerHTML = "Vous n'êtes pas connecté... Redirection";
             document.location.href = "http://localhost/HayFranceCompany/pages/inscription_connexion.php";
         }
-         if (data === "erreur_nbr_pallette")
-            document.getElementById("erreur_nbr_pallette").innerHTML = "Le nombre de pallette maximum par produit est de 8 ";
-        if (data === "ajoutT")
-           document.getElementById("confirmation commande").innerHTML = "Votre produits a été ajouter au panier  ";
-        if (data === "ajoutF")
-           document.getElementById("erreur_commande").innerHTML = "Vous avez déja commandé ce produit   ";
+
+        if (data === "erreur_input") {
+            document.getElementById("div_champ_erreur_palette").style.display = "inherit";
+            document.getElementById("erreur_palette").innerHTML = "Nombre de palette invalide";
+        }
+
+        //Requete effectuée
+        if (data === "resultat_true") {
+            document.getElementById("erreur_commande").style.display = "none";
+            document.getElementById("erreur_connecte").style.display = "none";
+            document.getElementById("validation_commande").style.display = "inherit";
+            document.getElementById("validation_commande").innerHTML = "Ce produit a été ajouté à votre panier";
+        }
+
+        //Requete non effectuée
+        if (data === "resultat_false") {
+            document.getElementById("validation_commande").style.display = "none";
+            document.getElementById("erreur_connecte").style.display = "none";
+            document.getElementById("erreur_commande").style.display = "inherit";
+            document.getElementById("erreur_commande").innerHTML = "Ce produit est déjà dans votre panier";
+        }
     }
 }
 
-function vide_span_erreur(idspan){
-    document.getElementById("erreur_"+idspan).innerHTML = "";
+/*==========================================================================================================*/
+
+function recalcul_prix_p_t(id_produit) {
+    
+    var xhr = getXMLHttpRequest();
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
+        {
+            readPrix(xhr.responseText);
+            document.getElementById("loader").style.display = "none";
+        }else if (xhr.readyState < 4)
+        {
+            document.getElementById("loader").style.display = "inherit";
+        }
+    };
+    
+    var id = encodeURIComponent(id_produit);
+    
+    var poids_kg = null;
+    var poids_tonne = null;
+    
+    var nbr_balle = null;
+    
+    var nbr_palette = encodeURIComponent(document.getElementById("input_palette").value);
+    
+    var format = null;
+    if (document.getElementById("format_22").checked === true) {
+        format = encodeURIComponent(document.getElementById("format_22").value);
+        nbr_balle = 36;
+    }
+    else {
+        format = encodeURIComponent(document.getElementById("format_32").value);
+        nbr_balle = 24;
+    }
+    
+    poids_kg = (format * nbr_balle * nbr_palette);
+    poids_tonne = (poids_kg/1000);
+    
+    if ((nbr_palette <= 8) && (nbr_palette > 0) && (nbr_palette !== "")){
+        xhr.open("GET", "../ajax/a_prix_p_t.php?id="+id+"&coef="+poids_tonne+"&nbr="+nbr_palette+"", true);
+        xhr.send(null);
+    }
 }
 
-
+function readPrix(prix){
+    
+    document.getElementById("prix_p_t").innerHTML = prix;
+    
+}

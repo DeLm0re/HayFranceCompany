@@ -36,6 +36,14 @@ abstract class RequetePanier extends Hydratable
         return $this->getBDD()->getLastRequestStatus();
     }
     
+    protected function updatePanierProduit($idpa, $idpr, $nbpa)
+    {
+        $this->bindRequete('UPDATE panier_produit SET nb_palette = ? '
+                . 'WHERE id_panier = ? AND id_produit = ?',
+                array(1 => $nbpa, 2 => $idpa, 3 => $idpr));
+        return $this->getBDD()->getLastRequestStatus();
+    }
+    
     protected function deletePanierProduit($idpa, $idpr)
     {
         $this->bindRequete('DELETE FROM panier_produit '
@@ -165,6 +173,14 @@ class Panier extends RequetePanier
             $quantite = $ligne['nb_palette'];
         }
         return $quantite;
+    }
+    
+    public function changeNbrPalette(Produit $produit, $nbpa)
+    {
+        $this->hydrate();
+        $id_panier = $this->getInfos()['id_panier'];
+        $id_produit = $produit->getInfos()['id_produit'];
+        return parent::updatePanierProduit($id_panier, $id_produit, $nbpa);
     }
     
     public function ajouteProduit(Produit $produit, $format, $nb_palette)

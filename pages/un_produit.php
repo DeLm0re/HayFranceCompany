@@ -1,6 +1,6 @@
 <?php
 if (!isset($_GET['id_produit'])) {
-    header('location:http://localhost/HayFranceCompany/pages/tout_produit.php');
+    header('location:../pages/tout_produit.php');
     exit();
 }
 

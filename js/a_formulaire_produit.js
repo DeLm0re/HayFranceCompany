@@ -70,7 +70,7 @@ function readData(data, champ)
             document.getElementById("validation_commande").style.display = "none";
             document.getElementById("erreur_connecte").style.display = "inherit";
             document.getElementById("erreur_connecte").innerHTML = "Vous n'êtes pas connecté... Redirection";
-            document.location.href = "http://localhost/HayFranceCompany/pages/inscription_connexion.php";
+            document.location.href = "../pages/inscription_connexion.php";
         }
 
         if (data === "erreur_input") {

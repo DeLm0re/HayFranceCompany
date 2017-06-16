@@ -29,7 +29,8 @@ class BDD
     {
         try 
         {
-            $pdo = new PDO('mysql:host=moudrinaserv.gemalo.bid:6969;dbname=hayfrance', 'hayfrance', 'douliere');
+            //$pdo = new PDO('mysql:host=moudrinaserv.gemalo.bid:6969;dbname=hayfrance', 'hayfrance', 'douliere');
+            $pdo = new PDO('mysql:host=localhost;dbname=hayfrance', 'root', '');
         } 
         catch (PDOExeption $e)
         {

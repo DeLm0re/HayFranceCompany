@@ -43,10 +43,10 @@ function creer_navbar_options_elevages($liste1, $liste2) {
         <div class="div_dessus_navbar">
             <div class="div_logo_navbar">
                 <img class="logo_navbar" src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"
-                     onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/tout_produit.php'"/>
+                     onclick="window.location.href = '../pages/tout_produit.php'"/>
             </div>
             <div class="div_info_navbar">
-                <p class="bonjour_navbar">Bonjour <span class="span_bonjour_navbar" onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/mon_compte.php'">
+                <p class="bonjour_navbar">Bonjour <span class="span_bonjour_navbar" onclick="window.location.href = '../pages/mon_compte.php'">
                         <?php
                         $infos = $user->donneInfos();
                         /* si l'utilisateur est connecté */
@@ -94,7 +94,7 @@ function creer_navbar_options_elevages($liste1, $liste2) {
         </div>
         <div class="div_dessous_navbar">
             <div class="div_dropdown">
-                <button class="button_dropdown" onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/tout_produit.php'">TOUS LES PRODUITS<i class="fleche_dropdown_produits">&#9660;</i></button>
+                <button class="button_dropdown" onclick="window.location.href = '../pages/tout_produit.php'">TOUS LES PRODUITS<i class="fleche_dropdown_produits">&#9660;</i></button>
                 <div class="contenu_dropdown">
                     <?php
                     $liste = $user->consulteListeProduit();
@@ -113,10 +113,10 @@ function creer_navbar_options_elevages($liste1, $liste2) {
                 </div>
             </div>
             <div class="div_dropdown">
-                <button class="button_dropdown" onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/mon_compte.php'">MON COMPTE</button>
+                <button class="button_dropdown" onclick="window.location.href = '../pages/mon_compte.php'">MON COMPTE</button>
             </div>
             <div class="div_dropdown">
-                <button class="button_dropdown" onclick="window.location.href = 'http://localhost/HayFranceCompany/pages/panier.php'">MON PANIER</button>
+                <button class="button_dropdown" onclick="window.location.href = '../pages/panier.php'">MON PANIER</button>
             </div>
         </div>
     </div>

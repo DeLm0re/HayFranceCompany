@@ -83,7 +83,8 @@ function readData(data, champ)
             document.getElementById("erreur_commande").style.display = "none";
             document.getElementById("erreur_connecte").style.display = "none";
             document.getElementById("validation_commande").style.display = "inherit";
-            document.getElementById("validation_commande").innerHTML = "Ce produit a été ajouté à votre panier";
+            document.getElementById("validation_commande").innerHTML = 
+                    "Ce produit a été ajouté à votre panier. <br>Vous pouvez continuer vos achats ou cliquer sur <br>Mon panier";
         }
 
         //Requete non effectuée

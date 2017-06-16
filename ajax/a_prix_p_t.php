@@ -25,8 +25,9 @@ if (empty($user->donneInfos()) === true) {
 $prix_transport = null;
 
 try {
+
     $dbh = new PDO('mysql:host=moudrinaserv.gemalo.bid:6969;dbname=hayfrance', 'hayfrance', 'douliere');
-    foreach ($dbh->query('SELECT prix'.$nbr.' FROM prix_transport WHERE id_prix_transport='.$dpt.'') as $row) {
+   foreach ($dbh->query('SELECT prix'.$nbr.' FROM prix_transport WHERE id_prix_transport='.$dpt.'') as $row) {
         $result = $row['prix'.$nbr];
         $prix_transport = floatval($result);
     }

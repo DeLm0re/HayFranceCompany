@@ -46,6 +46,9 @@ li{
 .logo_navbar{
     width: 70%;
 }
+.logo_navbar:hover{
+    cursor: pointer;
+}
 
 /* Div infos dans la navbar */
 .div_info_navbar{

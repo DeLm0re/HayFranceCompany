@@ -2,50 +2,75 @@
 include_once '../objet/session_objet.php';
 $user = new Utilisateur($bdd);
 demarreSession($user);
-$info = $user->donneInfos();
-$departement = intval($info['departement']);
 
-
-$produit = new Produit($bdd, $id);
-$infos = $produit->infos();
-$id = $_GET['id_produit'];
-$prix = $infos['prix_tonne' ];
-//var_dump($infos); 
-
+$id_form = intval($_GET['id_produit']);
+$produit_form = new Produit($bdd, $id_form);
+$infos_form = $produit_form->infos();
+$id_produit = $infos_form['id_produit'];
 
 ?>
 
-<form class="formulaire_produit" >
-    
-    <span>Prix du produit : <?php echo $prix;?>euro/tonne</span><br>
+<form id="formulaire" >
 
-    <span> Format des balles CHC : <input id="Format22" type="radio" name="Format" value="22" checked="true">
-        <label for="Format22">22 kg</label>
-        <input id="Format32" type="radio" name="Format" value="32"><label for="Format32">32 kg</label>
-    </span><br>
-    
-   
-        <!-- ******** passage de l'id du produit et du prix dangereux !! a changé immediatement *************** -->
-        <!-- ------------------------- pour l'ajax ------------------------------------------------------------ -->
-        <input type="hidden" id="id_produit" value="<?php echo $id  ;?>"  onchange="request(readData, 'id_produit');"> 
-        <!-- ------------------------- pour le javascipt du calcul à la volée  -------------------------------- -->
-        <input type="hidden" id="prix_produit" value="<?php echo $prix  ;?>" >
-        <!-- ***************************************************************************************************-->
-   
-    
-    <span id="erreur_nbr_pallette" class="erreur" ></span><br>
-    <span> Nombre de pallette : <input id="nbr_pallette" type="number" min="1" max="8"  onchange="request(readData, 'nbr_pallette');"></span><br>
-    <span id="ok_nbr_pallette" style="display: none;"><img src="../images/ok.png"/></span>
-    <span id="ko_nbr_pallette" style="display: none;"><img src="../images/ko.png"/></span>
+    <div class="div_champ">
+        <span>Prix du produit : </span>
+        <span style="color: #f74a00;">
+            <?php
+            echo $infos_form['prix_tonne'];
+            ?>
+        </span>
+        <span> € par tonne</span><br>
+    </div>
 
-    <span id="prix_produit_par_JS"></span>
-    
-    <span id="loader" style="display: none;"><img id="img_loader" style="width: 10%;" src="../images/loader.gif" alt="Chargement" /></span><br>
-    <input id="button" type="button" value="Ajouter ce produit à mon panier" onclick="request2(readData);"><br>
-    
-     <span id="confirmation commande" class="erreur" ></span><br>
-     <span id="erreur_commande" class="erreur" ></span><br>
-     <span id="erreur_connecter" class="erreur" ></span>
+    <div class="div_champ">
+        <span class="champ">Format des balles CHC :
+            <input id="format_22" type="radio" name="format" value="22" checked="true" 
+                        onchange="recalcul_prix_p_t(<?php echo $infos_form['id_produit']?>);">
+            <label for="format_22">22 kg</label>
+            <input id="format_32" type="radio" name="format" value="32" 
+                        onchange="recalcul_prix_p_t(<?php echo $infos_form['id_produit']?>);">
+            <label for="format_32">32 kg</label>
+        </span><br>
+    </div>
+
+    <div id="div_champ_erreur_palette" style="display: none;">
+        <span id="erreur_palette" class="champ_erreur" ></span><br>
+    </div>
+    <div class="div_champ">
+        <span class="champ">Nombre de palette :
+            <input id="input_palette" type="number" min="1" max="8" value="0" 
+                   onchange="request_input(readData, 'input_palette');
+                           recalcul_prix_p_t(<?php echo $infos_form['id_produit']?>);">
+            <span id="ok_input_palette" style="display: none;"><img class="icon_preverif" src="../images/ok.png"/></span>
+            <span id="ko_input_palette" style="display: none;"><img class="icon_preverif" src="../images/ko.png"/></span>
+        </span><br>
+    </div>
+
+    <div class="div_champ">
+        <span>Prix du produit + Coût du transport : </span>
+        <span id="prix_p_t" style="color: #f74a00;">0</span>
+        <span> €</span><br>
+    </div>
+
+    <div class="div_loader">
+        <span id="loader" style="display: none;"><img id="img_loader" src="../images/loader.gif" alt="Chargement" /></span>
+    </div>
+
+    <div class="div_button">
+        <?php
+        echo "<input id=\"button\" type=\"button\" value=\"Ajouter ce produit dans mon panier\" 
+                    onclick=\"request_button(readData," . $id_produit . ");\">";
+        ?>
+    </div>
+
+    <div class="div_erreur_validation">
+        <!-- requete effectuée, on affiche le span "vert" -->
+        <span id="validation_commande" class="champ_validation" style="display: none;margin-top: 30px;"></span>
+        <!-- si le produit est deja dans le panier -->
+        <span id="erreur_commande" class="champ_erreur" style="display: none;margin-top: 30px;"></span>
+        <!-- si on est pas connecté et on redirige -->
+        <span id="erreur_connecte" class="champ_erreur" style="display: none;margin-top: 30px;"></span>
+    </div>
 </form>
 
 

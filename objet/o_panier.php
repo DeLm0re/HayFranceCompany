@@ -38,9 +38,9 @@ abstract class RequetePanier extends Hydratable
     
     protected function updatePanierProduit($idpa, $idpr, $nbpa)
     {
-        $this->bindRequete('UPDATE panier_produit SET id_panier = ?, '
-                . 'id_produit = ?, nb_palette = ?',
-                array(1 => $idpa, 2 => $idpr, 3 => $nbpa));
+        $this->bindRequete('UPDATE panier_produit SET nb_palette = ? '
+                . 'WHERE id_panier = ? AND id_produit = ?',
+                array(1 => $nbpa, 2 => $idpa, 3 => $idpr));
         return $this->getBDD()->getLastRequestStatus();
     }
     

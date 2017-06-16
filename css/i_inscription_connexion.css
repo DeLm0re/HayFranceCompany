@@ -55,7 +55,7 @@ body{
 #div_champ_erreur_nom, #div_champ_erreur_adresse, #div_champ_erreur_cmdp,
 #div_champ_erreur_dpt, #div_champ_erreur_email, #div_champ_erreur_mdp,
 #div_champ_erreur_prenom, #div_champ_erreur_ville, #div_champ_erreur_email_connexion,
-#div_champ_erreur_mdp_connexion{
+#div_champ_erreur_mdp_connexion, #div_champ_erreur_palette{
     margin-bottom: 8px;
 }
 

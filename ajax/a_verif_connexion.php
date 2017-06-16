@@ -30,6 +30,8 @@ if (($_GET['champ_connexion'] == 'button_connexion')) {
        if($return === TRUE)
        {
            echo "connexionR";
+           unset($_SESSION['nom_departement']);
+           unset($_SESSION['nb_departement']);
        }else{
             echo "connexionF";
        }

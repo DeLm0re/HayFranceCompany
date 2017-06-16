@@ -4,6 +4,23 @@
  * and open the template in the editor.
  */
 
+function vide_panier(){
+    
+    var xhr = getXMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 0))
+        {
+            if(xhr.responseText === "vide"){
+                document.location.reload(false);
+            }
+        }
+    };
+
+    xhr.open("GET", "../ajax/a_vide_panier.php", true);
+    xhr.send(null);
+}
+
 function suppression_produit(id_produit){
     
     var xhr = getXMLHttpRequest();
@@ -23,7 +40,7 @@ function suppression_produit(id_produit){
     xhr.send(null);
 }
 
-function modifie_palette_produit(){
+function modifie_palette_produit(id_produit){
     
     var xhr = getXMLHttpRequest();
 
@@ -35,8 +52,11 @@ function modifie_palette_produit(){
             }
         }
     };
-
-    xhr.open("GET", "../ajax/a_modifie_palette_produit.php", true);
+    
+    var id = encodeURIComponent(id_produit);
+    var nbr = encodeURIComponent(document.getElementById("select_p").value);
+    
+    xhr.open("GET", "../ajax/a_modifie_palette_produit.php?id="+id+"&nbr="+nbr+"", true);
     xhr.send(null);
 }
 

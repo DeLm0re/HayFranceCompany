@@ -84,7 +84,7 @@ function readData(data,champ)
         {
             document.getElementById("validation_modification").innerHTML = "Modification reussite";
              document.getElementById("loader").style.display = "none";
-           document.location.href = "http://localhost/HayFranceCompany/pages/mon_compte.php";
+           document.location.href = "../pages/mon_compte.php";
             //alert("modification faite ! "); 
         } 
         if (data === "modifF")
@@ -99,7 +99,7 @@ function readData(data,champ)
            document.getElementById("loader").style.display = "none";
            document.getElementById("formulaire_modification_compte").style.display = "none";
            //document.getElementById(" affichage_du_compte").style.display = "none";
-           document.location.href = "http://localhost/HayfranceCompany/pages/tout_produit.php";
+           document.location.href = "../pages/tout_produit.php";
         }
         if (data === "erreur_email")
             document.getElementById("div_champ_erreur_email").style.display="inherit";

@@ -51,13 +51,29 @@ body{
 
 /* La div du panier */
 .div_panier{
+    position: relative;
     width: 80%;
     display: inline-block;
     text-align: end;
 }
 
+/* L'input button qui vide le panier */
+.vide_panier{
+    position: absolute;
+    right: 0;
+    background-color: #CCCCCC;
+    font-family: "Roboto";
+    border: solid 2px #f74a00;
+    font-size: 130%;
+    letter-spacing: 2px;
+}
+.vide_panier:hover{
+    cursor: pointer;
+}
+
 /* La div qui contient les produits */
 .div_produit_panier{
+    padding-top: 30px;
 }
 
 /* La div qui contient le produit */

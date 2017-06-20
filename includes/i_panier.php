@@ -20,12 +20,13 @@ demarreSession($user);
             for($i = 0; $i < $max; $i++){
                 $produit = $liste[$i];
                 $info = $produit->infos();
+                $url = $produit->getUrlImages();
                 $nbr = $user->donneQuantiteProduit($produit);
                 $prix = $user->donnePrixProduit($produit);
                 
                 echo ("<div class=\"produit_panier\">
                 <div class=\"element_produit_panier\">
-                <img class=\"image_produit_panier\" src=\"../images/foin1.png\">
+                <img class=\"image_produit_panier\" src=\"".$url[0]."\">
                 </div>
                 <div class=\"element_produit_panier\" style=\"margin-left: 35px;width : 100px;\">
                 <p class=\"nom_produit_panier\">".$info['nom_produit']."</p>

@@ -38,6 +38,7 @@ demarreSession($user);
                 $id = intval($_GET['id_produit']);
                 $produit = new Produit($bdd, $id);
                 $infos = $produit->infos();
+                $url = $produit->getUrlImages();
                 $alt = $produit->getNomImages();
                 ?>
                 <div class="div_produit">
@@ -48,7 +49,7 @@ demarreSession($user);
                             <div class="div_image_produit">
                                 <img class="image_produit" 
                                 <?php
-                                echo " src=\"../images/foin2.png\"";
+                                echo " src=\"".$url[0]."\"";
                                 echo " alt=\"" . $alt[0] . "\"";
                                 ?>
                                      />

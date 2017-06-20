@@ -19,11 +19,11 @@ function creer_section_article($une_liste,$id_select) {
 
 function creer_division_article($produit) {
     $infos = $produit->infos();
-    //$url = $produit->getUrlImages();
+    $url = $produit->getUrlImages();
     $alt = $produit->getNomImages();
     echo "<div class=\"div_produit\" onclick=\"window.location.href='../pages/un_produit.php?id_produit=".$infos['id_produit']."'\">
             <div class=\"div_image_produit\">
-                <img class=\"image_produit\" src=\"../images/foin1.png\" alt=".$alt[0].">
+                <img class=\"image_produit\" src=\"".$url[0]."\" alt=".$alt[0].">
              </div><div class=\"div_nom_produit\"><p class=\"nom_produit\">" . $infos['nom_produit'] . "</p>
              </div><div class=\"div_description_produit\">
                 <p class=\"description_produit\">

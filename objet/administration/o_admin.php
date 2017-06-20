@@ -137,9 +137,8 @@ class Admin extends Utilisateur
     
     private function updateProduit($id, $nom, $desc, $dera, $prix)
     {
-        $this->bindRequete('UPDATE produit '
-                . 'SET nom_produit = ?, description = ?, '
-                . 'description_rapide = ? ,prix_tonne = ?, '
+        $this->bindRequete('UPDATE produit SET nom_produit = ?, '
+                . 'description = ?, description_rapide = ?, prix_tonne = ? '
                 . 'WHERE id_produit = ?',
                 array( 1 => $nom, 2 => $desc, 3 => $dera, 4 => $prix, 
                     5 => $id));

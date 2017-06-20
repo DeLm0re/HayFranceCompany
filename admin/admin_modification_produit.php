@@ -248,7 +248,7 @@ if (!isset($_GET['ID'])) {
             $admin->ajouteImageProduit($id_produit, $valueIdImage)  ;
         }
     }
-  //header("Location: admin.php");
+  header("Location: admin.php");
 }
 
 function creerCheckBoxImage($listeIdImage, $listeUrlImage, $listeNomImage, $ObjProduit) {
@@ -256,10 +256,10 @@ function creerCheckBoxImage($listeIdImage, $listeUrlImage, $listeNomImage, $ObjP
     for ($i = 0; $i < $max; $i+=1) {
      if (isset($_GET['ID'])) {
             $BoolAppartientCategorie = $ObjProduit->appartientImage($listeIdImage[$i]);
-            echo'$Bool Machin';
-            var_dump($BoolAppartientCategorie);
-            echo'vardump getImage';
-            var_dump($ObjProduit->getImages()) ; 
+            //echo'$Bool Machin';
+            //var_dump($BoolAppartientCategorie);
+            //echo'vardump getImage';
+            //var_dump($ObjProduit->getImages()) ; 
             if ($BoolAppartientCategorie == TRUE) {                                                                         
                 echo"<input type=\"checkbox\" name=\"$listeNomImage[$i]\" id=\"$listeNomImage[$i]\" checked /> <label for=\"$listeNomImage[$i]\"><img src=\"$listeUrlImage[$i]\"  maxwidth=\"100\"  maxheight=\"100\" /> </label>" ; 
             }

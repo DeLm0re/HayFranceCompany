@@ -51,6 +51,15 @@ a:link {
 
 a:visited {
     text-decoration: none;
+    text-decoration-color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
 }
 
 .ensemble_produit{

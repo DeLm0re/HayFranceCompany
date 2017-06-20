@@ -185,12 +185,13 @@ if (!isset($_GET['ID'])) {
     echo"var_dump tabIdImage";
     var_dump($tabIdImage);
     echo"var_dump tabNomImage";
+    var_dump($tabNomImage) ; 
     //Pour chaque image on test si sa valeur en _POST existe càd qu'il a été coché 
     //On créer un tableau d'image qui ont été cochés $imageChecked
    
     $maxTabIdImage = count($tabIdImage) ;
     for($i=0 ; $i < $maxTabIdImage ; $i+=1){
-        if (isset($_POST[$tabIdAnimaux[$i]])) {
+        if (isset($_POST[$tabNomImage[$i]])) {
             $tabIdImageChecked[] = $tabIdImage[$i];
         }
     }
@@ -242,10 +243,12 @@ if (!isset($_GET['ID'])) {
         $admin->supprimeImageProduit($id_produit) ;
         
         foreach ($tabIdImageChecked as $valueIdImage) {
+            echo"valueIdImage<br>" ;
+            var_dump($valueIdImage) ; 
             $admin->ajouteImageProduit($id_produit, $valueIdImage)  ;
         }
     }
-  header("Location: admin.php");
+  //header("Location: admin.php");
 }
 
 function creerCheckBoxImage($listeIdImage, $listeUrlImage, $listeNomImage, $ObjProduit) {

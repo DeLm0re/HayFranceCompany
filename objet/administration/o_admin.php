@@ -1,5 +1,5 @@
 <?php
-
+include_once 'o_liste_image.php';
 
 class Admin extends Utilisateur
 {
@@ -38,6 +38,12 @@ class Admin extends Utilisateur
         return $this->getBDD()->getLastInsertId();
     }
     
+    public function ajouteAnimal($nom)
+    {
+        $this->insertAnimal($nom);
+        return $this->getBDD()->getLastInsertId();
+    }
+    
     public function ajouteImageProduit($id_produit, $id_image)
     {
         $this->insertImageProduit($id_produit, $id_image);
@@ -70,6 +76,11 @@ class Admin extends Utilisateur
         $this->deleteProduit($produit->getInfos()['id_produit']);
     }
     
+    //Vincent
+    public function supprimeAnimal($id_animal){
+        $this->deleteAnimal($id_animal) ; 
+    }
+    
     public function changePrix()
     {
         
@@ -87,6 +98,12 @@ class Admin extends Utilisateur
     {
         $this->bindRequete('INSERT INTO image (nom_image, url) VALUES (?, ?)',
                 array(1 => $nom, 2 => $url));
+    }
+    
+    private function insertAnimal($nom)
+    {
+        $this->bindRequete('INSERT INTO animal (animal) VALUES (?)',
+                array(1 => $nom)) ; 
     }
 
 
@@ -120,9 +137,8 @@ class Admin extends Utilisateur
     
     private function updateProduit($id, $nom, $desc, $dera, $prix)
     {
-        $this->bindRequete('UPDATE produit '
-                . 'SET nom_produit = ?, description = ?, '
-                . 'description_rapide = ? ,prix_tonne = ?, '
+        $this->bindRequete('UPDATE produit SET nom_produit = ?, '
+                . 'description = ?, description_rapide = ?, prix_tonne = ? '
                 . 'WHERE id_produit = ?',
                 array( 1 => $nom, 2 => $desc, 3 => $dera, 4 => $prix, 
                     5 => $id));
@@ -136,6 +152,15 @@ class Admin extends Utilisateur
                 array( 1 => $id_produit));
         $this->bindRequete('DELETE FROM produit WHERE id_produit = ?',
                 array( 1 => $id_produit));
+    }
+    
+    //Vincent
+    private function deleteAnimal($id_animal)
+    {
+        $this->bindRequete('DELETE FROM animal_produit WHERE id_animal = ?',
+                array( 1 => $id_animal));
+        $this->bindRequete('DELETE FROM animal WHERE id_animal = ?',
+                array(1 => $id_animal)) ; 
     }
 }
 

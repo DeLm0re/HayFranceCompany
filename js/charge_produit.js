@@ -49,7 +49,7 @@ function request(id_produit) {
        //nom_produit
        document.getElementById("titre").value = nodes[0].getAttribute("nom_produit") ; 
        t = document.createTextNode(nodes[0].getAttribute("description"));
-       p = document.getElementById("editeur");
+       p = document.getElementById("resuEditeur");
        p.appendChild(t);
        
        t = document.createTextNode(nodes[0].getAttribute("description_rapide"));

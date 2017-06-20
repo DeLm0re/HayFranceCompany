@@ -8,10 +8,11 @@ demarreSession($user);
 <!-- div class="div_ensemble_panier" -->
 
 <div class="div_titre_panier">
-    <span class="titre_panier">Votre panier</span><br>
+    <span class="titre_panier">Votre panier</span>
 </div>
 
 <div class="div_panier">
+    <input class="vide_panier" type="button" value="Vider mon panier" onclick="vide_panier();">
     <div class="div_produit_panier">
         <?php
             $liste = $user->donneContenuPanier();
@@ -31,8 +32,9 @@ demarreSession($user);
                 </div>
                 <div class=\"element_produit_panier\" style=\"margin: 58px 0 0 45px;\">
                 <span class=\"span_select_produit_panier\">Nombre de palettes : </span>
-                <input class=\"select_produit_panier\" type=\"number\" min=\"1\" max=\"8\" 
-                    value=\"".$nbr."\" onchange=\"modifie_palette_produit();\" >
+                <input id=\"select_p\" class=\"select_produit_panier\" type=\"number\" min=\"1\" max=\"8\" 
+                    value=\"".$nbr."\" "
+                        . 'onchange="modifie_palette_produit('.$info['id_produit'].');" >'."
                 </div>
                 <div class=\"element_produit_panier\" style=\"margin: 58px 0 0 40px;\">
                 <span class=\"span_prix_produit_panier\">Prix : </span>

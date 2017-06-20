@@ -1,0 +1,101 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15 juin 2017, 20:29:43
+    Author     : vpetrini
+*/
+body{
+    font-family: "Roboto";
+  position: relative;
+  background-image: url(../images/hayfrancecompany_fondpage.jpg);
+  background-repeat: repeat-y;
+}
+/*TOUTE LA NAVBAR */
+.div_navbar{
+    margin-bottom: 40px;
+}
+
+/* = = = = = = = DESSUS NAVBAR = = = = = = = = = =*/
+
+/* Action sur la div du dessus de la barre de la navbar */
+.div_dessus_navbar{
+    font-family: "Roboto";
+    background-color: white;
+    width: 75%;
+    margin: auto; 
+    padding-bottom: 20px;
+    position: relative;
+    border-top: solid 2px #f74a00;
+}
+
+/* Div du logo dans la navbar */
+.div_logo_navbar{
+    display: inline-block;
+}
+
+#centre {
+    margin-left: 150px;
+}
+
+/* Image du dessus de la navbar */
+.logo_navbar{
+    width: 70%;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    text-decoration-color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+.ensemble_produit{
+    background-color: white;
+    padding-bottom: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #EAEAEA;
+    width: 75%;
+    margin: auto;
+}
+
+.titre_ensemble_produit{
+    margin-left: 30px;
+    margin-bottom: 0px;
+    color: #77778D;
+    font-family: "Roboto";
+    font-size: 35px;
+}
+
+table {
+    width:100%;
+}
+td, a:link, a:visited{
+     text-decoration: none;
+}
+tr, a:link, a:visited  {
+    text-align:center;
+   
+}
+
+tr:nth-child(even) {
+    background-color: #c1c1c1;
+}
+
+.image_supp {
+    background-color: #f0f0f0 ; 
+    border: none ; 
+}

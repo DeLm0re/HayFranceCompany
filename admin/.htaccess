@@ -1,0 +1,4 @@
+AuthUserFile /wamp64/www/HayFranceCompany/admin/htpasswd
+AuthName "Accès protégé"
+AuthType Basic
+Require valid-user

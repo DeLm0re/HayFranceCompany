@@ -1,3 +1,4 @@
+<link href="../css/admin_modification.css" rel="stylesheet" type="text/css"/>
 <?php
 include_once '../objet/session_objet.php';
 include_once '../objet/administration/o_admin.php';
@@ -8,14 +9,29 @@ $URL ='admin_modification_produit.php' ;
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
+        <script src="../js/a_supprime_produit.js" type="text/javascript"></script>
+        <script src="../js/oXHR.js" type="text/javascript"></script>
     </head>
 
 
     <body>
+        <div class="div_dessus_navbar">
+            <div onclick="window.document.location.href='../pages/tout_produit.php'" class="div_logo_navbar">
+                <img class="logo_navbar"  src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"/>
+            </div> 
+            </div>
+       
+        <div class="ensemble_produit">
         <table>
-            <h1>Produits</h1>
+            <h1 class="titre_ensemble_produit">Produits</h1>
             <form action="admin_modification_produit.php">
             <input type="submit" value="Créer Produit" />
+            </form>
+            <form action="upload_image.php">
+            <input type="submit" value="Ajout Image" />
+            </form>
+            <form action="admin_ajout_animal.php">
+            <input type="submit" value="Ajout Animal" />
             </form>
            <tr>
                <th>ID</th>
@@ -24,14 +40,18 @@ $URL ='admin_modification_produit.php' ;
                <th>Prix</th>
                <th>Nombre Image</th>
                <th>Animaux</th>
+               <th><th>
            </tr>
            <?php
                 $listeProduit = $admin->consulteListeProduit();
                 afficheTableauProduit($listeProduit);
            ?>
         </table>
+        </div>
     </body>
 </html>
+
+
 
 <?php
 function afficheTableauProduit($liste)
@@ -71,6 +91,7 @@ function afficheProduit($infos)
             ajouteCellule($infos[$i]);   
         }
     }
+    echo"<td><input class=\"image_supp\" name=\"supp\"type='button' value='x' onclick='appelSupprime($infos[0])'></td>" ;
     echo '</tr>';
 }
 

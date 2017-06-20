@@ -9,12 +9,14 @@ $URL ='admin_modification_produit.php' ;
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
+        <script src="../js/a_supprime_produit.js" type="text/javascript"></script>
+        <script src="../js/oXHR.js" type="text/javascript"></script>
     </head>
 
 
     <body>
         <div class="div_dessus_navbar">
-            <div onclick="window.document.location.href='tout_produit.php'" class="div_logo_navbar">
+            <div onclick="window.document.location.href='../pages/tout_produit.php'" class="div_logo_navbar">
                 <img class="logo_navbar"  src="../images/hayfrancecompany_navbar.png" alt="Logo hayfrancecompany"/>
             </div> 
             </div>
@@ -38,6 +40,7 @@ $URL ='admin_modification_produit.php' ;
                <th>Prix</th>
                <th>Nombre Image</th>
                <th>Animaux</th>
+               <th><th>
            </tr>
            <?php
                 $listeProduit = $admin->consulteListeProduit();
@@ -47,6 +50,8 @@ $URL ='admin_modification_produit.php' ;
         </div>
     </body>
 </html>
+
+
 
 <?php
 function afficheTableauProduit($liste)
@@ -86,6 +91,7 @@ function afficheProduit($infos)
             ajouteCellule($infos[$i]);   
         }
     }
+    echo"<td><input class=\"image_supp\" name=\"supp\"type='button' value='x' onclick='appelSupprime($infos[0])'></td>" ;
     echo '</tr>';
 }
 

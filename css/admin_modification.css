@@ -86,3 +86,7 @@ tr:nth-child(even) {
     background-color: #c1c1c1;
 }
 
+.image_supp {
+    background-color: #f0f0f0 ; 
+    border: none ; 
+}

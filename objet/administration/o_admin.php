@@ -76,6 +76,11 @@ class Admin extends Utilisateur
         $this->deleteProduit($produit->getInfos()['id_produit']);
     }
     
+    //Vincent
+    public function supprimeAnimal($id_animal){
+        $this->deleteAnimal($id_animal) ; 
+    }
+    
     public function changePrix()
     {
         
@@ -97,7 +102,7 @@ class Admin extends Utilisateur
     
     private function insertAnimal($nom)
     {
-        $this->bindRequete('INSERT INTO animal (animal) VALUES ?',
+        $this->bindRequete('INSERT INTO animal (animal) VALUES (?)',
                 array(1 => $nom)) ; 
     }
 
@@ -148,6 +153,15 @@ class Admin extends Utilisateur
                 array( 1 => $id_produit));
         $this->bindRequete('DELETE FROM produit WHERE id_produit = ?',
                 array( 1 => $id_produit));
+    }
+    
+    //Vincent
+    private function deleteAnimal($id_animal)
+    {
+        $this->bindRequete('DELETE FROM animal_produit WHERE id_animal = ?',
+                array( 1 => $id_animal));
+        $this->bindRequete('DELETE FROM animal WHERE id_animal = ?',
+                array(1 => $id_animal)) ; 
     }
 }
 

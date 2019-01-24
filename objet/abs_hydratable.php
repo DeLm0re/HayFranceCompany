@@ -22,7 +22,7 @@ abstract class Hydratable
             return $this->_infos[$nom];
         }
         else 
-        {    
+        {
             return NULL;
         }
     }
@@ -42,10 +42,18 @@ abstract class Hydratable
         foreach($resultat as $ligne)
         {
             $cles = array_keys($ligne);
-            for($i = 0; $i < count($cles); $i++)
-            {
-               $this->$cles[$i] = $ligne[$cles[$i]];
-            }
+            /*
+            0 => string 'id_produit' (length=10)
+            1 => string 'nom_produit' (length=11)
+            2 => string 'description' (length=11)
+            3 => string 'description_rapide' (length=18)
+            4 => string 'prix_tonne' (length=10)
+            */
+            $this->id_produit = $ligne[$cles[0]];
+            $this->nom_produit = $ligne[$cles[1]];
+            $this->description = $ligne[$cles[2]];
+            $this->description_rapide = $ligne[$cles[3]];
+            $this->prix_tonne = $ligne[$cles[4]];
         }   
     }
     
